@@ -1,0 +1,126 @@
+{
+  "id": "cbse-09-mathematics-advanced",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 9,
+  "subject": "mathematics",
+  "edition": "2026-27",
+  "variant": "Advanced Level (Optional)",
+  "source": {
+    "title": "MATHEMATICS AT ADVANCED LEVEL (OPTIONAL) 2026-27 — GRADE 9",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/MathsAd_SecP1_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "24cb27010ff2c13832c58b3aaf4213537148a7396812982e34cb752e0a718cb4",
+    "localPath": "sources/math/MathsAd_SecP1_2026-27.pdf",
+    "extractedPath": "extracted/math/MathsAd_SecP1_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/math/MathsAd_SecP1_2026-27.txt",
+    "extraction": "pdftotext 4.00 -enc UTF-8 (-raw for extractedPath, -layout for extractedPathLayout); CESU-8 surrogate pairs re-paired to UTF-8 (scripts/math/extract.py)"
+  },
+  "units": [
+    {
+      "number": null,
+      "title": "MATHEMATICS AT ADVANCED LEVEL",
+      "marks": null,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Sets",
+          "periods": null,
+          "pages": "1-21",
+          "topics": [
+            "Introduction",
+            "Set",
+            "Representation of a Set",
+            "Finite and Infinite Sets",
+            "Empty or Null Set",
+            "Equality of Sets",
+            "Subset",
+            "Cardinality of a Set",
+            "Power Set",
+            "Universal Set",
+            "Venn Diagram",
+            "Set Operations",
+            "Complement of a Set",
+            "Application of Sets"
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Logarithms",
+          "periods": null,
+          "pages": "22-37",
+          "topics": [
+            "Introduction to Logarithms",
+            "Understanding Logarithms as the Inverse of Exponents",
+            "Logarithms Properties",
+            "Logarithm to base 10",
+            "Logarithms Across Subjects",
+            "Solving Logarithmic Equations: The Search for ‘x’"
+          ]
+        },
+        {
+          "number": "3",
+          "title": "Relations and Functions",
+          "periods": null,
+          "pages": "38-54",
+          "topics": [
+            "Introduction",
+            "Ordered Pairs",
+            "Cartesian Product of Sets",
+            "Relations",
+            "Functions",
+            "Some Functions and their Graphs"
+          ]
+        },
+        {
+          "number": "4",
+          "title": "Coordinate Geometry",
+          "periods": null,
+          "pages": "55-70",
+          "topics": [
+            "Introduction: The Language of Graphs",
+            "The Cartesian System",
+            "Let Us Explore Four Quadrants",
+            "Moving Points: The Magic of Reflections",
+            "Coordinates as Perpendicular Distances",
+            "The Concept of Slope (Gradient)",
+            "Properties of Slope",
+            "Intercept",
+            "Different Forms of the Equation of a Line"
+          ]
+        },
+        {
+          "number": "5",
+          "title": "Combinatorics",
+          "periods": null,
+          "pages": "71-83",
+          "topics": [
+            "Introduction: The Mathematics of Possibilities",
+            "The Fundamental Principle of Counting (FPC)",
+            "Factorials",
+            "Permutations: When Order Matters",
+            "Combinations: When Order Does NOT Matter",
+            "Combinatorics in the Modern World"
+          ]
+        },
+        {
+          "number": "6",
+          "title": "Exploring some more Progressions",
+          "periods": null,
+          "pages": "84-94",
+          "topics": [
+            "Introduction",
+            "Sum of the first n terms of a Geometric Progression",
+            "Infinite Geometric Progression",
+            "Method of Differences and Combinatorics"
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [],
+  "notes": [
+    "This is a 97-page study-material document ('Academic Unit, Central Board of Secondary Education'), linked on the CBSE 2026-27 curriculum page under Secondary Curriculum: Part - 1 (Class IX) → Main Subjects as 'Mathematics at Advanced Level'. It has no unit level; the single unit title is the document title. Chapters are its INDEX (S. No., Chapters, Pages); topics are its numbered section headings (N.M) in order.",
+    "No marks, periods, or assessment scheme are printed in this document."
+  ]
+}

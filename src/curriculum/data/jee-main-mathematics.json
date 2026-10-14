@@ -1,0 +1,265 @@
+{
+  "id": "jee-main-mathematics",
+  "authority": "NTA (JEE Main)",
+  "exam": "JEE Main",
+  "class": null,
+  "subject": "mathematics",
+  "edition": "2026",
+  "variant": "Paper 1 (B.E./B.Tech.)",
+  "source": {
+    "title": "Syllabus for JEE (Main) - 2026",
+    "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2025/10/202510311323551056.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "7cad9da2a12065444828f744bd9f1a93a2dd0d9bd54c32a6d92d94a769e4f905",
+    "localPath": "sources/math/JEE_Main_2026_Syllabus.pdf",
+    "extractedPath": "extracted/math/JEE_Main_2026_Syllabus.raw.txt",
+    "extractedPathLayout": "extracted/math/JEE_Main_2026_Syllabus.txt",
+    "extraction": "pdftotext 4.00 -enc UTF-8 (-raw for extractedPath, -layout for extractedPathLayout); CESU-8 surrogate pairs re-paired to UTF-8 (scripts/math/extract.py)"
+  },
+  "units": [
+    {
+      "number": "1",
+      "title": "SETS, RELATIONS AND FUNCTIONS",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "SETS, RELATIONS AND FUNCTIONS",
+          "periods": null,
+          "topics": [
+            "Sets and their representation; Union, intersection and complement of sets and their algebraic properties; Power set; Relations, type of relations, equivalence relations, functions; one-one, into and onto functions, the composition of functions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "COMPLEX NUMBERS AND QUADRATIC EQUATIONS",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "COMPLEX NUMBERS AND QUADRATIC EQUATIONS",
+          "periods": null,
+          "topics": [
+            "Complex numbers as ordered pairs of reals, Representation of complex numbers in the form a + ib and their representation in a plane, Argand diagram, algebra of complex numbers, modulus and argument (or amplitude) of a complex number, Quadratic equations in real and complex number systems and their solutions; Relations between roots and coefficients, nature of roots, the formation of quadratic equations with given roots."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "MATRICES AND DETERMINANTS",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "MATRICES AND DETERMINANTS",
+          "periods": null,
+          "topics": [
+            "Matrices, algebra of matrices, type of matrices, determinants and matrices of order two and three, evaluation of determinants, area of triangles using determinants; Adjoint and inverse of a square matrix; Test of consistency and solution of simultaneous linear equations in two or three variables using matrices."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "PERMUTATIONS AND COMBINATIONS",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "PERMUTATIONS AND COMBINATIONS",
+          "periods": null,
+          "topics": [
+            "The fundamental principle of counting, permutations and combinations; Meaning of P(n, r) and C(n, r).",
+            "Simple applications."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "BINOMIAL THEOREM AND ITS SIMPLE APPLICATIONS",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "BINOMIAL THEOREM AND ITS SIMPLE APPLICATIONS",
+          "periods": null,
+          "topics": [
+            "Binomial theorem for a positive integral index, general term and middle term and simple applications."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "SEQUENCE AND SERIES",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "SEQUENCE AND SERIES",
+          "periods": null,
+          "topics": [
+            "Arithmetic and Geometric progressions, insertion of arithmetic, geometric means between two given numbers, Relation between A.M and G.M."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "LIMIT, CONTINUITY AND DIFFERENTIABILITY",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "LIMIT, CONTINUITY AND DIFFERENTIABILITY",
+          "periods": null,
+          "topics": [
+            "Real–valued functions, algebra of functions; polynomial, rational, trigonometric, logarithmic and exponential functions; inverse functions.",
+            "Graphs of simple functions.",
+            "Limits, continuity and differentiability.",
+            "Differentiation of the sum, difference, product and quotient of two functions.",
+            "Differentiation of trigonometric, inverse trigonometric, logarithmic, exponential, composite and implicit functions; derivatives of order upto two, Applications of derivatives: Rate of change of quantities, monotonic-Increasing and decreasing functions, Maxima and minima of functions of one variable."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "INTEGRAL CALCULAS",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "INTEGRAL CALCULAS",
+          "periods": null,
+          "topics": [
+            "Integral as an anti-derivative, Fundamental integrals involving algebraic, trigonometric, exponential and logarithmic functions.",
+            "Integration by substitution, by parts and by partial fractions.",
+            "Integration using trigonometric identities.",
+            "Evaluation of simple integrals of the type",
+            "The fundamental theorem of calculus, properties of definite integrals.",
+            "Evaluation of definite integrals, determining areas of the regions bounded by simple curves by simple curves in standard forms."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "title": "DIFFRENTIAL EQUATIONS",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "DIFFRENTIAL EQUATIONS",
+          "periods": null,
+          "topics": [
+            "Ordinary differential equations, their order and degree, the solution of differential equation by the method of separation of variables, solution of a homogeneous and linear differential equation of the type"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "title": "CO-ORDINATE GEOMETRY",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "CO-ORDINATE GEOMETRY",
+          "periods": null,
+          "topics": [
+            "Cartesian system of rectangular coordinates in a plane, distance formula, sections formula, locus and its equation, the slope of a line, parallel and perpendicular lines, intercepts of a line on the co-ordinate axis.",
+            "Straight line: Various forms of equations of a line, intersection of lines, angles between two lines, conditions for concurrence of three lines, the distance of a point form a line, co-ordinate of the centroid, orthocentre and circumcentre of a triangle.",
+            "Circle, conic sections: A standard form of equations of a circle, the general form of the equation of a circle, its radius and centre, equation of a circle when the endpoints of a diameter are given, points of intersection of a line and a circle with the centre at the origin and sections of conics, equations of conic sections (parabola, ellipse and hyperbola) in standard forms."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "title": "THREE DIMENSIONAL GEOMETRY",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "THREE DIMENSIONAL GEOMETRY",
+          "periods": null,
+          "topics": [
+            "Coordinates of a point in space, the distance between two points, section formula, direction ratios and direction cosines and the angle between two intersecting lines.",
+            "Equation of a line; Skew lines, the shortest distance between them and its equation."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "title": "VECTOR ALGEBRA",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "VECTOR ALGEBRA",
+          "periods": null,
+          "topics": [
+            "Vectors and scalars, the addition of vectors, components of a vector in two dimensions and three-dimensional spaces, scalar and vector products."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "title": "STATISTICS AND PROBABILITY",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "STATISTICS AND PROBABILITY",
+          "periods": null,
+          "topics": [
+            "Measures of dispersion; calculation of mean, median, mode of grouped and ungrouped data, calculation of standard deviation, variance and mean deviation for grouped and ungrouped data.",
+            "Probability: Probability of an event, addition and multiplication theorems of probability, Baye's theorem, probability distribution of a random variable."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "14",
+      "title": "TRIGONOMETRY",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "TRIGONOMETRY",
+          "periods": null,
+          "topics": [
+            "Trigonometrical identities and trigonometrical functions, inverse trigonometrical functions their properties."
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "title": "Syllabus for JEE (Main) Paper 2A (B.Arch.) - Mathematics, Aptitude Test and Drawing Test",
+      "reason": "Out of scope — only Paper 1 Mathematics requested"
+    },
+    {
+      "title": "Syllabus for JEE (Main) Paper 2B (B.Planning) - Mathematics, Aptitude Test and Planning",
+      "reason": "Out of scope — only Paper 1 Mathematics requested"
+    },
+    {
+      "title": "PHYSICS",
+      "reason": "Paper 1 Physics — gathered by the science agent, not part of the mathematics file"
+    }
+  ],
+  "notes": [
+    "EDITION: JEE (Main) 2026 is the newest NTA syllabus. As of 2026-10-12 jeemain.nta.nic.in (= jeemain.nta.ac.in) links this PDF as 'Syllabus' and has no 2027 syllabus or bulletin. The PDF is hosted on the government S3WaaS CDN (cdnbbsr.s3waas.gov.in) that the official NTA JEE Main site links to.",
+    "The source lists units only (no sub-units); per the brief each unit has one chapter repeating the unit title. 'topics' = the unit paragraph split at sentence boundaries ('. ' followed by a capital letter), exactly as printed. No marks/weightage are given.",
+    "Spelling kept exactly as printed: 'INTEGRAL CALCULAS', 'DIFFRENTIAL EQUATIONS', 'UNIT3', 'Baye's theorem', 'point form a line', 'upto', 'bounded by simple curves by simple curves'.",
+    "NOT EXTRACTABLE: Unit 8 'Evaluation of simple integrals of the type' is followed in the PDF by an embedded IMAGE of the integral list (top of page 2), which has no text layer. Unit 9's 'linear differential equation of the type' is followed by an equation whose glyphs are corrupt in the PDF text layer (pdftotext and pypdf both yield unpaired surrogates); it is dy/dx + p(x)y = q(x) in the usual NTA wording but that is NOT verifiable from this PDF, so it is omitted from 'topics'."
+  ]
+}

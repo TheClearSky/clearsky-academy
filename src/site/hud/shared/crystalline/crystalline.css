@@ -1,0 +1,646 @@
+/*
+ * #12 · Crystal Line — scoped under [data-crystal-line]; drawn by the
+ * chapter page (`src/chapter/`). The classes are `crl-` so they never meet
+ * the classic cards' `cl-`.
+ *
+ * THE GRID: every tone that differs between round 2's classic panel and
+ * round 4's night panel (darker ground, brighter lattice, a finer second
+ * lattice, a vignette) is a `color-mix` on `--crl-night`, 0 = classic …
+ * 1 = night. Deepak slid between them (round 4) and picked a quarter of
+ * the way to night: 0.25.
+ */
+[data-crystal-line] {
+  --crl-night: 0.25;
+  --crl-n: calc(var(--crl-night) * 100%);
+}
+[data-crystal-line] .crl-root {
+  --crl-display: 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  --crl-serif: 'Cormorant Garamond', Georgia, serif;
+  --crl-sc: 'Cormorant SC', 'Cormorant Garamond', Georgia, serif;
+  --crl-text: #eef3ff;
+  --crl-soft: #a3a6dc;
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  color: var(--crl-text);
+  font-family: system-ui, sans-serif;
+}
+
+/* ---------- headline: emblem, name, hero ---------- */
+[data-crystal-line] .crl-headline {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px 22px;
+}
+[data-crystal-line] .crl-emblem {
+  width: 76px;
+  height: 76px;
+}
+[data-crystal-line] .crl-emblem svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+[data-crystal-line] .crl-emblem-ring {
+  fill: #0d0a33;
+  stroke: var(--hud-gold-200);
+  stroke-width: 1.2;
+}
+[data-crystal-line] .crl-emblem-runes {
+  fill: none;
+  stroke: var(--hud-gold-500);
+  stroke-width: 3;
+  stroke-dasharray: 0.8 3.2;
+  opacity: 0.8;
+}
+[data-crystal-line] .crl-kicker {
+  margin: 0;
+  font: 600 12px/1 var(--crl-display);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--hud-crystal);
+}
+[data-crystal-line] .crl-h2 {
+  margin: 8px 0 0;
+  font: 700 clamp(28px, 3.8vw, 44px)/1 var(--crl-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f7f3ff;
+}
+[data-crystal-line] .crl-hero {
+  text-align: right;
+}
+[data-crystal-line] .crl-hero-num {
+  margin: 0;
+  font: 600 clamp(60px, 7.4vw, 92px)/0.85 var(--crl-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: transparent;
+  background: linear-gradient(180deg, #fffaf0 6%, #f4e2a6 45%, #d9a93c 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgb(217 169 60 / 0.3));
+}
+[data-crystal-line] .crl-hero-pct {
+  font-size: 0.42em;
+  margin-left: 3px;
+  vertical-align: 0.95em;
+}
+[data-crystal-line] .crl-hero-label {
+  margin: 6px 0 0;
+  font: 600 16px/1.2 var(--crl-sc);
+  letter-spacing: 0.1em;
+  color: #e3e6ff;
+}
+[data-crystal-line] .crl-rule {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 24px;
+  margin-top: 20px;
+  padding: 12px 0;
+  border-top: 1px solid rgb(233 211 168 / 0.25);
+  border-bottom: 1px solid rgb(233 211 168 / 0.25);
+}
+[data-crystal-line] .crl-quiet {
+  margin: 0;
+  font-size: 13px;
+  color: var(--crl-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- the night rail map ---------- */
+[data-crystal-line] .crl-panel {
+  position: relative;
+  margin-top: 20px;
+  padding: 22px clamp(2px, 1.4vw, 18px);
+  border-radius: 20px;
+  --crl-lattice: color-mix(in srgb, rgb(106 79 208 / 0.07), rgb(150 128 255 / 0.3) var(--crl-n));
+  --crl-fine: rgb(150 128 255 / calc(0.07 * var(--crl-night)));
+  background:
+    repeating-linear-gradient(45deg, transparent 0 47px, var(--crl-lattice) 47px 48px),
+    repeating-linear-gradient(-45deg, transparent 0 47px, var(--crl-lattice) 47px 48px),
+    repeating-linear-gradient(45deg, transparent 0 15px, var(--crl-fine) 15px 16px),
+    repeating-linear-gradient(-45deg, transparent 0 15px, var(--crl-fine) 15px 16px),
+    radial-gradient(ellipse 70% 60% at 85% 10%, rgb(111 227 255 / 0.07), transparent 70%),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, #0f0b3a, #05041a var(--crl-n)) 0%,
+      color-mix(in oklab, #090726, #020110 var(--crl-n)) 55%,
+      color-mix(in oklab, #04031a, #000005 var(--crl-n)) 100%
+    );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, rgb(130 106 183 / 0.25), rgb(150 128 255 / 0.4) var(--crl-n)),
+    inset 0 0 0 5px color-mix(in oklab, #05041a, #000005 var(--crl-n)),
+    inset 0 0 0 6px color-mix(in srgb, rgb(233 211 168 / 0.18), rgb(233 211 168 / 0.28) var(--crl-n)),
+    inset 0 0 80px rgb(0 0 0 / calc(0.7 * var(--crl-night)));
+}
+[data-crystal-line] .crl-area {
+  position: relative;
+  min-height: 160px;
+}
+[data-crystal-line] .crl-board {
+  position: absolute;
+  inset: 0;
+}
+[data-crystal-line] .crl-lit {
+  --lp-bed: color-mix(in oklab, #191446, #0c0a2c var(--crl-n));
+  --lp-bed-w: 12px;
+  --lp-thread: color-mix(in oklab, #463a86, #5a4ca8 var(--crl-n));
+  --lp-thread-w: 1.6px;
+  --lp-halo: #6fe3ff;
+  --lp-halo-o: 0.13;
+  --lp-halo-w: 22px;
+  --lp-glow: #9fe9ff;
+  --lp-glow-o: 0.3;
+  --lp-glow-w: 9px;
+  --lp-under: #e9d3a8;
+  --lp-under-w: 4.6px;
+  --lp-core: #ffffff;
+  --lp-core-w: 2px;
+  --lp-mote: #e8fbff;
+}
+[data-crystal-line] .crl-sleeper {
+  stroke: color-mix(in oklab, #2c2464, #2a2266 var(--crl-n));
+  stroke-width: 1.6;
+}
+[data-crystal-line] .crl-sleeper-lit {
+  stroke: var(--hud-gold-500);
+  stroke-width: 1.6;
+}
+[data-crystal-line] .crl-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+[data-crystal-line] .crl-hit {
+  fill: transparent;
+  pointer-events: all;
+}
+[data-crystal-line] .crl-hit[data-active] {
+  cursor: pointer;
+}
+[data-crystal-line] .crl-in,
+[data-crystal-line] .crl-node,
+[data-crystal-line] .crl-runes,
+[data-crystal-line] .crl-spark,
+[data-crystal-line] .crl-bloom,
+[data-crystal-line] .crl-gem,
+[data-crystal-line] .crl-shock,
+[data-crystal-line] .crl-crystal,
+[data-crystal-line] .crl-train {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+[data-crystal-line] .crl-orbit {
+  fill: none;
+  stroke: #3e3380;
+  stroke-width: 1.2;
+}
+[data-crystal-line] .crl-orbit-glow {
+  fill: none;
+  stroke: var(--hud-gold-500);
+  stroke-opacity: 0.3;
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+[data-crystal-line] .crl-orbit-lit {
+  fill: none;
+  stroke: var(--hud-gold-100);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+[data-crystal-line] .crl-orbit-ticks {
+  fill: none;
+  stroke: #090726;
+  stroke-width: 4;
+}
+[data-crystal-line] .crl-gem {
+  fill: color-mix(in oklab, #0b0828, #050418 var(--crl-n));
+  stroke: #7366b8;
+  stroke-width: 0.9;
+}
+[data-crystal-line] .crl-gem[data-lit] {
+  fill: #fff4cc;
+  stroke: #ffffff;
+  stroke-width: 0.5;
+}
+[data-crystal-line] .crl-gem[data-next] {
+  fill: rgb(111 227 255 / 0.3);
+  stroke: var(--hud-crystal);
+}
+[data-crystal-line] .crl-halo {
+  fill: none;
+  stroke: rgb(233 211 168 / 0.22);
+  stroke-width: 1;
+}
+[data-crystal-line] .crl-ring {
+  fill: color-mix(in oklab, #0b0828, #050418 var(--crl-n));
+  stroke: var(--hud-gold-200);
+  stroke-width: 2.2;
+}
+[data-crystal-line] .crl-disc {
+  fill: color-mix(in oklab, #18124a, #0d0a33 var(--crl-n));
+}
+[data-crystal-line] .crl-fill {
+  fill: none;
+  stroke: var(--hud-gold-500);
+  stroke-width: 3;
+}
+[data-crystal-line] .crl-station[data-state='done'] .crl-disc {
+  fill: var(--hud-gold-500);
+}
+[data-crystal-line] .crl-station[data-state='done'] .crl-ring {
+  fill: #fff1c2;
+  stroke: #fff6da;
+}
+[data-crystal-line] .crl-station[data-state='done'] .crl-halo {
+  stroke: rgb(244 226 166 / 0.6);
+}
+[data-crystal-line] .crl-mark {
+  fill: #3a2a08;
+}
+[data-crystal-line] .crl-station[data-state='none'] .crl-ring {
+  stroke: #6e60ad;
+  stroke-width: 1.6;
+}
+[data-crystal-line] .crl-station[data-frontier] .crl-ring {
+  stroke: var(--hud-crystal);
+}
+[data-crystal-line] .crl-shock {
+  fill: none;
+  stroke: #fff4cc;
+  stroke-width: 2;
+  opacity: 0;
+}
+[data-crystal-line] .crl-tail {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+[data-crystal-line] .crl-train-glow {
+  fill: rgb(111 227 255 / 0.16);
+}
+
+/* labels: above the upper stations, below the lower ones */
+[data-crystal-line] .crl-labels {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+[data-crystal-line] .crl-label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+  border-radius: 12px;
+  outline: none;
+}
+[data-crystal-line] .crl-label[data-side='up'] {
+  justify-content: flex-end;
+  padding-bottom: 2px;
+}
+[data-crystal-line] .crl-label[data-side='down'] {
+  justify-content: flex-start;
+  padding-top: 2px;
+}
+[data-crystal-line] .crl-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  max-width: 100%;
+}
+[data-crystal-line] .crl-label[data-side='down'] .crl-head {
+  order: 2;
+}
+[data-crystal-line] .crl-label:focus-visible {
+  outline: 2px solid var(--hud-crystal);
+  outline-offset: 2px;
+  background: rgb(111 227 255 / 0.06);
+}
+[data-crystal-line] .crl-head {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  white-space: nowrap;
+}
+[data-crystal-line] .crl-num {
+  font: 700 15px/1 var(--crl-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--hud-gold-200);
+}
+[data-crystal-line] .crl-count {
+  font: 600 12px/1 var(--crl-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--crl-soft);
+}
+[data-crystal-line] .crl-label[data-state='done'] .crl-count {
+  color: var(--hud-gold-100);
+}
+[data-crystal-line] .crl-label[data-state='part'] .crl-count {
+  color: #e9e6ff;
+}
+[data-crystal-line] .crl-next {
+  padding: 2px 6px 1px;
+  border: 1px solid var(--hud-crystal);
+  border-radius: 999px;
+  font: 600 10.5px/1 var(--crl-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d5f7ff;
+}
+[data-crystal-line] .crl-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font: 600 15.5px/1.08 var(--crl-serif);
+  font-variant-numeric: lining-nums;
+  color: #e4e2fb;
+}
+[data-crystal-line] .crl-label[data-state='done'] .crl-title {
+  color: var(--hud-gold-100);
+}
+[data-crystal-line] .crl-label[data-state='none'] .crl-title {
+  color: var(--crl-soft);
+}
+
+@media (max-width: 640px) {
+  [data-crystal-line] .crl-headline {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  [data-crystal-line] .crl-emblem {
+    width: 56px;
+    height: 56px;
+  }
+  [data-crystal-line] .crl-hero {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+  [data-crystal-line] .crl-title {
+    font-size: 14px;
+  }
+  [data-crystal-line] .crl-next {
+    display: none;
+  }
+}
+
+/* ---------- hover and focus: the station wakes ----------
+ * The node lifts on a spring, a bloom opens under it, two rune circles
+ * turn round it in opposite directions, four sparks flare on the diagonals
+ * and the orbit's gems ripple in turn; its label rises toward the line,
+ * brightens to gold and draws a gilt rule. The other stations dim a touch.
+ */
+[data-crystal-line] .crl-node {
+  transition:
+    transform 0.45s cubic-bezier(0.3, 1.7, 0.5, 1),
+    filter 0.3s;
+}
+[data-crystal-line] .crl-station[data-hover] .crl-node {
+  transform: scale(1.22);
+  filter: drop-shadow(0 0 6px rgb(244 226 166 / 0.75));
+}
+[data-crystal-line] .crl-station[data-hover] .crl-ring {
+  stroke: #fff6da;
+}
+[data-crystal-line] .crl-aura > * {
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+[data-crystal-line] .crl-bloom {
+  transform: scale(0.4);
+}
+[data-crystal-line] .crl-runes {
+  fill: none;
+  stroke: var(--hud-gold-100);
+  stroke-width: 1.1;
+  stroke-dasharray: 1.2 3.6;
+  transform: scale(0.6);
+}
+[data-crystal-line] .crl-runes-outer {
+  stroke: var(--hud-crystal);
+  stroke-width: 0.9;
+  stroke-dasharray: 10 4 2 4;
+  stroke-opacity: 0.85;
+}
+[data-crystal-line] .crl-spark {
+  fill: #fffaf0;
+  transform: scale(0);
+}
+[data-crystal-line] .crl-station[data-hover] .crl-aura > * {
+  opacity: 1;
+}
+[data-crystal-line] .crl-station[data-hover] .crl-bloom,
+[data-crystal-line] .crl-station[data-hover] .crl-runes {
+  transform: none;
+}
+[data-crystal-line] .crl-station[data-hover] .crl-runes {
+  animation: crl-turn 7s linear infinite;
+}
+[data-crystal-line] .crl-station[data-hover] .crl-runes-outer {
+  animation: crl-turn 11s linear infinite reverse;
+}
+[data-crystal-line] .crl-station[data-hover] .crl-spark {
+  transform: scale(0.8);
+  animation: crl-spark 1.6s ease-in-out calc(var(--crl-k) * 0.12s) infinite both;
+}
+[data-crystal-line] .crl-station[data-hover] .crl-gem {
+  animation: crl-ripple 0.7s ease-out calc(var(--crl-gi) * 45ms) both;
+}
+[data-crystal-line] .crl-station[data-hover] .crl-orbit {
+  stroke: var(--hud-gold-200);
+  stroke-opacity: 0.7;
+}
+[data-crystal-line] .crl-station {
+  transition: opacity 0.3s;
+}
+[data-crystal-line] .crl-board[data-hovering] .crl-station:not([data-hover]) {
+  opacity: 0.72;
+}
+[data-crystal-line] .crl-label {
+  transition:
+    transform 0.4s cubic-bezier(0.3, 1.5, 0.5, 1),
+    opacity 0.3s;
+}
+[data-crystal-line] .crl-label[data-open] {
+  cursor: pointer;
+}
+[data-crystal-line] .crl-label[data-hover][data-side='up'] {
+  transform: translateY(-4px);
+}
+[data-crystal-line] .crl-label[data-hover][data-side='down'] {
+  transform: translateY(4px);
+}
+[data-crystal-line] .crl-board[data-hovering] .crl-label:not([data-hover]) {
+  opacity: 0.6;
+}
+[data-crystal-line] .crl-title {
+  position: relative;
+  transition:
+    color 0.25s,
+    text-shadow 0.25s;
+}
+[data-crystal-line] .crl-label[data-hover] .crl-title {
+  color: #fff6da;
+  text-shadow: 0 0 16px rgb(244 226 166 / 0.55);
+}
+[data-crystal-line] .crl-label[data-hover] .crl-num {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgb(244 226 166 / 0.9);
+}
+/* the gilt rule under the label's text, drawn from the middle out */
+[data-crystal-line] .crl-text::after {
+  content: '';
+  order: 3;
+  width: 70%;
+  height: 1px;
+  margin-top: 2px;
+  background: linear-gradient(90deg, transparent, var(--hud-gold-100), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+[data-crystal-line] .crl-label[data-side='down'] .crl-text::after {
+  order: -1;
+  margin: 0 0 2px;
+}
+[data-crystal-line] .crl-label[data-hover] .crl-text::after {
+  transform: none;
+}
+@keyframes crl-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes crl-spark {
+  0%,
+  100% {
+    transform: scale(0.35) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1) rotate(45deg);
+    opacity: 1;
+  }
+}
+@keyframes crl-ripple {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.8);
+    filter: brightness(1.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ---------- motion ---------- */
+[data-crystal-line] .crl-root:not([data-play]) .crl-area {
+  opacity: 0;
+}
+[data-crystal-line] .crl-board[data-entrance] .crl-in {
+  animation: crl-pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) var(--crl-pop) both;
+}
+[data-crystal-line] .crl-board[data-entrance] .crl-label {
+  animation: crl-fade 0.45s ease-out calc(var(--crl-pop) + 80ms) both;
+}
+[data-crystal-line] .crl-board[data-swap] {
+  animation: crl-fade 0.32s ease-out both;
+}
+[data-crystal-line] [data-play] .crl-train {
+  animation: crl-pop 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) var(--crl-t) both;
+}
+[data-crystal-line] [data-play] .crl-crystal {
+  animation: crl-bob 4.6s ease-in-out calc(var(--crl-t) + 0.8s) infinite;
+}
+/* earned moments: the comet lands, the station lights */
+[data-crystal-line] [data-play] .crl-station[data-moment] .crl-orbit-lit,
+[data-crystal-line] [data-play] .crl-station[data-moment] .crl-orbit-glow {
+  animation: crl-arc 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--crl-m) both;
+}
+[data-crystal-line] [data-play] .crl-station[data-moment] .crl-shock {
+  animation: crl-shock 1s cubic-bezier(0.1, 0.7, 0.3, 1) var(--crl-m) both;
+}
+[data-crystal-line] [data-play] .crl-station[data-moment='complete'] .crl-shock-2 {
+  animation-delay: calc(var(--crl-m) + 160ms);
+}
+[data-crystal-line] [data-play] .crl-station[data-moment='complete'] .crl-ring,
+[data-crystal-line] [data-play] .crl-station[data-moment='complete'] .crl-disc,
+[data-crystal-line] [data-play] .crl-station[data-moment='complete'] .crl-mark {
+  animation: crl-gild 0.7s cubic-bezier(0.2, 1.5, 0.4, 1) var(--crl-m) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes crl-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes crl-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes crl-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes crl-arc {
+  from {
+    stroke-dashoffset: var(--crl-f, 1);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes crl-shock {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.8);
+  }
+}
+@keyframes crl-gild {
+  0% {
+    filter: brightness(2.4);
+    transform: scale(1.35);
+  }
+  100% {
+    filter: none;
+    transform: none;
+  }
+}
+
+[data-crystal-line] [data-reduced] *,
+[data-crystal-line] [data-reduced] *::before,
+[data-crystal-line] [data-reduced] *::after {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-crystal-line] * {
+    animation: none !important;
+  }
+}

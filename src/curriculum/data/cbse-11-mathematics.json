@@ -1,0 +1,372 @@
+{
+  "id": "cbse-11-mathematics",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 11,
+  "subject": "mathematics",
+  "edition": "2026-27",
+  "variant": null,
+  "source": {
+    "title": "Mathematics Subject Code – 041 Classes XI-XII (2026 – 27)",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Maths_SecP2_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "5bf4105d4076189fe00b879fd6d41ffadec87a894a078a7fb912b2f219769572",
+    "localPath": "sources/math/Maths_SecP2_2026-27.pdf",
+    "extractedPath": "extracted/math/Maths_SecP2_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/math/Maths_SecP2_2026-27.txt",
+    "extraction": "pdftotext 4.00 -enc UTF-8 (-raw for extractedPath, -layout for extractedPathLayout); CESU-8 surrogate pairs re-paired to UTF-8 (scripts/math/extract.py)"
+  },
+  "units": [
+    {
+      "number": "I",
+      "title": "Sets and Functions",
+      "marks": 23,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Sets",
+          "periods": null,
+          "topics": [
+            "Sets and their representations, Empty set, Finite and Infinite sets, Equal sets, Subsets, Subsets of a set of real numbers especially intervals (with notations).",
+            "Universal set.",
+            "Venn diagrams.",
+            "Union and Intersection of sets.",
+            "Difference of sets.",
+            "Complement of a set.",
+            "Properties of Complement."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Relations & Functions",
+          "periods": null,
+          "topics": [
+            "Ordered pairs.",
+            "Cartesian product of sets.",
+            "Number of elements in the Cartesian product of two finite sets.",
+            "Cartesian product of the set of reals with itself (up to R x R x R).",
+            "Definition of relation, pictorial diagrams, domain, co-domain and range of a relation.",
+            "Function as a special type of relation.",
+            "Pictorial representation of a function, domain, co-domain and range of a function.",
+            "Real valued functions, domain and range of these functions, constant, identity, polynomial, rational, modulus, signum, exponential, logarithmic and greatest integer functions, with their graphs.",
+            "Sum, difference, product and quotients of functions."
+          ]
+        },
+        {
+          "number": "3",
+          "title": "Trigonometric Functions",
+          "periods": null,
+          "topics": [
+            "Positive and negative angles.",
+            "Measuring angles in radians and in degrees and conversion from one measure to another.",
+            "Definition of trigonometric functions with the help of unit circle.",
+            "Truth of the identity 𝑠𝑖𝑛2𝑥 + 𝑐𝑜𝑠2𝑥 = 1, for all x.",
+            "Signs of trigonometric functions.",
+            "Domain and range of trigonometric functions and their graphs.",
+            "Expressing 𝑠𝑖𝑛 (𝑥 ± 𝑦) and 𝑐𝑜𝑠 (𝑥 ± 𝑦) in terms of 𝑠𝑖𝑛𝑥, 𝑠𝑖𝑛𝑦, 𝑐𝑜𝑠𝑥 & 𝑐𝑜𝑠𝑦 and their simple applications.",
+            "Deducing identities like the following:",
+            "Identities related to sin 2𝑥 , cos 2𝑥 , tan 2𝑥 , sin 3𝑥 , cos 3𝑥 and tan 3𝑥."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "II",
+      "title": "Algebra",
+      "marks": 25,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Complex Numbers and Quadratic Equations",
+          "periods": null,
+          "topics": [
+            "Need for complex numbers, especially √−1, to be motivated by inability to solve some of the quadratic equations.",
+            "Algebraic properties of complex numbers.",
+            "Argand plane."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Linear Inequalities",
+          "periods": null,
+          "topics": [
+            "Linear inequalities.",
+            "Algebraic solutions of linear inequalities in one variable and their representation on the number line."
+          ]
+        },
+        {
+          "number": "3",
+          "title": "Permutations and Combinations",
+          "periods": null,
+          "topics": [
+            "Fundamental principle of counting.",
+            "Factorial n. (n!) Permutations and combinations, derivation of Formulae for n Pr , n Cr and their connections, simple applications."
+          ]
+        },
+        {
+          "number": "4",
+          "title": "Binomial Theorem",
+          "periods": null,
+          "topics": [
+            "Historical perspective, statement and proof of the binomial theorem for positive integral indices.",
+            "Pascal’s triangle, simple applications."
+          ]
+        },
+        {
+          "number": "5",
+          "title": "Sequence and Series",
+          "periods": null,
+          "topics": [
+            "Sequence and Series.",
+            "Arithmetic Mean (A.M.) Geometric Progression (G.P.), general term of a G.P., sum of n terms of a G.P., infinite G.P. and its sum, geometric mean (G.M.), relation between A.M. and G.M"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "III",
+      "title": "Coordinate Geometry",
+      "marks": 12,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Straight Lines",
+          "periods": null,
+          "topics": [
+            "Brief recall of two-dimensional geometry from earlier classes.",
+            "Slope of a line and angle between two lines.",
+            "Various forms of equations of a line: parallel to axis, point -slope form, slope-intercept form, two-point form, intercept form.",
+            "Distance of a point from a line."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Conic Sections",
+          "periods": null,
+          "topics": [
+            "Sections of a cone: circles, ellipse, parabola, hyperbola, a point, a straight line and a pair of intersecting lines as a degenerated case of a conic section.",
+            "Standard equations and simple properties of parabola, ellipse and hyperbola.",
+            "Standard equation of a circle."
+          ]
+        },
+        {
+          "number": "3",
+          "title": "Introduction to Three-dimensional Geometry",
+          "periods": null,
+          "topics": [
+            "Coordinate axes and coordinate planes in three dimensions.",
+            "Coordinates of a point.",
+            "Distance between two points."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "IV",
+      "title": "Calculus",
+      "marks": 8,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Limits and Derivatives",
+          "periods": null,
+          "topics": [
+            "Derivative introduced as rate of change both as that of distance function and geometrically.",
+            "Intuitive idea of limit.",
+            "Limits of polynomials and rational functions trigonometric, exponential and logarithmic functions.",
+            "Definition of derivative relate it to scope of tangent of the curve, derivative of sum, difference, product and quotient of functions of polynomial and trigonometric functions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "V",
+      "title": "Statistics and Probability",
+      "marks": 12,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Statistics",
+          "periods": null,
+          "topics": [
+            "Measures of Dispersion: Range, Mean deviation, variance and standard deviation of ungrouped/grouped data."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Probability",
+          "periods": null,
+          "topics": [
+            "Events; occurrence of events, ‘not’, ‘and’ and ‘or’ events, exhaustive events, mutually exclusive events, Axiomatic (set theoretic) probability, connections with other theories of earlier classes.",
+            "Probability of an event, probability of ‘not’, ‘and’ and ‘or’ events."
+          ]
+        }
+      ]
+    }
+  ],
+  "formativeAssessmentOnly": {
+    "statement": "The following topics are included in the syllabus but will be assessed only formatively to reinforce understanding without adding to summative assessments. This reduces academic stress while ensuring meaningful learning. Schools can integrate these with existing chapters as they align well. Relevant NCERT textual material is enclosed for reference.",
+    "units": [
+      {
+        "number": "I",
+        "title": "Sets and Functions",
+        "marks": null,
+        "chapters": [
+          {
+            "number": "1",
+            "title": "Sets",
+            "periods": null,
+            "topics": [
+              "Practical problems on Union and Intersection of two sets."
+            ]
+          },
+          {
+            "number": "2",
+            "title": "Relations and Functions",
+            "periods": null,
+            "topics": [
+              "Composition of Functions"
+            ]
+          },
+          {
+            "number": "3",
+            "title": "Trigonometric Functions",
+            "periods": null,
+            "topics": [
+              "General solution of trigonometric equations of the type sin 𝑦 = sin 𝑎 , cos 𝑦 = cos 𝑎 and tan 𝑦 = tan 𝑎."
+            ]
+          }
+        ]
+      },
+      {
+        "number": "II",
+        "title": "Algebra",
+        "marks": null,
+        "chapters": [
+          {
+            "number": "1",
+            "title": "Principle of Mathematical Induction",
+            "periods": null,
+            "topics": [
+              "Process of the proof by induction, motivating the application of the method by looking at natural numbers as the least inductive subset of real numbers.",
+              "The principle of mathematical induction and simple applications."
+            ]
+          },
+          {
+            "number": "2",
+            "title": "(Complex Numbers and) Quadratic Equations",
+            "periods": null,
+            "topics": [
+              "Polar representation of complex numbers.",
+              "Statement of Fundamental Theorem of Algebra, solution of quadratic equations (with real coefficients) in the complex number system."
+            ]
+          },
+          {
+            "number": "3",
+            "title": "Linear Inequalities",
+            "periods": null,
+            "topics": [
+              "Graphical solution of linear inequalities in two variables.",
+              "Graphical method of finding a solution of system of linear inequalities in two variables."
+            ]
+          },
+          {
+            "number": "4",
+            "title": "Binomial Theorem",
+            "periods": null,
+            "topics": [
+              "General and middle term in binomial expansion."
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Sequence and Series",
+            "periods": null,
+            "topics": [
+              "Formulae for the following special sums"
+            ]
+          }
+        ]
+      },
+      {
+        "number": "III",
+        "title": "Coordinate Geometry",
+        "marks": null,
+        "chapters": [
+          {
+            "number": "1",
+            "title": "Straight Lines",
+            "periods": null,
+            "topics": [
+              "Normal form.",
+              "General equation of a line."
+            ]
+          },
+          {
+            "number": "2",
+            "title": "Introduction to Three-dimensional Geometry",
+            "periods": null,
+            "topics": [
+              "Section formula."
+            ]
+          }
+        ]
+      },
+      {
+        "number": "IV",
+        "title": "Calculus",
+        "marks": null,
+        "chapters": [
+          {
+            "number": "1",
+            "title": "Limits and Derivatives",
+            "periods": null,
+            "topics": [
+              "Derivatives of composite functions (Chain rule)."
+            ]
+          }
+        ]
+      },
+      {
+        "number": "V",
+        "title": "Statistics and Probability",
+        "marks": null,
+        "chapters": [
+          {
+            "number": "1",
+            "title": "Probability",
+            "periods": null,
+            "topics": [
+              "Random experiments; outcomes, sample space (set representation)."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "prescribedBooks": [
+    {
+      "title": "Mathematics Textbook for Class XI, NCERT Publications",
+      "chapters": []
+    },
+    {
+      "title": "Mathematics Exemplar Problem for Class XI, Published by NCERT",
+      "chapters": []
+    },
+    {
+      "title": "Mathematics Lab Manual class XI, published by NCERT",
+      "chapters": []
+    }
+  ],
+  "practicals": [],
+  "excluded": [],
+  "notes": [
+    "Units/marks from the CLASS XI COURSE STRUCTURE (Three Hours, Max Marks: 80; Internal Assessment 20). The same page also says '*No chapter/unit-wise weightage. Care to be taken to cover all the chapters.'",
+    "'topics' = the chapter paragraph split at sentence boundaries ('. ' followed by a capital letter), exactly as printed.",
+    "RATIONALISED / FORMATIVE-ONLY TOPICS: the source lists class XI topics that 'are included in the syllabus but will be assessed only formatively' — captured verbatim in 'formativeAssessmentOnly' (e.g. Principle of Mathematical Induction, Composition of Functions, general solutions of trigonometric equations, normal form of a line, chain rule). These are NOT part of the 80-mark summative paper.",
+    "Display formulas not transcribed (they do not survive text extraction as linear text): in Trigonometric Functions, after 'Deducing identities like the following:' the source prints identities for tan(x ± y), cot(x ± y), sin α ± sin β, cos α + cos β, cos α − cos β (source pages 2-3); in the formative Sequence and Series item, after 'Formulae for the following special sums' the source prints ∑k, ∑k², ∑k³ for k = 1..n (source page 6).",
+    "Superscripts are flattened by text extraction: '𝑠𝑖𝑛2𝑥 + 𝑐𝑜𝑠2𝑥 = 1' is sin²x + cos²x = 1; 'n Pr , n Cr' are ⁿPᵣ, ⁿCᵣ.",
+    "Question paper (from source): 3 hours, 80 marks; Remembering+Understanding 44 (55%), Applying 20 (25%), Analysing/Evaluating/Creating 16 (20%); 33% internal choice. Internal assessment 20: Periodic Tests (best 2 of 3) 10, Mathematics Activities 10. Activities: 'any 10 activities' from the NCERT Laboratory Manual for the class (no list printed).",
+    "The class XI-XII document still states it was designed per the National Curriculum Framework 2005 (not NCF-SE 2023)."
+  ]
+}

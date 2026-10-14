@@ -1,0 +1,28 @@
+/*
+ * The HUD family's tokens (round-2 brief, `.claude/research/hud/round2/
+ * BRIEF.md` §2, from the theme bible in REFERENCES-R2 §7): the Midnight
+ * Academy's night violets, gold for mastered, crystal for next, crimson wax
+ * for completion. Available to every design under the host's wrapper, and to any page
+ * that sets `data-hud-tokens` (the chapter page).
+ */
+:is([data-slot='hud-design'], [data-hud-tokens]) {
+  --hud-night-950: #00001c;
+  --hud-night-900: #0a0826;
+  --hud-indigo-800: #1a1450;
+  --hud-violet-700: #34235e;
+  --hud-violet-500: #6a4fd0;
+  --hud-violet-300: #826ab7;
+  --hud-sunburst: #b399cb;
+  --hud-spell: #bec4f9;
+  --hud-crystal: #6fe3ff;
+  --hud-gold-100: #f4e2a6;
+  --hud-gold-200: #e9d3a8;
+  --hud-gold-500: #d9a93c;
+  --hud-paper: #f4f1e8;
+  --hud-cream: #efe6d2;
+  --hud-ink: #0b0a08;
+  --hud-red: #c70129;
+  --hud-wax: #8e1b1b;
+  /* Gold as metal: a burnished gradient for fills and gilded edges. */
+  --hud-gold-foil: linear-gradient(135deg, #f7e3a1 0%, #d9a93c 38%, #fff1c2 52%, #b8892d 70%, #f3d58a 100%);
+}

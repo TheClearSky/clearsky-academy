@@ -1,0 +1,21 @@
+/*
+ * Shared HUD rules (TECHNIQUES.md §4.3–4.4, §6): loops pause while a design
+ * is off screen (`data-hud-paused` on the design root, from `useInView`),
+ * and reduced motion drops every animation to its end state.
+ */
+[data-hud-paused] *,
+[data-hud-paused] *::before,
+[data-hud-paused] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-slot='hud-design'] *,
+  [data-slot='hud-design'] *::before,
+  [data-slot='hud-design'] *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

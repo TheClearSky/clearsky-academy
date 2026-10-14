@@ -1,0 +1,339 @@
+{
+  "id": "cbse-10-mathematics",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 10,
+  "subject": "mathematics",
+  "edition": "2026-27",
+  "variant": null,
+  "source": {
+    "title": "Mathematics Subject Code – 041 & 241 Class – X (2026-27)",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Maths_SecP1X_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "d773e7c12b99e0bd498067e2b8268c76d0496bf9cad1c9e41c8652ab68b412a5",
+    "localPath": "sources/math/Maths_SecP1X_2026-27.pdf",
+    "extractedPath": "extracted/math/Maths_SecP1X_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/math/Maths_SecP1X_2026-27.txt",
+    "extraction": "pdftotext 4.00 -enc UTF-8 (-raw for extractedPath, -layout for extractedPathLayout); CESU-8 surrogate pairs re-paired to UTF-8 (scripts/math/extract.py)"
+  },
+  "units": [
+    {
+      "number": "I",
+      "title": "NUMBER SYSTEMS",
+      "marks": 6,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "REAL NUMBERS",
+          "periods": null,
+          "topics": [
+            "Fundamental Theorem of Arithmetic - statements after reviewing work done earlier and after illustrating and motivating through examples",
+            "Proofs of irrationality of √2, √3, √5"
+          ],
+          "competencies": [
+            "Develops understanding of numbers, including the set of real numbers and its properties.",
+            "Extends the understanding of powers (radical powers) and exponents.",
+            "Applies Fundamental Theorem of Arithmetic to solve problems related to real life contexts."
+          ],
+          "explanation": [
+            "Describes Fundamental Theorem of Arithmetic with examples",
+            "Prove algebraically the Irrationality of numbers like √2, √3, √5, 3 + 2√5 etc."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "II",
+      "title": "ALGEBRA",
+      "marks": 20,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "POLYNOMIALS",
+          "periods": null,
+          "topics": [
+            "Zeros of a polynomial",
+            "Relationship between zeros and coefficients of quadratic polynomials."
+          ],
+          "competencies": [
+            "develops a relationship between algebraic and graphical methods of finding the zeroes of a polynomial."
+          ],
+          "explanation": [
+            "Find the zeros of polynomial graphically and algebraically and verifying the relation between zeros and coefficients of quadratic polynomials."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "PAIR OF LINEAR EQUATIONS IN TWO VARIABLES",
+          "periods": null,
+          "topics": [
+            "Pair of linear equations in two variables and graphical method of their solution, consistency/inconsistency.",
+            "Algebraic conditions for number of solutions.",
+            "Solution of a pair of linear equations in two variables algebraically - by substitution, by elimination. Simple situational problems."
+          ],
+          "competencies": [
+            "Describes plotting a pair of linear equations and graphically finding the solution.",
+            "Models and solves contextualised problems using equations (e.g., simultaneous linear equations in two variables)."
+          ],
+          "explanation": [
+            "Find the solution of pair of linear equations in two variables graphically and algebraically (substitution and elimination method)"
+          ]
+        },
+        {
+          "number": "3",
+          "title": "QUADRATIC EQUATIONS",
+          "periods": null,
+          "topics": [
+            "Standard form of a quadratic equation 𝑎𝑥2 + 𝑏𝑥 + 𝑐 = 0, (𝑎 ≠ 0).",
+            "Solutions of quadratic equations (only real roots) by factorization, and by using quadratic formula. Relationship between discriminant and nature of roots.",
+            "Situational problems based on quadratic equations related to day-to-day activities to be incorporated"
+          ],
+          "competencies": [
+            "demonstrates strategies of finding roots and determining the nature of roots of a quadratic equation."
+          ],
+          "explanation": [
+            "Solves quadratic equations using factorization and quadratic formula",
+            "Determines the nature of roots using discriminant",
+            "Formulates and solves problems based on real life context"
+          ]
+        },
+        {
+          "number": "4",
+          "title": "ARITHMETIC PROGRESSIONS",
+          "periods": null,
+          "topics": [
+            "Motivation for studying Arithmetic Progression",
+            "Derivation of the nth term and sum of the first n terms of AP and their application in solving daily life problems."
+          ],
+          "competencies": [
+            "Develops strategies to apply the concept of A.P. to daily life situations."
+          ],
+          "explanation": [
+            "Applies concepts of AP to find the nth term and sum of n terms.",
+            "Application of AP in real life problems"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "III",
+      "title": "COORDINATE GEOMETRY",
+      "marks": 6,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Coordinate Geometry",
+          "periods": null,
+          "topics": [
+            "Review: Concepts of coordinate geometry. Distance formula. Section formula (internal division)."
+          ],
+          "competencies": [
+            "Derives formulae to establish relations for geometrical shapes in the context of a coordinate plane, such as, finding the distance between two given points, to determine the coordinates of a point between any two given points."
+          ],
+          "explanation": [
+            "Solves problems using distance formula and section formula"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "IV",
+      "title": "GEOMETRY",
+      "marks": 15,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "TRIANGLES",
+          "periods": null,
+          "topics": [
+            "Definitions, examples, counter examples of similar triangles.",
+            "(Prove) If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, the other two sides are divided in the same ratio.",
+            "State (without proof) If a line divides two sides of a triangle in the same ratio, the line is parallel to the third side.",
+            "State (without proof) If in two triangles, the corresponding angles are equal, their corresponding sides are proportional and the triangles are similar.",
+            "State (without proof) If the corresponding sides of two triangles are proportional, their corresponding angles are equal and the two triangles are similar.",
+            "State (without proof) If one angle of a triangle is equal to one angle of another triangle and the sides including these angles are proportional, the two triangles are similar."
+          ],
+          "competencies": [
+            "works out ways to differentiate between congruent and similar figures.",
+            "establishes properties for similarity of two triangles logically using different geometric criteria established earlier such as, Basic Proportionality Theorem, etc."
+          ],
+          "explanation": [
+            "Prove Basic Proportionality theorem and applying the theorem and its converse in solving questions",
+            "Prove similarity of triangles using different similarity criteria"
+          ]
+        },
+        {
+          "number": "2",
+          "title": "CIRCLES",
+          "periods": null,
+          "topics": [
+            "Tangent to a circle at point of contact.",
+            "(Prove) The tangent at any point of a circle is perpendicular to the radius through the point of contact.",
+            "(Prove) The lengths of tangents drawn from an external point to a circle are equal."
+          ],
+          "competencies": [
+            "derives proofs of theorems related to the tangents of circles."
+          ],
+          "explanation": [
+            "Prove the theorems based on the tangent to a circle.",
+            "Applies the concept of tangents of circle to solve various problems."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "V",
+      "title": "TRIGONOMETRY",
+      "marks": 12,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "INTRODUCTION TO TRIGONOMETRY",
+          "periods": null,
+          "topics": [
+            "Trigonometric ratios of an acute angle of a right-angled triangle. Proof of their existence (well defined)",
+            "Motivate the ratios whichever are defined at 0° and 90°. Values of the trigonometric ratios of 30° , 45° and 60°.",
+            "Relationships between the ratios."
+          ],
+          "competencies": [
+            "Understands the definitions of the basic trigonometric functions (including the introduction of the sine and cosine functions)."
+          ],
+          "explanation": [
+            "Evaluates trigonometric ratios",
+            "Describes trigonometric ratios of standard angles and solving related expressions"
+          ]
+        },
+        {
+          "number": "2",
+          "title": "TRIGONOMETRIC IDENTITIES",
+          "periods": null,
+          "topics": [
+            "Proof and applications of the identity sin2A + cos2A = 1.",
+            "Only simple identities to be given."
+          ],
+          "competencies": [
+            "Uses Trigonometric identities to solve problems."
+          ],
+          "explanation": [
+            "Proves trigonometric identities using sin2A + cos2A = 1 and other identities"
+          ]
+        },
+        {
+          "number": "3",
+          "title": "HEIGHTS AND DISTANCES",
+          "periods": null,
+          "topics": [
+            "Angle of elevation, Angle of Depression.",
+            "Simple problems on heights and distances. Problems should not involve more than two right triangles. Angles of elevation / depression should be only 30°, 45°, and 60°."
+          ],
+          "competencies": [
+            "Applies Trigonometric ratios in solving problems in daily life contexts like finding heights of different structures or distance from them."
+          ],
+          "explanation": [
+            "Find heights and distances in real life word problems using trigonometric ratios"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "VI",
+      "title": "MENSURATION",
+      "marks": 10,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "AREAS RELATED TO CIRCLES",
+          "periods": null,
+          "topics": [
+            "Area of sectors and segments of a circle.",
+            "Problems based on areas and perimeter /circumference of the above said plane figures. (In calculating area of segment of a circle, problems should be restricted to central angle of 60°, 90° and 120° only."
+          ],
+          "competencies": [
+            "Derives and uses formulae to calculate areas of plane figures."
+          ],
+          "explanation": [
+            "Visualises and evaluates areas of sector and segment of a circle"
+          ]
+        },
+        {
+          "number": "2",
+          "title": "SURFACE AREAS AND VOLUMES",
+          "periods": null,
+          "topics": [
+            "Surface areas and volumes of combinations of any two of the following: cubes, cuboids, spheres, hemispheres and right circular cylinders/cones."
+          ],
+          "competencies": [
+            "Visualises and uses mathematical thinking to discover formulae to calculate surface areas and volumes of solid objects (cubes, cuboids, spheres, hemispheres, right circular cylinders/cones, and their combinations)."
+          ],
+          "explanation": [
+            "Evaluates the surface areas and volumes of combinations of solids by visualisation"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "VII",
+      "title": "STATISTICS AND PROBABILITY",
+      "marks": 11,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "STATISTICS",
+          "periods": null,
+          "topics": [
+            "Mean, median and mode of grouped data (bimodal situation to be avoided)."
+          ],
+          "competencies": [
+            "calculates mean, median and mode for different sets of data related with real life contexts."
+          ],
+          "explanation": [
+            "Computes the mean, of a grouped frequency distribution using direct, assumed mean and step deviation method.",
+            "Computes the median and mode of grouped frequency distribution by algebraic method"
+          ]
+        },
+        {
+          "number": "2",
+          "title": "PROBABILITY",
+          "periods": null,
+          "topics": [
+            "Classical definition of probability.",
+            "Simple problems on finding the probability of an event."
+          ],
+          "competencies": [
+            "Applies concepts from probability to solve problems on the likelihood of everyday events."
+          ],
+          "explanation": [
+            "Determines the probabilities in simple real-life problems"
+          ]
+        }
+      ]
+    }
+  ],
+  "prescribedBooks": [
+    {
+      "title": "Mathematics - Textbook for class X - NCERT Publication",
+      "chapters": []
+    },
+    {
+      "title": "Guidelines for Mathematics Laboratory in Schools, class X - CBSE Publication",
+      "chapters": []
+    },
+    {
+      "title": "Laboratory Manual - Mathematics, secondary stage - NCERT Publication",
+      "chapters": []
+    },
+    {
+      "title": "Mathematics exemplar problems for class X, NCERT publication.",
+      "chapters": []
+    }
+  ],
+  "practicals": [],
+  "excluded": [],
+  "notes": [
+    "STANDARD vs BASIC: the source is ONE syllabus for 'Subject Code – 041 & 241'. The content (units, chapters, topics, marks) is common; the source differs only in QUESTION PAPER DESIGN: MATHEMATICS- STANDARD (Code – 041): Remembering+Understanding 43 marks (54%), Applying 19 (24%), Analysing/Evaluating/Creating 18 (22%); MATHEMATICS-BASIC (Code – 241): 60 (75%), 12 (15%), 8 (10%). Both 3 hours, 80 marks, plus internal assessment 20 (Pen Paper Test and Multiple Assessment (5+5) 10, Portfolio 05, Lab Practical 05). Hence one file with variant null.",
+    "The introduction text is the same NCF-SE 2023 / NEP 2020 'redesigned' text used for class IX, but the class X content itself is the earlier-pattern syllabus (chapter list of the current NCERT class X textbook, e.g. Real Numbers, Polynomials, Pair of Linear Equations, Quadratic Equations, Arithmetic Progressions...), not the new class IX-style competency table. The source does not mention two board examinations.",
+    "Source table columns: S. No. | Content | Competencies | Explanation. 'topics' = the numbered Content items (number dropped) plus any un-numbered lead line printed above them (e.g. 'Definitions, examples, counter examples of similar triangles.'). 'competencies' and 'explanation' = the bullets of the Competencies and Explanation columns (text from the -raw extraction; which column each bullet belongs to is decided by its character column in the pdftotext -table extraction, extracted/math/Maths_SecP1X_2026-27.table.txt, and cross-checked by first word).",
+    "Superscripts are flattened by text extraction: 'sin2A + cos2A = 1' is sin²A + cos²A = 1, and '𝑎𝑥2 + 𝑏𝑥 + 𝑐 = 0' is ax² + bx + c = 0 (the PDF prints these as superscripts; source page 4).",
+    "No practical/activity list is printed; lab activities are to be done from the prescribed books."
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "id": "cbse-09-science",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 9,
+  "subject": "science",
+  "edition": "2026-27",
+  "variant": null,
+  "source": {
+    "title": "SCIENCE Subject Code – 086 Classes IX (2026-27)",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "ab19589aede5ad8b0b2f87964914c1a55a987f39032903871baa973c02ed6e24",
+    "localPath": "sources/science/ScienceSt_SecP1_2026-27.pdf",
+    "extractedPath": "extracted/science/ScienceSt_SecP1_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/science/ScienceSt_SecP1_2026-27.layout.txt"
+  },
+  "units": [
+    {
+      "number": "II",
+      "title": "Matter - Its Nature and Behaviour",
+      "marks": 25,
+      "chapters": [
+        {
+          "number": "5",
+          "title": "Exploring Mixtures and their Separation",
+          "periods": 12,
+          "topics": [
+            "Homogeneous and heterogeneous mixtures;",
+            "Solutions, suspensions, colloids and their properties",
+            "Various ways to express concentration of solutions (mass by mass percentage of a solution, mass by volume percentage of a solution, volume by volume percentage of a solution)",
+            "Separation techniques based on the physical properties of components, including crystallisation, distillation, paper chromatography, sublimation, centrifugation and coagulation"
+          ],
+          "discipline": "chemistry",
+          "ncertChapter": {
+            "number": "5",
+            "title": "Exploring Mixtures and their Separation",
+            "sourceKey": "ncert9"
+          }
+        },
+        {
+          "number": "8",
+          "title": "Structure of an Atom",
+          "periods": 14,
+          "topics": [
+            "Atoms are the basic units of elements",
+            "Atoms consist of subatomic particles",
+            "Atomic Models (Thomson’s Model, Rutherford’s Model, and Bohr’s Model)",
+            "Distributions of electrons in elements (up to 18 elements)",
+            "Symbols",
+            "Valency as the combining capacity",
+            "Atomic number",
+            "Mass number",
+            "Isotopes",
+            "Isobars"
+          ],
+          "discipline": "chemistry",
+          "ncertChapter": {
+            "number": "8",
+            "title": "Journey Inside the Atom",
+            "sourceKey": "ncert9"
+          }
+        },
+        {
+          "number": "9",
+          "title": "Atoms and Molecules",
+          "periods": 14,
+          "topics": [
+            "Law of conservation of mass",
+            "Law of constant proportion",
+            "Dalton’s Atomic theory",
+            "Molecules of elements, Molecules of covalent compounds and their properties",
+            "Ions, Ionic compounds and their properties",
+            "Writing chemical formulae",
+            "Molecular mass",
+            "Formula unit mass"
+          ],
+          "discipline": "chemistry",
+          "ncertChapter": {
+            "number": "9",
+            "title": "Atomic Foundations of Matter",
+            "sourceKey": "ncert9"
+          }
+        }
+      ]
+    },
+    {
+      "number": "III",
+      "title": "Motion, Force, Work and Sound",
+      "marks": 23,
+      "chapters": [
+        {
+          "number": "4",
+          "title": "Motion",
+          "periods": 13,
+          "topics": [
+            "Motion — displacement, velocity, acceleration",
+            "Graphical representation of motion for an object moving in a straight line in one direction (with constant velocity, and constant acceleration)",
+            "Kinematic equations for motion in a straight line with constant acceleration (by graphical method)",
+            "Elementary idea of uniform circular motion"
+          ],
+          "discipline": "physics",
+          "ncertChapter": {
+            "number": "4",
+            "title": "Describing Motion Around Us",
+            "sourceKey": "ncert9"
+          }
+        },
+        {
+          "number": "6",
+          "title": "Force and Laws of Motion",
+          "periods": 13,
+          "topics": [
+            "Force; balanced and unbalanced forces",
+            "Force of friction",
+            "Newton’s first law of motion",
+            "Newton’s second law of motion",
+            "Newton’s third law of motion"
+          ],
+          "discipline": "physics",
+          "ncertChapter": {
+            "number": "6",
+            "title": "How Forces Affect Motion",
+            "sourceKey": "ncert9"
+          }
+        },
+        {
+          "number": "7",
+          "title": "Work, Energy and Simple Machines",
+          "periods": 13,
+          "topics": [
+            "Concept of work; work done by a constant force",
+            "Work-Energy theorem",
+            "Mechanical energy, kinetic and potential energy, and conversion between potential energy and kinetic energy",
+            "Conservation of energy",
+            "Power",
+            "Simple machines and their mechanical advantage (pulley, inclined plane, lever)"
+          ],
+          "discipline": "physics",
+          "ncertChapter": {
+            "number": "7",
+            "title": "Work, Energy, and Simple Machines",
+            "sourceKey": "ncert9"
+          }
+        },
+        {
+          "number": "10",
+          "title": "Sound",
+          "periods": 11,
+          "topics": [
+            "Production of sound",
+            "Propagation of sound (as a longitudinal wave through a medium)",
+            "Graphical representation of sound wave",
+            "Characteristics of sound wave (wavelength, frequency, time period, amplitude, intensity, speed)",
+            "Human perception of sound (pitch, loudness)",
+            "Propagation of sound in different media (solid, liquid)",
+            "Reflection of sound (echo, reverberation), echolocation"
+          ],
+          "discipline": "physics",
+          "ncertChapter": {
+            "number": "10",
+            "title": "Sound Waves: Characteristics and Applications",
+            "sourceKey": "ncert9"
+          }
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "title": "World of Living",
+      "reason": "Biology — out of scope (user: no biology for now); Unit I, 27 marks, chapters 2,3,11,12"
+    },
+    {
+      "title": "Cell",
+      "reason": "Biology — out of scope (user: no biology for now)"
+    },
+    {
+      "title": "Tissues",
+      "reason": "Biology — out of scope (user: no biology for now)"
+    },
+    {
+      "title": "Reproduction",
+      "reason": "Biology — out of scope (user: no biology for now)"
+    },
+    {
+      "title": "Diversity",
+      "reason": "Biology — out of scope (user: no biology for now)"
+    },
+    {
+      "title": "Earth as a system",
+      "reason": "Earth Science (Unit IV, 5 marks, chapter 13) — neither physics nor chemistry, so left out under 'only physics and chemistry'; it does contain solar radiation / electromagnetic spectrum / speed of light. Parent may choose to include."
+    },
+    {
+      "title": "Earth as a System: Energy, Matter & Life",
+      "reason": "Unit IV chapter (Earth Science) — see above"
+    }
+  ],
+  "notes": [
+    "NEW for 2026-27: class IX follows NCF-SE 2023 with the new NCERT textbook 'Exploration' (Textbook of Science for Grade 9, First Edition April 2026, 13 chapters). The curriculum is written as Curricular Goals (CG 1-8) / Competencies (C x.y) with, per chapter, 'Key Concepts' and 'Learning Outcomes' columns.",
+    "topics[] = the 'Key Concepts' column items, verbatim (one per bullet). The much longer 'Learning Outcomes' column and the competency codes (C-1.1 ...) are NOT copied.",
+    "Chapter numbers are not printed in the chapter tables. The course-structure table prints chapter numbers per unit (I World of Living 2,3,11,12 = 27 marks; II Matter - Its Nature and Behaviour 5,8,9 = 25; III Motion, Force, Work and Sound 4,6,7,10 = 23; IV Earth as a system 13 = 5; theory 80 + internal assessment 20). The number for each chapter here comes from matching it to the NCERT 'Exploration' contents page (supporting source) and agrees with the practical list's 'Ch.' references (e.g. law of conservation of mass -> Ch. 9, Newton's second law -> Ch. 6).",
+    "CBSE chapter titles differ from the NCERT chapter titles (e.g. CBSE 'Structure of an Atom' = NCERT Ch. 8 'Journey Inside the Atom'; 'Atoms and Molecules' = Ch. 9 'Atomic Foundations of Matter'); both are recorded (ncertChapter).",
+    "NCERT Chapter 1 'Exploration: Entering the World of Secondary Science' is not assigned to any unit in the CBSE course structure.",
+    "A separate OPTIONAL subject 'Science at Advanced Level' (Grade 9, 2026-27) is also published by CBSE (ScienceAd_SecP1_2026-27.pdf, 85 pages). It is a content book, not a topic list; its chapter list is in cbse-09-science-advanced.json.",
+    "Practicals: only the physics/chemistry experiments are kept (numbers 1, 2, 3, 9-13); biology experiments 4-8 are omitted. Items are cut at numbered lines and at the source's bullet sub-items.",
+    "Annual examination: Time 03 Hours, theory 80 marks; internal assessment 20 (Periodic Assessment 05, Multiple Assessment 05, Portfolio 05, Subject Enrichment (Practical Work) 05)."
+  ],
+  "supportingSources": [
+    {
+      "title": "Exploration",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc1ps.pdf",
+      "retrievedOn": "2026-10-12",
+      "sha256": "6dfb484cc05eeea3886bd4db603b81e19c6b5e146d4a77a9a60a55cf12b2cdee",
+      "localPath": "sources/science/NCERT-iesc1ps.pdf",
+      "extractedPath": "extracted/science/NCERT-iesc1ps.raw.txt",
+      "extractedPathLayout": "extracted/science/NCERT-iesc1ps.layout.txt",
+      "sourceKey": "ncert9"
+    }
+  ],
+  "practicals": [
+    {
+      "heading": "PRACTICALS",
+      "items": [
+        "1. Preparation of: a) a true solution of common salt, sugar and alum b) a suspension of soil, chalk powder and fine sand in water c) a colloidal solution of starch in water and egg albumin/milk in water and distinguish between these on the basis of",
+        "transparency",
+        "filtration criterion",
+        "stability",
+        "Tyndall’s effect Ch. 5",
+        "2. Separation of components of mixtures using different techniques: a) Oil and water -Separating Funnel b) Colours in black ink - Paper Chromatography c) Ammonium chloride and common salt - Sublimation d) Muddy water using alum- Coagulation Ch. 5",
+        "3. Verification of the law of conservation of mass in a chemical reaction. Ch. 9",
+        "9. Verification of law of conservation of energy using a simple pendulum. Ch. 7",
+        "10. Determination of speed of a pulse propagated through a stretched string/ slinky (helical spring). Ch.10",
+        "11. Calculation of Mechanical Advantage of a lever using the formula M.A= Load /Effort. Ch. 7",
+        "12. Verification of Newton’s Second Law of Motion using a trolley, pulley and hanging masses. Ch. 6",
+        "13. Plotting of distance-time and velocity time graphs using an inclined plane. Ch. 4"
+      ]
+    }
+  ],
+  "prescribedBooks": [
+    {
+      "title": "Science-Textbook for class IX-NCERT Publication",
+      "chapters": null
+    },
+    {
+      "title": "Assessment of Practical Skills in Science-Class IX - CBSE Publication",
+      "chapters": null
+    },
+    {
+      "title": "Laboratory Manual-Science-Class IX, NCERT Publication",
+      "chapters": null
+    },
+    {
+      "title": "Exemplar Problems Class IX – NCERT Publication",
+      "chapters": null
+    },
+    {
+      "title": "Exploration",
+      "sourceKey": "ncert9",
+      "textbookTitle": "Textbook of Science for Grade 9",
+      "chapters": [
+        "Chapter 1 Exploration: Entering the World of Secondary Science",
+        "Chapter 2 Cell: The Building Block of Life",
+        "Chapter 3 Tissues in Action",
+        "Chapter 4 Describing Motion Around Us",
+        "Chapter 5 Exploring Mixtures and their Separation",
+        "Chapter 6 How Forces Affect Motion",
+        "Chapter 7 Work, Energy, and Simple Machines",
+        "Chapter 8 Journey Inside the Atom",
+        "Chapter 9 Atomic Foundations of Matter",
+        "Chapter 10 Sound Waves: Characteristics and Applications",
+        "Chapter 11 Reproduction: How Life Continues",
+        "Chapter 12 Patterns in Life: Diversity and Classification",
+        "Chapter 13 Earth as a System: Energy, Matter, and Life"
+      ]
+    }
+  ]
+}

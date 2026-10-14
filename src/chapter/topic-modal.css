@@ -1,0 +1,425 @@
+/*
+ * The topic modal (`TopicModal.tsx`) in the Crystal Line's dress: a night
+ * sheet with a gilt hairline frame over a black backdrop, the lit rail it
+ * opens from, and the flying cards (violet harlequin backs, a few cream
+ * faces with the topic's number). Classes are `tm-`.
+ */
+.tm-root {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  color: #eceaff;
+  font-family: system-ui, sans-serif;
+}
+.tm-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #000;
+}
+.tm-sheet {
+  position: absolute;
+  inset: clamp(0px, 1.4vw, 18px);
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    repeating-linear-gradient(45deg, transparent 0 47px, rgb(117 92 220 / 0.11) 47px 48px),
+    repeating-linear-gradient(-45deg, transparent 0 47px, rgb(117 92 220 / 0.11) 47px 48px),
+    radial-gradient(ellipse 70% 50% at 80% 0%, rgb(111 227 255 / 0.07), transparent 70%),
+    linear-gradient(180deg, #0c0832 0%, #070522 55%, #020110 100%);
+  box-shadow:
+    inset 0 0 0 1px rgb(150 128 255 / 0.32),
+    inset 0 0 0 5px #020110,
+    inset 0 0 0 6px rgb(233 211 168 / 0.3),
+    0 30px 80px rgb(0 0 0 / 0.7);
+}
+@media (max-width: 640px) {
+  .tm-sheet {
+    border-radius: 0;
+  }
+}
+.tm-scroll {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(28px, 5vw, 64px) clamp(16px, 5vw, 72px) 48px;
+}
+/* the scrollbar: a gilt thumb on a dark violet groove, inset from the sheet's frame.
+   Chromium drops ::-webkit-scrollbar styling once scrollbar-color is set,
+   so the standard properties are for browsers without the pseudo-elements (Firefox). */
+@supports not selector(::-webkit-scrollbar) {
+  .tm-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #b8913f rgb(117 92 220 / 0.16);
+  }
+}
+.tm-scroll::-webkit-scrollbar {
+  width: 14px;
+}
+.tm-scroll::-webkit-scrollbar-track {
+  margin: 22px 0;
+  border: 5px solid transparent;
+  border-radius: 999px;
+  background: rgb(117 92 220 / 0.16) padding-box;
+}
+.tm-scroll::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f4e2a6, #d9a93c 55%, #9a7224) padding-box;
+  box-shadow: inset 0 0 0 1px rgb(255 250 235 / 0.35);
+}
+.tm-scroll::-webkit-scrollbar-thumb:hover {
+  border-width: 3px;
+  background: linear-gradient(180deg, #fff6da, #f4e2a6 55%, #d9a93c) padding-box;
+}
+.tm-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.tm-scroll > * {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tm-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(244 226 166 / 0.55);
+  border-radius: 50%;
+  background: rgb(8 6 34 / 0.85);
+  color: #f4e2a6;
+  cursor: pointer;
+  transition:
+    transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1),
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.tm-close svg {
+  width: 20px;
+  height: 20px;
+}
+.tm-close:hover {
+  transform: rotate(90deg) scale(1.08);
+  background: rgb(244 226 166 / 0.14);
+  box-shadow: 0 0 22px rgb(217 169 60 / 0.35);
+}
+.tm-close:focus-visible {
+  outline: 2px solid #6fe3ff;
+  outline-offset: 3px;
+}
+
+/* the header */
+.tm-kicker {
+  margin: 0 56px 0 0;
+  font: 600 12px/1.6 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #6fe3ff;
+}
+.tm-title {
+  margin: 12px 56px 0 0;
+  font: 600 clamp(24px, 3.2vw, 40px)/1.15 'Cormorant Garamond', Georgia, serif;
+  color: #fff6da;
+  text-wrap: balance;
+}
+.tm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 18px;
+}
+.tm-state {
+  font: 600 12px/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a3a6dc;
+}
+.tm-state[data-state='done'] {
+  color: #f4e2a6;
+}
+.tm-state[data-state='next'] {
+  color: #6fe3ff;
+}
+/* "Mark as learnt": Cinzel capitals like the modal's other labels. Unlearnt
+   it is a gilt outline that fills with gold on hover; learnt it is gold,
+   brightening on hover, with "Undo" saying what a click does. */
+.tm-learnt {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 10px 16px;
+  border: 1px solid rgb(244 226 166 / 0.7);
+  border-radius: 999px;
+  background: rgb(244 226 166 / 0.06);
+  font: 700 12.5px/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f4e2a6;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.tm-learnt-mark {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  transform: rotate(45deg);
+  border: 1.5px solid currentColor;
+}
+.tm-learnt:hover:not(:disabled) {
+  background: linear-gradient(180deg, #f4e2a6, #d9a93c);
+  border-color: #fff6da;
+  color: #1c1405;
+  box-shadow: 0 0 22px rgb(217 169 60 / 0.4);
+}
+.tm-learnt[aria-pressed='true'] {
+  border-color: #fff6da;
+  background: linear-gradient(180deg, #f4e2a6, #d9a93c);
+  color: #1c1405;
+}
+.tm-learnt[aria-pressed='true'] .tm-learnt-mark {
+  background: currentColor;
+}
+.tm-learnt[aria-pressed='true']:hover:not(:disabled) {
+  background: linear-gradient(180deg, #fff6da, #f4e2a6);
+  color: #1c1405;
+}
+.tm-learnt-undo {
+  padding-left: 10px;
+  border-left: 1px solid rgb(28 20 5 / 0.35);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  opacity: 0.75;
+}
+.tm-learnt:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.tm-learnt:focus-visible {
+  outline: 2px solid #6fe3ff;
+  outline-offset: 3px;
+}
+
+/* sections */
+.tm-section {
+  margin-top: 36px;
+}
+.tm-h3 {
+  margin: 0 0 14px;
+  font: 700 clamp(20px, 2.2vw, 26px)/1.1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f7f3ff;
+}
+.tm-soon {
+  margin: 0;
+  padding: 28px;
+  border: 1px dashed rgb(233 211 168 / 0.3);
+  border-radius: 14px;
+  text-align: center;
+  font: 600 17px/1.4 'Cormorant Garamond', Georgia, serif;
+  color: #a3a6dc;
+}
+.tm-playground-loading {
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  background: rgb(12 8 50 / 0.6);
+}
+
+/* the video */
+.tm-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #03020f;
+  box-shadow:
+    0 0 0 1px rgb(233 211 168 / 0.4),
+    0 0 0 5px #03020f,
+    0 0 0 6px rgb(150 128 255 / 0.3),
+    0 24px 60px rgb(0 0 0 / 0.55);
+}
+.tm-video iframe,
+.tm-video-facade,
+.tm-video-facade img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.tm-video-facade {
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+.tm-video-facade img {
+  object-fit: cover;
+}
+.tm-video-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border: 1px solid rgb(244 226 166 / 0.8);
+  border-radius: 50%;
+  background: rgb(8 6 34 / 0.75);
+  box-shadow: 0 0 30px rgb(217 169 60 / 0.4);
+  transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.tm-video-play::after {
+  content: '';
+  position: absolute;
+  left: 34px;
+  top: 26px;
+  border-style: solid;
+  border-width: 16px 0 16px 26px;
+  border-color: transparent transparent transparent #f4e2a6;
+}
+.tm-video-facade:hover .tm-video-play {
+  transform: scale(1.1);
+}
+.tm-video-facade:focus-visible {
+  outline: 2px solid #6fe3ff;
+  outline-offset: -4px;
+}
+.tm-video-empty {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  background:
+    repeating-linear-gradient(45deg, transparent 0 47px, rgb(117 92 220 / 0.14) 47px 48px),
+    repeating-linear-gradient(-45deg, transparent 0 47px, rgb(117 92 220 / 0.14) 47px 48px),
+    linear-gradient(180deg, #0c0832, #03020f);
+}
+.tm-video-crystal {
+  width: 90px;
+  height: 90px;
+  overflow: visible;
+  filter: drop-shadow(0 0 16px rgb(111 227 255 / 0.6));
+}
+.tm-video-soon {
+  margin: 0;
+  padding: 0 24px;
+  text-align: center;
+  font: 600 18px/1.4 'Cormorant Garamond', Georgia, serif;
+  color: #c9c6ee;
+}
+
+/* topic to topic */
+.tm-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 36px;
+}
+.tm-nav-link {
+  padding: 10px 18px;
+  border: 1px solid rgb(233 211 168 / 0.25);
+  border-radius: 12px;
+  background: none;
+  font: 600 16px/1.2 'Cormorant SC', 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: 0.08em;
+  color: #f4e2a6;
+  cursor: pointer;
+}
+.tm-nav-link:hover {
+  border-color: rgb(244 226 166 / 0.65);
+  background: rgb(244 226 166 / 0.06);
+}
+.tm-nav-link:focus-visible {
+  outline: 2px solid #6fe3ff;
+  outline-offset: 3px;
+}
+
+/* the rail the sheet opens from: a white-hot core in a gold glow, growing out of the station both ways */
+.tm-rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  margin-top: -1.5px;
+  transform-origin: var(--tm-ox, 50%) 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, transparent, #f4e2a6 8%, #ffffff 50%, #f4e2a6 92%, transparent);
+  box-shadow:
+    0 0 10px 2px rgb(244 226 166 / 0.8),
+    0 0 34px 6px rgb(217 169 60 / 0.45),
+    0 0 70px 10px rgb(111 227 255 / 0.18);
+  pointer-events: none;
+}
+
+/* the flying cards */
+.tm-cards {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 900px;
+}
+.tm-card {
+  position: absolute;
+  width: clamp(54px, 7vw, 92px);
+  aspect-ratio: 63 / 88;
+  opacity: 0;
+  border-radius: 7px;
+  transform-style: preserve-3d;
+  background:
+    conic-gradient(from 45deg at 50% 50%, #3d2a95 25%, #241866 0 50%, #3d2a95 0 75%, #241866 0) 0 0 / 14px 14px,
+    #241866;
+  box-shadow:
+    inset 0 0 0 2px #f4e2a6,
+    inset 0 0 0 4px #241866,
+    inset 0 0 0 5px rgb(244 226 166 / 0.6),
+    0 10px 24px rgb(0 0 0 / 0.55);
+}
+.tm-card::after {
+  /* the back's medallion */
+  content: '✦';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 40%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: 1px solid #f4e2a6;
+  background: #1a1250;
+  color: #f4e2a6;
+  font-size: 12px;
+}
+.tm-card[data-face] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 7px 8px;
+  background: linear-gradient(160deg, #f6efdc, #e6dac0);
+  box-shadow:
+    inset 0 0 0 1px rgb(26 26 34 / 0.25),
+    inset 0 0 0 4px #f6efdc,
+    inset 0 0 0 5px #d9a93c,
+    0 10px 24px rgb(0 0 0 / 0.55);
+  color: #2a1d6e;
+}
+.tm-card[data-face]::after {
+  content: none;
+}
+.tm-card-num {
+  font: 700 clamp(14px, 1.6vw, 20px)/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+}
+.tm-card-suit {
+  align-self: flex-end;
+  font-size: clamp(14px, 1.6vw, 20px);
+  color: #c8102e;
+}

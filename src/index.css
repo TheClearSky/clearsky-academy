@@ -1,0 +1,129 @@
+/* Tailwind entry for ClearSky Academy.
+ *
+ * Mirrors Nodestra's setup (itself the host library's): Tailwind v4 through
+ * `@tailwindcss/vite`, no config file, tokens declared in `@theme`.
+ * `source('.')` scopes class scanning to `src/` so nothing outside the app
+ * source (plans, research notes, review files) can leak scraped class names
+ * into the stylesheet.
+ *
+ * When a page also loads the host's or the timeline plugin's stylesheet,
+ * import this one LAST, so that where two compiled Tailwind sheets define the
+ * same utility this one wins the tie (Nodestra's `App.tsx` order).
+ */
+@import 'tailwindcss' source('.');
+
+/* The dark palette is the HOST's (`react-blender-nodes/src/index.css` ›
+ * `@theme inline`), re-declared because Tailwind v4 generates a utility only
+ * for a token it knows; the names match so app markup reads the same as host
+ * markup. Dark hierarchy: #1d1d1d → #282828 → #303030 → #444444 → #545454 →
+ * #656565 → #797979 → #e6e6e6.
+ *
+ * `static` forces every variable to be emitted even when it is referenced only
+ * from a JS string or an inline style, which the 3D scenes do. */
+@theme static {
+  --color-primary-white: #e6e6e6;
+  --color-primary-black: #1d1d1d;
+  --color-secondary-black: #282828;
+  --color-primary-dark-gray: #303030;
+  --color-secondary-dark-gray: #444444;
+  --color-primary-gray: #545454;
+  --color-secondary-light-gray: #656565;
+  --color-primary-light-gray: #797979;
+
+  --color-primary-blue: #4772b3;
+  --color-status-completed: #4caf50;
+  --color-status-warning: #ffa500;
+  --color-status-errored: #ff4444;
+
+  /* App-only: the warm accent (Nodestra's landing gold). */
+  --color-accent-gold: #e9d3a8;
+
+  /* App-only: one colour per subject, used by the curriculum and the 3D
+   * scenes alike so a subject reads the same everywhere. */
+  --color-subject-mathematics: #f1c40f;
+  --color-subject-physics: #3498db;
+  --color-subject-chemistry: #2ecc71;
+
+}
+
+/* The light theme (`theme.ts`: System / Light / Dark, `<html data-theme>`).
+ * It re-maps the palette for page SURFACES — anything marked
+ * `data-surface='paper'` (none at the moment; the curriculum page that was
+ * one is gone) — by redefining the same
+ * tokens there, so every utility follows. The landing stays a night scene
+ * (white type over the 3D sky) in both themes; its playing cards turn dark
+ * or light with the theme (`stage/cards/cardPainter.ts`). */
+:root[data-theme='light'] [data-surface='paper'] {
+  --color-primary-white: #1c1b29;
+  --color-primary-black: #f6f5fb;
+  --color-secondary-black: #ecebf4;
+  --color-primary-dark-gray: #dedcea;
+  --color-secondary-dark-gray: #c9c6d8;
+  --color-primary-gray: #a9a6bb;
+  --color-secondary-light-gray: #6f6c83;
+  --color-primary-light-gray: #5a576d;
+  --color-accent-gold: #8a6416;
+}
+
+@layer base {
+  /* The app owns the whole viewport: 3D canvases and the learning app's
+   * panes lay out against a definite height, which they can only inherit
+   * from a chain of sized ancestors starting at <html>. */
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background-color: var(--color-primary-black);
+    color: var(--color-primary-white);
+    font-family: system-ui, sans-serif;
+  }
+  /* SCROLLBARS follow the theme. The night pages (the landing, the chapter
+   * pages) get the Crystal Line's gilt thumb on a near-black groove; the
+   * page surfaces (`data-surface='paper'`) get their own palette —
+   * the accent gold on their background — so they flip with Light / Dark.
+   * The tokens are inherited, so a scroller anywhere on a surface follows
+   * it. (The topic modal styles its own: `chapter/topic-modal.css`.) */
+  :root {
+    --scrollbar-track: #05040f;
+    --scrollbar-thumb: linear-gradient(180deg, #f4e2a6, #d9a93c 55%, #9a7224);
+    --scrollbar-thumb-hover: linear-gradient(180deg, #fff6da, #f4e2a6 55%, #d9a93c);
+    --scrollbar-solid: #b8913f;
+  }
+  [data-surface='paper'] {
+    --scrollbar-track: var(--color-primary-black);
+    --scrollbar-thumb: color-mix(in oklab, var(--color-accent-gold) 70%, var(--color-primary-black));
+    --scrollbar-thumb-hover: var(--color-accent-gold);
+    --scrollbar-solid: color-mix(in oklab, var(--color-accent-gold) 70%, var(--color-primary-black));
+  }
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background: var(--scrollbar-thumb) padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    border-width: 2px;
+    background: var(--scrollbar-thumb-hover) padding-box;
+  }
+  ::-webkit-scrollbar-corner {
+    background: var(--scrollbar-track);
+  }
+  /* Chromium drops the pseudo-elements above once scrollbar-color is set,
+   * so the standard properties are only for browsers without them (Firefox). */
+  @supports not selector(::-webkit-scrollbar) {
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--scrollbar-solid) var(--scrollbar-track);
+    }
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "id": "cbse-12-chemistry",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 12,
+  "subject": "chemistry",
+  "edition": "2026-27",
+  "variant": null,
+  "source": {
+    "title": "CHEMISTRY SUBJECT CODE: 043 CLASSES XI-XII (2026-27)",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Chemistry_SecP2_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "5610f09d357d3ccc9a7b39fc29cb7b1f4530847753783b16c72fff691acd2418",
+    "localPath": "sources/science/Chemistry_SecP2_2026-27.pdf",
+    "extractedPath": "extracted/science/Chemistry_SecP2_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/science/Chemistry_SecP2_2026-27.layout.txt"
+  },
+  "units": [
+    {
+      "number": "1",
+      "title": "Solutions",
+      "marks": 7,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Solutions",
+          "periods": null,
+          "topics": [
+            "Types of Solutions",
+            "Expression of Concentration of Solutions",
+            "Solubility",
+            "Vapour Pressure of Liquid Solutions",
+            "Ideal and Non –Ideal Solutions",
+            "Colligative Properties and Determination of Molar Mass",
+            "Abnormal Molecular Masses."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Electrochemistry",
+      "marks": 9,
+      "chapters": [
+        {
+          "number": "2",
+          "title": "Electrochemistry",
+          "periods": null,
+          "topics": [
+            "Electrochemical Cells",
+            "Galvanic Cells",
+            "Nernst Equation",
+            "Conductance of Electrolytic solutions",
+            "Electrolytic Cells and Electrolysis",
+            "Batteries",
+            "Fuel Cells",
+            "Corrosion."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Chemical Kinetics",
+      "marks": 7,
+      "chapters": [
+        {
+          "number": "3",
+          "title": "Chemical Kinetics",
+          "periods": null,
+          "topics": [
+            "Rate of a Chemical reaction",
+            "factors influencing rate of reaction",
+            "integrated rate equations",
+            "Temperature Dependence of the rate of a reaction",
+            "Collision theory of Chemical Reactions"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "d and f Block Elements",
+      "marks": 7,
+      "chapters": [
+        {
+          "number": "4",
+          "title": "d and f Block Elements",
+          "periods": null,
+          "topics": [
+            "Position in the Periodic Table",
+            "Electronic configuration of the d-Block Elements",
+            "General properties of the Transition Elements (d-Block)",
+            "Some Important Compounds of Transition Elements",
+            "The Lanthanoids",
+            "The Actinoids",
+            "Some Applications of d- and f- Block Elements."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Coordination Compounds",
+      "marks": 7,
+      "chapters": [
+        {
+          "number": "5",
+          "title": "Coordination Compounds",
+          "periods": null,
+          "topics": [
+            "Werner’s Theory of Coordination Compound",
+            "Definition of Some important terms pertaining to Coordination Compounds",
+            "Nomenclature of Coordination Compounds.",
+            "Isomerism in Coordination Compounds",
+            "Bonding in coordination compounds",
+            "Bonding in Metal Carbonyls",
+            "Importance and Applications of Coordination Compounds."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Haloalkanes and Haloarenes",
+      "marks": 6,
+      "chapters": [
+        {
+          "number": "6",
+          "title": "Haloalkanes and Haloarenes",
+          "periods": null,
+          "topics": [
+            "Classification",
+            "Nomenclature",
+            "Nature of C–X bond",
+            "Methods of Preparation of Haloalkanes",
+            "Preparation of Haloarenes",
+            "Physical Properties",
+            "Chemical Reactions",
+            "Polyhalogen Compounds."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Alcohols, Phenols and Ethers",
+      "marks": 6,
+      "chapters": [
+        {
+          "number": "7",
+          "title": "Alcohols, Phenols and Ethers",
+          "periods": null,
+          "topics": [
+            "Classification",
+            "Nomenclature",
+            "Structures of Functional Groups",
+            "Alcohols and Phenols",
+            "Some commercially Important Alcohols",
+            "Ethers."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "Aldehydes, Ketones and Carboxylic Acids",
+      "marks": 8,
+      "chapters": [
+        {
+          "number": "8",
+          "title": "Aldehydes, Ketones and Carboxylic Acids",
+          "periods": null,
+          "topics": [
+            "Nomenclature and Structure of Carbonyl Group",
+            "Preparation of Aldehydes and Ketones",
+            "Physical Properties and Chemical Reactions",
+            "Uses of Aldehydes and Ketones",
+            "Nomenclature Structure of Carboxyl Group",
+            "Methods of Preparation of Carboxylic Acids",
+            "Physical Properties and Chemical Reactions",
+            "Uses of Carboxylic Acids."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "title": "Amines",
+      "marks": 6,
+      "chapters": [
+        {
+          "number": "9",
+          "title": "Amines",
+          "periods": null,
+          "topics": [
+            "Structure of Amines",
+            "Classification",
+            "Nomenclature",
+            "Preparation of Amines",
+            "Physical Properties",
+            "Chemical Reactions",
+            "Methods of Preparation of Diazonium Salts",
+            "Physical Propeties",
+            "Chemical Reactions",
+            "Chemical Reactions Importance of Diazonium Salts in Synthesis of Aromatic Compounds."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "title": "Biomolecules",
+      "marks": 7,
+      "chapters": [
+        {
+          "number": "10",
+          "title": "Biomolecules",
+          "periods": null,
+          "topics": [
+            "Carbohydrates.",
+            "Proteins",
+            "Enzymes",
+            "Vitamins Nucleic Acids",
+            "Hormones"
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Surface Chemistry",
+      "marks": null,
+      "formativeOnly": true,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Surface Chemistry",
+          "periods": null,
+          "topics": [
+            "Adsorption - physisorption and chemisorption, factors affecting adsorption of gases on solids, colloidal state distinction between true solutions, colloids and suspension",
+            "lyophilic, lyophobic properties of colloids",
+            "coagulation, emulsion - types of emulsions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "General Principles and Processes of Isolation of Elements",
+      "marks": null,
+      "formativeOnly": true,
+      "chapters": [
+        {
+          "number": null,
+          "title": "General Principles and Processes of Isolation of Elements",
+          "periods": null,
+          "topics": [
+            "Principles and methods of extraction - concentration, oxidation, reduction - electrolytic method and refining"
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Polymers",
+      "marks": null,
+      "formativeOnly": true,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Polymers",
+          "periods": null,
+          "topics": [
+            "Polymerisation, Homopolymers and copolymer with few examples"
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Chemistry in Everyday life",
+      "marks": null,
+      "formativeOnly": true,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Chemistry in Everyday life",
+          "periods": null,
+          "topics": [
+            "Chemicals in medicines - analgesics, tranquilizers antiseptics, disinfectants, antimicrobials, antifertility drugs, antibiotics, antacids, antihistamines.",
+            "Chemicals in food - preservatives, artificial sweetening agents, antioxidants."
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [],
+  "notes": [
+    "Class XII theory: Time 3 Hours, Total Marks 70; practical 30 (Volumetric Analysis 08, Salt Analysis 08, Content Based Experiment 06, Project Work 04, Class record and viva 04).",
+    "Each unit is printed as one comma-separated list of (NCERT section) topics with no chapter level, so each unit has one chapter repeating the unit title and topics[] = the comma-separated items as printed (protected phrases where a comma is inside one item, e.g. 'Relationship between Equilibrium Constant K, Reaction Quotient Q and Gibbs Energy G').",
+    "Question paper design: 'No chapter wise weightage is provided, however, care to be taken to cover all the chapters.' — the per-unit marks are those printed in the course-structure table.",
+    "Qualitative-analysis cation/anion lists in the practical syllabus are typeset in bold math-italic (non-BMP) characters, e.g. '𝑷𝒃𝟐+'; they are copied verbatim, with charges flattened onto the line as the text layer gives them (Pb²⁺ reads 'Pb2+', CO₃²⁻ reads 'CO3 2−'). (Main-thread fix 2026-10-12: an earlier decoding turned these into U+FFFD and dropped them.)",
+    "Practicals: the main practical syllabus only (sections A-F/K + suggested projects); the reduced list for visually challenged students is not copied.",
+    "FORMATIVE-ONLY units: 'Surface Chemistry', 'General Principles and Processes of Isolation of Elements', 'Polymers', 'Chemistry in Everyday life' (formativeOnly: true, no marks).",
+    "Verbatim source typos kept, e.g. 'Physical Propeties', 'Chemical Reactions Chemical Reactions Importance of Diazonium Salts'."
+  ],
+  "practicals": [
+    {
+      "heading": "A. Surface Chemistry",
+      "items": [
+        "1. Preparation of one lyophilic and one lyophobic sol Lyophilic sol - starch, egg albumin and gum Lyophobic sol – aluminum hydroxide, ferric hydroxide, arsenous sulphide.",
+        "2. Dialysis of sol-prepared in (a) above.",
+        "3. Study of the role of emulsifying agents in stabilizing the emulsion of different oils."
+      ]
+    },
+    {
+      "heading": "B.Chemical Kinetics",
+      "items": [
+        "1. Effect of concentration and temperature on the rate of reaction between Sodium Thiosulphate and Hydrochloric acid.",
+        "2. Study of reaction rates of any one of the following:",
+        "Reaction of Iodide ion with Hydrogen Peroxide at room temperature using different concentration of Iodide ions.",
+        "Reaction between Potassium Iodate, (KIO3) and Sodium Sulphate: (Na2SO3) using starch solution as indicator (clock reaction)."
+      ]
+    },
+    {
+      "heading": "C.Thermochemistry",
+      "items": [
+        "Any one of the following experiments",
+        "Enthalpy of dissolution of Copper Sulphate or Potassium Nitrate.",
+        "Enthalpy of neutralization of strong acid (HCI) and strong base (NaOH).",
+        "Determination of enthalpy change during interaction (Hydrogen bond formation) between Acetone and Chloroform."
+      ]
+    },
+    {
+      "heading": "D.Electrochemistry",
+      "items": [
+        "Variation of cell potential in Zn/Zn2+|| Cu2+/Cu with change in concentration of electrolytes (CuSO4 or ZnSO4) at room temperature."
+      ]
+    },
+    {
+      "heading": "E. Chromatography",
+      "items": [
+        "1. Separation of pigments from extracts of leaves and flowers by paper chromatography and determination of Rf values.",
+        "2. Separation of constituents present in an inorganic mixture containing two cations only (constituents having large difference in Rf values to be provided)."
+      ]
+    },
+    {
+      "heading": "F. Preparation of Inorganic Compounds",
+      "items": [
+        "1. Preparation of double salt of Ferrous Ammonium Sulphate or Potash Alum.",
+        "2. Preparation of Potassium Ferric Oxalate."
+      ]
+    },
+    {
+      "heading": "G.Preparation of Organic Compounds",
+      "items": [
+        "Preparation of any one of the following compounds",
+        "1. Acetanilide",
+        "2. Di –benzal acetone",
+        "3. p-Nitroacetanilide",
+        "4. Aniline yellow or 2 - Naphthol Aniline dye."
+      ]
+    },
+    {
+      "heading": "H.Tests for the functional groups present in organic compounds",
+      "items": [
+        "Unsaturation, alcoholic, phenolic, aldehydic, ketonic, carboxylic and amino (Primary) groups."
+      ]
+    },
+    {
+      "heading": "I. Characteristic tests of carbohydrates, fats and proteins in pure samples and their detection in given foodstuffs.",
+      "items": []
+    },
+    {
+      "heading": "J. Determination of concentration/ molarity of KMnO4 solution by titrating it against a standard solution of:",
+      "items": [
+        "1. Oxalic acid,",
+        "2. Ferrous Ammonium Sulphate (Students will be required to prepare standard solutions by weighing themselves)."
+      ]
+    },
+    {
+      "heading": "K.Qualitative analysis",
+      "items": [
+        "Determination of one anion and one cation in a given salt Cations: 𝑷𝒃𝟐+,𝑪𝒖𝟐+, 𝑨𝒍𝟑+, 𝑭𝒆𝟑+,𝑴𝒏𝟐+, 𝑵𝒊𝟐+ 𝒁𝒏𝟐+ 𝑪𝒐𝟐+ 𝑪𝒂𝟐+𝑺𝒓𝟐+ 𝑩𝒂𝟐+ 𝑴𝒈𝟐+, 𝑵𝑯𝟒",
+        "Anions: 𝑪𝑶𝟑 𝟐−,𝐒𝟐− , 𝐒𝐎𝟑 𝟐−, 𝑵𝑶𝟑 −, 𝑵𝑶𝟐 − , 𝐂𝐥−, 𝐁𝐫−, 𝐈− ,𝑺𝑶𝟒 𝟐−, 𝑷𝑶𝟒 𝟑− , 𝐂𝐇𝟑 𝐂𝐎𝐎−, C2O42- (Note: Insoluble salts excluded)"
+      ]
+    },
+    {
+      "heading": "PROJECTS",
+      "items": [
+        "Scientific investigations involving laboratory testing and collecting information from other sources. A few suggested Projects",
+        "a) Study of the presence of oxalate ions in guava fruit at different stages of ripening.",
+        "b) Study of quantity of casein present in different samples of milk.",
+        "c) Preparation of soybean milk and its comparison with the natural milk with respect to curd formation, effect of temperature, etc.",
+        "d) Study of the effect of Potassium Bisulphate as food preservative under various conditions (temperature, concentration, time, etc.)",
+        "e) Study of digestion of starch by salivary amylase and effect of pH and temperature on it.",
+        "f) Comparative study of the rate of fermentation of following materials: wheat flour, gram flour, potato juice, carrot juice, etc.",
+        "g) Extraction of essential oils present in Saunf (aniseed), Ajwain (carom), Illaichi (cardamom).",
+        "h) Study of common food adulterants in fat, oil, butter, sugar, turmeric power, chili powder and pepper."
+      ]
+    }
+  ],
+  "prescribedBooks": [
+    {
+      "title": "Chemistry Part – I, Class-XII, Published by NCERT.",
+      "chapters": null
+    },
+    {
+      "title": "Chemistry Part – II, Class-XII, Published by NCERT.",
+      "chapters": null
+    },
+    {
+      "title": "Manual of Microscale Chemistry Laboratory Kit, Published by NCERT.",
+      "chapters": null
+    }
+  ]
+}

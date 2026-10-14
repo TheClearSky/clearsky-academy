@@ -1,0 +1,166 @@
+/*
+ * Title Card Deck (round 3, recoloured in round 4) — scoped under
+ * [data-hud='mix-titledeck']. The kit title card (paper #f4f1e8 / ink
+ * #0b0a08) whose outlined rank fills to the course %, the editorial tabs,
+ * then the classic cards (`shared/classic`) in paper and ink. The learnt
+ * colour is the PICKED CLASS CARD's accent (`--td-accent`, from the model;
+ * Deepak, round 4: "why is the progress black? should be the color of the
+ * main card we selected"), lifted to a readable lightness on the black
+ * table (Class XII's spade ink is near-black), under paper type; the cut is
+ * a pale rule of the same hue. Red stays for the seal and the swash.
+ */
+@property --td-fill {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 0%;
+}
+[data-hud='mix-titledeck'] .td-root {
+  --cl-paper: #f4f1e8;
+  --cl-ink: #0b0a08;
+  --cl-accent: #0b0a08;
+  --td-ink: oklch(from var(--td-accent, #0b0a08) max(l, 0.46) c h);
+  --cl-learnt: var(--td-ink);
+  --cl-learnt-ink: #f4f1e8;
+  --cl-learnt-index: #f4f1e8;
+  --cl-line: color-mix(in oklab, var(--td-ink) 45%, #ffffff);
+  --cl-line-glow: color-mix(in srgb, var(--td-ink) 70%, transparent);
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  color: #f4f1e8;
+  font-family: system-ui, sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+/* the rank glyph fills with the card's colour, bottom up, to the course's % — a hard edge */
+[data-hud='mix-titledeck'] .td-titlecard .hud-titlecard-rank .hud-squeeze {
+  background: linear-gradient(to top, var(--td-ink) var(--td-fill), transparent var(--td-fill));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+/* the strap: runes (Noto Sans Runic, OFL), stacked upright down the card's side */
+[data-hud='mix-titledeck'] .td-titlecard .hud-titlecard-strap {
+  font-family: 'Noto Sans Runic', serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-orientation: upright;
+  /* the face has one weight; a hairline stroke gives it the old strap's ink */
+  -webkit-text-stroke: 0.7px currentColor;
+}
+@media (max-width: 640px) {
+  [data-hud='mix-titledeck'] .td-titlecard .hud-titlecard-strap {
+    font-size: 10.5px;
+    -webkit-text-stroke-width: 0.5px;
+  }
+}
+[data-hud='mix-titledeck'] .td-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 30px;
+  margin: 28px 0 0;
+  padding: 0 4px 16px;
+  border-bottom: 1px solid #f4f1e8;
+}
+[data-hud='mix-titledeck'] .td-quiet {
+  padding-bottom: 8px;
+  font-family: 'Barlow Condensed', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: #a9a59b;
+}
+[data-hud='mix-titledeck'] .td-rule {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 4px 0;
+}
+[data-hud='mix-titledeck'] .td-rule .cl-legend {
+  font-family: 'Barlow Condensed', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #a9a59b;
+}
+[data-hud='mix-titledeck'] .td-rule .cl-legend-card {
+  box-shadow: 0 0 0 1px #f4f1e8;
+}
+
+/* ── the cards in paper and ink ─────────────────────────────────────── */
+[data-hud='mix-titledeck'] .cl-paper-ink {
+  background: var(--cl-learnt);
+  /* the ink keeps the card's silhouette on the black table */
+  box-shadow: inset 0 0 0 1px rgb(244 241 232 / 0.55);
+}
+[data-hud='mix-titledeck'] .cl-paper-ink::before {
+  border-color: rgb(244 241 232 / 0.22);
+}
+[data-hud='mix-titledeck'] .cl-edge {
+  height: 3px;
+  margin-top: -1.5px;
+  box-shadow: none;
+}
+[data-hud='mix-titledeck'] .cl-edge-glow {
+  background: radial-gradient(60% 50% at 50% 50%, var(--cl-line-glow), transparent 70%);
+}
+[data-hud='mix-titledeck'] .cl-back {
+  background:
+    repeating-linear-gradient(45deg, rgb(244 241 232 / 0.16) 0 1.5px, transparent 1.5px 7px),
+    repeating-linear-gradient(-45deg, rgb(244 241 232 / 0.16) 0 1.5px, transparent 1.5px 7px),
+    #0b0a08;
+}
+[data-hud='mix-titledeck'] .cl-next {
+  color: #f4f1e8;
+  font-family: 'Barlow Condensed', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+}
+[data-hud='mix-titledeck'] .cl-next-star {
+  fill: #e0193f;
+}
+[data-hud='mix-titledeck'] .cl-card[data-open] {
+  cursor: pointer;
+}
+[data-hud='mix-titledeck'] .cl-card:focus-visible {
+  outline-color: #f4f1e8;
+}
+[data-hud='mix-titledeck'] .td-table .cl-hand {
+  padding-top: 34px;
+}
+
+/* ── motion: hard wipes, then stillness ─────────────────────────────── */
+[data-hud='mix-titledeck'] .td-root:not([data-play]) :is(.td-head, .td-subjects, .td-rule) {
+  opacity: 0;
+}
+[data-hud='mix-titledeck'] .td-root[data-play]:not([data-reduced]) .td-titlecard {
+  animation:
+    td-wipe 0.42s steps(7, end) both,
+    td-fill 1.4s cubic-bezier(0.3, 0.7, 0.2, 1) 0.4s both;
+}
+[data-hud='mix-titledeck'] .td-root[data-play]:not([data-reduced]) :is(.td-subjects, .td-rule) {
+  animation: td-wipe 0.36s steps(6, end) 0.2s both;
+}
+[data-hud='mix-titledeck'] .td-root[data-reduced] :is(.td-head, .td-head *, .td-subjects, .td-rule) {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-hud='mix-titledeck'] .td-root :is(.td-head, .td-head *, .td-subjects, .td-rule) {
+    animation: none !important;
+  }
+}
+@keyframes td-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes td-fill {
+  from {
+    --td-fill: 0%;
+  }
+}

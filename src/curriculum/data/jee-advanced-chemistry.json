@@ -1,0 +1,822 @@
+{
+  "id": "jee-advanced-chemistry",
+  "authority": "IIT (JEE Advanced)",
+  "exam": "JEE Advanced",
+  "class": null,
+  "subject": "chemistry",
+  "edition": "2026",
+  "variant": null,
+  "source": {
+    "title": "JEE (Advanced) 2026 Syllabus",
+    "url": "https://jeeadv.ac.in/documents/jee-advanced-2026-syllabus.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "6dbc2abd1ab37e8f333dcc69020fcc8650de35b8f077acc7c8567d23a5373141",
+    "localPath": "sources/science/jee-advanced-2026-syllabus.pdf",
+    "extractedPath": "extracted/science/jee-advanced-2026-syllabus.raw.txt",
+    "extractedPathLayout": "extracted/science/jee-advanced-2026-syllabus.layout.txt"
+  },
+  "units": [
+    {
+      "number": null,
+      "title": "General topics",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "General topics",
+          "periods": null,
+          "topics": [
+            "Concept of atoms and molecules",
+            "Dalton’s atomic theory",
+            "Mole concept",
+            "Chemical formulae",
+            "Balanced chemical equations",
+            "Calculations (based on mole concept and stoichiometry) involving common oxidation-reduction, neutralisation, and displacement reactions",
+            "Concentration in terms of mole fraction, molarity, molality and normality."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "States of Matter: Gases and Liquids",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "States of Matter: Gases and Liquids",
+          "periods": null,
+          "topics": [
+            "Gas laws and ideal gas equation, absolute scale of temperature",
+            "Deviation from ideality, van der Waals equation",
+            "Kinetic theory of gases, average, root mean square and most probable velocities and their relation with temperature",
+            "Law of partial pressures",
+            "Diffusion of gases.",
+            "Intermolecular interactions: types, distance dependence, and their effect on properties",
+            "Liquids: vapour pressure, surface tension, viscosity."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Atomic Structure",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Atomic Structure",
+          "periods": null,
+          "topics": [
+            "Bohr model, spectrum of hydrogen atom",
+            "Wave-particle duality, de Broglie hypothesis",
+            "Uncertainty principle",
+            "Qualitative quantum mechanical picture of hydrogen atom: Energies, quantum numbers, wave function and probability density (plots only), shapes of s, p and d orbitals",
+            "Aufbau principle",
+            "Pauli’s exclusion principle and Hund’s rule."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Chemical Bonding and Molecular Structure",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Chemical Bonding and Molecular Structure",
+          "periods": null,
+          "topics": [
+            "Orbital overlap and covalent bond",
+            "Hybridisation involving s, p and d orbitals only",
+            "Molecular orbital energy diagrams for homonuclear diatomic species (up to Ne2 )",
+            "Hydrogen bond",
+            "Polarity in molecules, dipole moment",
+            "VSEPR model and shapes of molecules (linear, angular, triangular, square planar, pyramidal, square pyramidal, trigonal bipyramidal, tetrahedral and octahedral)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Chemical Thermodynamics",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Chemical Thermodynamics",
+          "periods": null,
+          "topics": [
+            "Intensive and extensive properties, state functions, First law of thermodynamics",
+            "Internal energy, work (pressure-volume only) and heat",
+            "Enthalpy, heat capacity, standard state, Hess’s law",
+            "Enthalpy of reaction, fusion and vaporization, and lattice enthalpy",
+            "Second law of thermodynamics",
+            "Entropy",
+            "Gibbs energy",
+            "Criteria of equilibrium and spontaneity."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Chemical and Ionic Equilibrium",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Chemical and Ionic Equilibrium",
+          "periods": null,
+          "topics": [
+            "Law of mass action",
+            "Significance of ∆𝐺 and ∆𝐺⊖ in chemical equilibrium",
+            "Equilibrium constant (Kp and Kc ) and reaction quotient, Le Chatelier’s principle (effect of concentration, temperature and pressure)",
+            "Solubility product and its applications, common ion effect, pH and buffer solutions",
+            "Acids and bases (Brønsted and Lewis concepts)",
+            "Hydrolysis of salts."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Electrochemistry",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Electrochemistry",
+          "periods": null,
+          "topics": [
+            "Electrochemical cells and cell reactions",
+            "Standard electrode potentials",
+            "Electrochemical work, Nernst equation",
+            "Electrochemical series, emf of galvanic cells",
+            "Faraday’s laws of electrolysis",
+            "Electrolytic conductance, specific, equivalent and molar conductivity, Kohlrausch’s law",
+            "Batteries: Primary and Secondary, fuel cells",
+            "Corrosion."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Chemical Kinetics",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Chemical Kinetics",
+          "periods": null,
+          "topics": [
+            "Rates of chemical reactions",
+            "Order and molecularity of reactions",
+            "Rate law, rate constant, half-life",
+            "Differential and integrated rate expressions for zero and first order reactions",
+            "Temperature dependence of rate constant (Arrhenius equation and activation energy)",
+            "Catalysis: Homogeneous and heterogeneous, activity and selectivity of solid catalysts, enzyme catalysis and its mechanism."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Solid State",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Solid State",
+          "periods": null,
+          "topics": [
+            "Classification of solids, crystalline state, seven crystal systems (cell parameters a, b, c, α, β, γ), close packed structure of solids (cubic and hexagonal), packing in fcc, bcc and hcp lattices",
+            "Nearest neighbours, ionic radii and radius ratio, point defects."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Solutions",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Solutions",
+          "periods": null,
+          "topics": [
+            "Henry’s law",
+            "Raoult’s law",
+            "Ideal solutions",
+            "Colligative properties: lowering of vapour pressure, elevation of boiling point, depression of freezing point, and osmotic pressure",
+            "van’t Hoff factor."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Surface Chemistry",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Surface Chemistry",
+          "periods": null,
+          "topics": [
+            "Elementary concepts of adsorption: Physisorption and Chemisorption, Freundlich adsorption isotherm",
+            "Colloids: types, methods of preparation and general properties",
+            "Elementary ideas of emulsions, surfactants and micelles (only definitions and examples)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Classification of Elements and Periodicity in Properties",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Classification of Elements and Periodicity in Properties",
+          "periods": null,
+          "topics": [
+            "Modern periodic law and the present form of periodic table",
+            "electronic configuration of elements",
+            "periodic trends in atomic radius, ionic radius, ionization enthalpy, electron gain enthalpy, valence, oxidation states, electronegativity, and chemical reactivity."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Hydrogen",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Hydrogen",
+          "periods": null,
+          "topics": [
+            "Position of hydrogen in periodic table, occurrence, isotopes, preparation, properties and uses of hydrogen",
+            "hydrides – ionic, covalent and interstitial",
+            "physical and chemical properties of water, heavy water",
+            "hydrogen peroxide-preparation, reactions, use and structure",
+            "hydrogen as a fuel."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "s-Block Elements",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "s-Block Elements",
+          "periods": null,
+          "topics": [
+            "Alkali and alkaline earth metals-reactivity towards air, water, dihydrogen, halogens, acids",
+            "their reducing nature including solutions in liquid ammonia",
+            "uses of these elements",
+            "general characteristics of their oxides, hydroxides, halides, salts of oxoacids",
+            "anomalous behaviour of lithium and beryllium",
+            "preparation, properties, and uses of compounds of sodium (sodium carbonate, sodium chloride, sodium hydroxide, sodium hydrogen carbonate) and calcium (calcium oxide, calcium hydroxide, calcium carbonate, calcium sulphate)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "p-Block Elements",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "p-Block Elements",
+          "periods": null,
+          "topics": [
+            "Oxidation state and trends in chemical reactivity of elements of groups 13-17",
+            "anomalous properties of boron, carbon, nitrogen, oxygen, and fluorine with respect to other elements in their respective groups."
+          ]
+        },
+        {
+          "number": null,
+          "title": "Group 13",
+          "periods": null,
+          "topics": [
+            "Reactivity towards acids, alkalis, and halogens",
+            "preparation, properties, and uses of borax, orthoboric acid, diborane, boron trifluoride, aluminium chloride, and alums",
+            "uses of boron and aluminium."
+          ]
+        },
+        {
+          "number": null,
+          "title": "Group 14",
+          "periods": null,
+          "topics": [
+            "Reactivity towards water and halogen",
+            "allotropes of carbon and uses of carbon",
+            "preparation, properties, and uses of carbon monoxide, carbon dioxide, silicon dioxide, silicones, silicates, zeolites."
+          ]
+        },
+        {
+          "number": null,
+          "title": "Group 15",
+          "periods": null,
+          "topics": [
+            "Reactivity towards hydrogen, oxygen, and halogen",
+            "allotropes of phosphorous",
+            "preparation, properties, and uses of dinitrogen, ammonia, nitric acid, phosphine, phosphorus trichloride, phosphorus pentachloride",
+            "oxides of nitrogen and oxoacids of phosphorus."
+          ]
+        },
+        {
+          "number": null,
+          "title": "Group 16",
+          "periods": null,
+          "topics": [
+            "Reactivity towards hydrogen, oxygen, and halogen",
+            "simple oxides",
+            "allotropes of sulphur",
+            "preparation/manufacture, properties, and uses of dioxygen, ozone, sulphur dioxide, sulfuric acid",
+            "oxoacids of sulphur."
+          ]
+        },
+        {
+          "number": null,
+          "title": "Group 17",
+          "periods": null,
+          "topics": [
+            "Reactivity towards hydrogen, oxygen, and metals",
+            "preparation/manufacture, properties, and uses of chlorine, hydrogen chloride and interhalogen compounds",
+            "oxoacids of halogens, bleaching powder."
+          ]
+        },
+        {
+          "number": null,
+          "title": "Group 18",
+          "periods": null,
+          "topics": [
+            "Chemical properties and uses",
+            "compounds of xenon with fluorine and oxygen."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "d-Block Elements",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "d-Block Elements",
+          "periods": null,
+          "topics": [
+            "Oxidation states and their stability",
+            "standard electrode potentials",
+            "interstitial compounds",
+            "alloys",
+            "catalytic properties",
+            "applications",
+            "preparation, structure, and reactions of oxoanions of chromium and manganese."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "f-Block Elements",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "f-Block Elements",
+          "periods": null,
+          "topics": [
+            "Lanthanoid and actinoid contractions",
+            "oxidation states",
+            "general characteristics."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Coordination Compounds",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Coordination Compounds",
+          "periods": null,
+          "topics": [
+            "Werner’s theory",
+            "Nomenclature, cis-trans and ionization isomerism, hybridization and geometries (linear, tetrahedral, square planar and octahedral) of mononuclear coordination compounds",
+            "Bonding [VBT and CFT (octahedral and tetrahedral fields)]",
+            "Magnetic properties (spin-only) and colour of 3d-series coordination compounds",
+            "Ligands and spectrochemical series",
+            "Stability",
+            "Importance and applications",
+            "Metal carbonyls."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Isolation of Metals",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Isolation of Metals",
+          "periods": null,
+          "topics": [
+            "Metal ores and their concentration",
+            "extraction of crude metal from concentrated ores: thermodynamic (iron, copper, zinc) and electrochemical (aluminium) principles of metallurgy",
+            "cyanide process (silver and gold)",
+            "refining."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Principles of Qualitative Analysis",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Principles of Qualitative Analysis",
+          "periods": null,
+          "topics": [
+            "Groups I to V (only Ag+, Hg2+, Cu2+, Pb2+, Fe3+, Cr3+, Al3+, Ca2+, Ba2+, Zn2+, Mn2+ and Mg2+)",
+            "Nitrate, halides (excluding fluoride), carbonate and bicarbonate, sulphate and sulphide."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Environmental Chemistry",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Environmental Chemistry",
+          "periods": null,
+          "topics": [
+            "Atmospheric pollution",
+            "water pollution",
+            "soil pollution",
+            "industrial waste",
+            "strategies to control environmental pollution",
+            "green chemistry."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Basic Principles of Organic Chemistry",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Basic Principles of Organic Chemistry",
+          "periods": null,
+          "topics": [
+            "Hybridisation of carbon",
+            "σ and π-bonds",
+            "Shapes of simple organic molecules",
+            "aromaticity",
+            "Structural and geometrical isomerism",
+            "Stereoisomers and stereochemical relationship (enantiomers, diastereomers, meso) of compounds containing only up to two asymmetric centres (R,S and E,Z configurations excluded)",
+            "Determination of empirical and molecular formulae of simple compounds by combustion method only",
+            "IUPAC nomenclature of organic molecules (hydrocarbons, including simple cyclic hydrocarbons and their mono-functional and bi-functional derivatives only)",
+            "Hydrogen bonding effects",
+            "Inductive, Resonance and Hyperconjugative effects",
+            "Acidity and basicity of organic compounds",
+            "Reactive intermediates produced during homolytic and heterolytic bond cleavage",
+            "Formation, structure and stability of carbocations, carbanions and free radicals."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Alkanes",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Alkanes",
+          "periods": null,
+          "topics": [
+            "Homologous series",
+            "Physical properties (melting points, boiling points and density) and effect of branching on them",
+            "Conformations of ethane and butane (Newman projections only)",
+            "Preparation from alkyl halides and aliphatic carboxylic acids",
+            "Reactions: combustion, halogenation (including allylic and benzylic halogenation) and oxidation."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Alkenes and Alkynes",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Alkenes and Alkynes",
+          "periods": null,
+          "topics": [
+            "Physical properties (boiling points, density and dipole moments)",
+            "Preparation by elimination reactions",
+            "Acid catalysed hydration (excluding the stereochemistry of addition and elimination)",
+            "Metal acetylides",
+            "Reactions of alkenes with KMnO4 and ozone",
+            "Reduction of alkenes and alkynes",
+            "Electrophilic addition reactions of alkenes with X2 , HX, HOX, (X=halogen)",
+            "Effect of peroxide on addition reactions",
+            "cyclic polymerization reaction of alkynes."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Benzene",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Benzene",
+          "periods": null,
+          "topics": [
+            "Structure",
+            "Electrophilic substitution reactions: halogenation, nitration, sulphonation, Friedel-Crafts alkylation and acylation",
+            "Effect of directing groups (monosubstituted benzene) in these reactions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Phenols",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Phenols",
+          "periods": null,
+          "topics": [
+            "Physical properties",
+            "Preparation, Electrophilic substitution reactions of phenol (halogenation, nitration, sulphonation)",
+            "Reimer-Tiemann reaction, Kolbe reaction",
+            "Esterification",
+            "Etherification",
+            "Aspirin synthesis",
+            "Oxidation and reduction reactions of phenol."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Alkyl Halides",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Alkyl Halides",
+          "periods": null,
+          "topics": [
+            "Rearrangement reactions of alkyl carbocation",
+            "Grignard reactions",
+            "Nucleophilic substitution reactions and their stereochemical aspects."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Alcohols",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Alcohols",
+          "periods": null,
+          "topics": [
+            "Physical properties",
+            "Reactions: esterification, dehydration (formation of alkenes and ethers)",
+            "Reactions with: sodium, phosphorus halides, ZnCl2 /concentrated HCl, thionyl chloride",
+            "Conversion of alcohols into aldehydes, ketones and carboxylic acids."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Ethers",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Ethers",
+          "periods": null,
+          "topics": [
+            "Preparation by Williamson’s synthesis",
+            "C-O bond cleavage reactions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Aldehydes and Ketones",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Aldehydes and Ketones",
+          "periods": null,
+          "topics": [
+            "Preparation of: aldehydes and ketones from acid chlorides and nitriles",
+            "aldehydes from esters",
+            "benzaldehyde from toluene and benzene",
+            "Reactions: oxidation, reduction, oxime and hydrazone formation",
+            "Aldol condensation, Cannizzaro reaction",
+            "Haloform reaction",
+            "Nucleophilic addition reaction with RMgX, NaHSO3 , HCN, alcohol, amine."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Carboxylic Acids",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Carboxylic Acids",
+          "periods": null,
+          "topics": [
+            "Physical properties",
+            "Preparation: from nitriles, Grignard reagents, hydrolysis of esters and amides",
+            "Preparation of benzoic acid from alkylbenzenes",
+            "Reactions: reduction, halogenation, formation of esters, acid chlorides and amides."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Amines",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Amines",
+          "periods": null,
+          "topics": [
+            "Preparation from nitro compounds, nitriles and amides",
+            "Reactions: Hoffmann bromamide degradation, Gabriel phthalimide synthesis",
+            "Reaction with nitrous acid, Azo coupling reaction of diazonium salts of aromatic amines",
+            "Sandmeyer and related reactions of diazonium salts",
+            "Carbylamine reaction, Hinsberg test, Alkylation and acylation reactions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Haloarenes",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Haloarenes",
+          "periods": null,
+          "topics": [
+            "Reactions: Fittig, Wurtz-Fittig",
+            "Nucleophilic aromatic substitution in haloarenes and substituted haloarenes (excluding benzyne mechanism and cine substitution)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Biomolecules",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Carbohydrates",
+          "periods": null,
+          "topics": [
+            "Classification",
+            "Mono- and di-saccharides (glucose and sucrose)",
+            "Oxidation",
+            "Reduction",
+            "Glycoside formation and hydrolysis of disaccharides (sucrose, maltose, lactose)",
+            "Anomers."
+          ]
+        },
+        {
+          "number": null,
+          "title": "Proteins",
+          "periods": null,
+          "topics": [
+            "Amino acids",
+            "Peptide linkage",
+            "Structure of peptides (primary and secondary)",
+            "Types of proteins (fibrous and globular)."
+          ]
+        },
+        {
+          "number": null,
+          "title": "Nucleic acids",
+          "periods": null,
+          "topics": [
+            "Chemical composition and structure of DNA and RNA."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Polymers",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Polymers",
+          "periods": null,
+          "topics": [
+            "Types of polymerization (addition, condensation)",
+            "Homo and copolymers",
+            "Natural rubber",
+            "Cellulose",
+            "Nylon",
+            "Teflon",
+            "Bakelite",
+            "PVC",
+            "Bio-degradable polymers",
+            "Applications of polymers."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Chemistry in Everyday Life",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Chemistry in Everyday Life",
+          "periods": null,
+          "topics": [
+            "Drug-target interaction",
+            "Therapeutic action, and examples (excluding structures), of antacids, antihistamines, tranquilizers, analgesics, antimicrobials, and antifertility drugs",
+            "Artificial sweeteners (names only)",
+            "Soaps, detergents, and cleansing action."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Practical Organic Chemistry",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Practical Organic Chemistry",
+          "periods": null,
+          "topics": [
+            "Detection of elements (N, S, halogens)",
+            "Detection and identification of the following functional groups: hydroxyl (alcoholic and phenolic), carbonyl (aldehyde and ketone), carboxyl, amino and nitro."
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [],
+  "notes": [
+    "Edition: 'JEE (Advanced) 2026 Syllabus' from jeeadv.ac.in/documents/jee-advanced-2026-syllabus.pdf. The PDF's first line: 'Note: The syllabus for JEE Advanced 2026 remains the same as JEE Advanced 2025.' No JEE Advanced 2027 syllabus or brochure exists on jeeadv.ac.in as of 2026-10-12 (jee-advanced-2027-syllabus.pdf and IBEnglish_2027.pdf return 404; the site still shows the 2026 cycle).",
+    "The source has headings with paragraphs, no numbering, no marks. Each heading is a unit (number null) with one chapter repeating its title; where a paragraph begins with its own sub-heading ('Group 13:' ... 'Group 18:' in p-Block Elements, 'Carbohydrates:', 'Proteins:', 'Nucleic acids:' in Biomolecules) that paragraph is its own chapter. topics[] = the semicolon-separated items as printed (also split at full stops that start a new sentence).",
+    "In 'Chemical and Ionic Equilibrium' the symbol after '∆' is U+1D43A MATHEMATICAL ITALIC CAPITAL G ('∆𝐺', '∆𝐺⊖'), recovered losslessly from the text layer's CESU-8 surrogate pair (main-thread fix 2026-10-12; an earlier decoding showed it as U+FFFD).",
+    "Subscripts are extracted as separate tokens, e.g. 'Equilibrium constant (Kp and Kc ) and reaction quotient', 'KMnO4 and ozone'."
+  ]
+}

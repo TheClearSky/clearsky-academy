@@ -1,0 +1,344 @@
+{
+  "id": "cbse-11-chemistry",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 11,
+  "subject": "chemistry",
+  "edition": "2026-27",
+  "variant": null,
+  "source": {
+    "title": "CHEMISTRY SUBJECT CODE: 043 CLASSES XI-XII (2026-27)",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Chemistry_SecP2_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "5610f09d357d3ccc9a7b39fc29cb7b1f4530847753783b16c72fff691acd2418",
+    "localPath": "sources/science/Chemistry_SecP2_2026-27.pdf",
+    "extractedPath": "extracted/science/Chemistry_SecP2_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/science/Chemistry_SecP2_2026-27.layout.txt"
+  },
+  "units": [
+    {
+      "number": "1",
+      "title": "Some Basic Concepts of Chemistry",
+      "marks": 7,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Some Basic Concepts of Chemistry",
+          "periods": null,
+          "topics": [
+            "Importance of Chemistry",
+            "Nature of Matter",
+            "Properties of Matter and their Measurement",
+            "Uncertainty in Measurement",
+            "Laws of Chemical Combination",
+            "Dalton's Atomic Theory",
+            "Atomic and Molecular Masses",
+            "Mole Concept and Molar Masses",
+            "Percentage Composition",
+            "Stoichiometry and Stoichiometric Calculations."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Structure of Atom",
+      "marks": 9,
+      "chapters": [
+        {
+          "number": "2",
+          "title": "Structure of Atom",
+          "periods": null,
+          "topics": [
+            "Discovery of Sub-atomic Particles",
+            "Atomic Models",
+            "Developments Leading to the Bohr’s Model of Atom",
+            "Bohr’s Model for Hydrogen Atom",
+            "Towards Quantum Mechanical Model of the Atom",
+            "Quantum Mechanical Model of Atom."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Classification of Elements and Periodicity in Properties",
+      "marks": 6,
+      "chapters": [
+        {
+          "number": "3",
+          "title": "Classification of Elements and Periodicity in Properties",
+          "periods": null,
+          "topics": [
+            "Why we Need to Classify Elements?",
+            "Genesis of Periodic Classification",
+            "Modern Periodic Law and the Present Form of Periodic Table",
+            "Nomenclature of Elements with Atomic Number > 100",
+            "Electronic Configuration of Elements and the Periodic Table",
+            "Electronic Configuration of Elements and Types of Elements: s-, p-, d-, f- Blocks",
+            "Periodic Trends in Properties of Elements."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Chemical Bonding and Molecular Structure",
+      "marks": 7,
+      "chapters": [
+        {
+          "number": "4",
+          "title": "Chemical Bonding and Molecular Structure",
+          "periods": null,
+          "topics": [
+            "Kossel-Lewis Approach to Chemical Bonding",
+            "Ionic or Electrovalent Bond",
+            "Bond Parameters",
+            "The Valence Shell Electron Pair Repulsion (VSEPR) Theory",
+            "Valence Bond Theory",
+            "Hybridisation",
+            "Molecular Orbital Theory",
+            "Bonding in Some Homonuclear Diatomic Molecules",
+            "Hydrogen Bonding."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Thermodynamics",
+      "marks": 9,
+      "chapters": [
+        {
+          "number": "5",
+          "title": "Thermodynamics",
+          "periods": null,
+          "topics": [
+            "Thermodynamic Terms",
+            "Applications",
+            "Measurement of ∆U and ∆H: Calorimetry",
+            "Enthalpy Change, and ∆H of a Reaction – Reaction Enthalpy",
+            "Enthalpies for Different Types of Reactions",
+            "Spontaneity",
+            "Gibbs Energy Change and Equilibrium."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Equilibrium",
+      "marks": 7,
+      "chapters": [
+        {
+          "number": "6",
+          "title": "Equilibrium",
+          "periods": null,
+          "topics": [
+            "Equilibrium in Physical Processes",
+            "Equilibrium in Chemical Processes – Dynamic Equilibrium",
+            "Law of Chemical Equilibrium and Equilibrium Constant",
+            "Homogeneous Equilibria",
+            "Heterogeneous Equilibria",
+            "Applications of Equilibrium Constants",
+            "Relationship between Equilibrium Constant K, Reaction Quotient Q and Gibbs Energy G",
+            "Factors Affecting Equilibria",
+            "Ionic Equilibrium in Solution",
+            "Acids, Bases and Salts",
+            "Ionization of Acids and Bases",
+            "Buffer Solutions",
+            "Solubility Equilibria of Sparingly Soluble Salts."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Redox Reactions",
+      "marks": 4,
+      "chapters": [
+        {
+          "number": "7",
+          "title": "Redox Reactions",
+          "periods": null,
+          "topics": [
+            "Classical Idea of Redox Reactions – Oxidation and Reduction Reactions",
+            "Redox Reactions in Terms of Electron Transfer Reactions",
+            "Oxidation Number",
+            "Redox Reactions and Electrode Processes."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "Organic Chemistry – Some Basic Principles and Techniques",
+      "marks": 11,
+      "chapters": [
+        {
+          "number": "8",
+          "title": "Organic Chemistry – Some Basic Principles and Techniques",
+          "periods": null,
+          "topics": [
+            "General Introduction",
+            "Tetravalence of Carbon: Shapes of Organic Compounds",
+            "Structural Representations of Organic Compounds",
+            "Classification of Organic Compounds",
+            "Nomenclature of Organic Compounds",
+            "Isomerism",
+            "Fundamental Concepts in Organic Reaction Mechanism",
+            "Methods of Purification of Organic Compounds",
+            "Qualitative Analysis of Organic Compounds",
+            "Quantitative Analysis"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "title": "Hydrocarbons",
+      "marks": 10,
+      "chapters": [
+        {
+          "number": "9",
+          "title": "Hydrocarbons",
+          "periods": null,
+          "topics": [
+            "Classification",
+            "Alkanes",
+            "Alkenes",
+            "Alkynes",
+            "Aromatic Hydrocarbon",
+            "Carcinogenic and Toxicity."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "s & p Block Elements",
+      "marks": null,
+      "formativeOnly": true,
+      "chapters": [
+        {
+          "number": null,
+          "title": "s & p Block Elements",
+          "periods": null,
+          "topics": [
+            "Electronic configuration, atomic & Ionic radii, Ionization Enthalpy, Hydration Enthalpy and general trends in physical and chemical properties of s and p block elements across the periods and down the groups",
+            "unique behavior of the first element in each group."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "The Gaseous State",
+      "marks": null,
+      "formativeOnly": true,
+      "chapters": [
+        {
+          "number": null,
+          "title": "The Gaseous State",
+          "periods": null,
+          "topics": [
+            "Qualitative treatment of Gas laws, Ideal gas equation and deviations from it."
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [],
+  "notes": [
+    "Class XI theory: Time 3 Hours, Total Marks 70; practical 30 (Volumetric Analysis 08, Salt Analysis 08, Content Based Experiment 06, Project Work 04, Class record and viva 04).",
+    "Each unit is printed as one comma-separated list of (NCERT section) topics with no chapter level, so each unit has one chapter repeating the unit title and topics[] = the comma-separated items as printed (protected phrases where a comma is inside one item, e.g. 'Relationship between Equilibrium Constant K, Reaction Quotient Q and Gibbs Energy G').",
+    "Question paper design: 'No chapter wise weightage is provided, however, care to be taken to cover all the chapters.' — the per-unit marks are those printed in the course-structure table.",
+    "Qualitative-analysis cation/anion lists in the practical syllabus are typeset in bold math-italic (non-BMP) characters, e.g. '𝑷𝒃𝟐+'; they are copied verbatim, with charges flattened onto the line as the text layer gives them (Pb²⁺ reads 'Pb2+', CO₃²⁻ reads 'CO3 2−'). (Main-thread fix 2026-10-12: an earlier decoding turned these into U+FFFD and dropped them.)",
+    "Practicals: the main practical syllabus only (sections A-F/K + suggested projects); the reduced list for visually challenged students is not copied.",
+    "Unit 5 is titled 'Thermodynamics' in the detailed syllabus but 'Chemical Thermodynamics' in the course-structure table; unit 8 is 'Organic Chemistry – Some Basic Principles and Techniques' (table: 'Organic Chemistry: Some basic Principles and Techniques').",
+    "FORMATIVE-ONLY units (source: 'included in the syllabus but will be assessed only formatively ... Relevant NCERT textual material is enclosed for reference'): 's & p Block Elements' and 'The Gaseous State' (formativeOnly: true, no marks). The enclosed NCERT material is the CBSE Reading Material PDF Chemistry_SecP2_2026-27_RM.pdf (downloaded, 'Adapted from NCERT textbook of class XI 2006 edition reprinted edition pre rationalization')."
+  ],
+  "practicals": [
+    {
+      "heading": "A.Basic Laboratory Techniques",
+      "items": [
+        "1. Cutting glass tube and glass rod",
+        "2. Bending a glass tube",
+        "3. Drawing out a glass jet",
+        "4. Boring a cork"
+      ]
+    },
+    {
+      "heading": "B.Characterization and Purification of Chemical Substances",
+      "items": [
+        "1. Determination of melting point of an organic compound.",
+        "2. Determination of boiling point of an organic compound.",
+        "3. Crystallization of impure sample of any one of the following: Alum, Copper Sulphate, Benzoic Acid."
+      ]
+    },
+    {
+      "heading": "C.Experiments based on pH",
+      "items": [
+        "1. Any one of the following experiments:",
+        "Determination of pH of some solutions obtained from fruit juices, solution of known and varied concentrations of acids, bases and salts using pH paper or universal indicator.",
+        "Comparing the pH of solutions of strong and weak acids of same concentration.",
+        "Study the pH change in the titration of a strong base using a universal indicator.",
+        "2. Study the pH change by common-ion in case of weak acids and weak bases."
+      ]
+    },
+    {
+      "heading": "D.Chemical Equilibrium",
+      "items": [
+        "Any one of the following experiments:",
+        "Study the shift in equilibrium between ferric ions and thiocyanate ions by increasing/decreasing the concentration of either of the ions.",
+        "Study the shift in equilibrium between [Co(H2O)6]2+ and chloride ions by changing the concentration of either of the ions."
+      ]
+    },
+    {
+      "heading": "E.Quantitative Estimation",
+      "items": [
+        "1. Using a mechanical balance/electronic balance.",
+        "2. Preparation of standard solution of Oxalic acid.",
+        "3. Determination of strength of a given solution of Sodium hydroxide by titrating it against standard solution of Oxalic acid.",
+        "4. Preparation of standard solution of Sodium carbonate.",
+        "5. Determination of strength of a given solution of hydrochloric acid by titrating it against standard Sodium Carbonate solution."
+      ]
+    },
+    {
+      "heading": "F.Qualitative Analysis",
+      "items": [
+        "1. Determination of one anion and one cation in a given salt Cations: 𝑷𝒃𝟐+,𝑪𝒖𝟐+, 𝑨𝒍𝟑+, 𝑭𝒆𝟑+,𝑴𝒏𝟐+, 𝑵𝒊𝟐+, 𝒁𝒏𝟐+, 𝑪𝒐𝟐+, 𝑪𝒂𝟐+, 𝑺𝒓𝟐+, 𝑩𝒂𝟐+, 𝑴𝒈𝟐+, 𝑵𝑯𝟒",
+        "Anions: 𝑪𝑶𝟑 𝟐−,𝐒𝟐− , 𝐒𝐎𝟑 𝟐−, 𝑵𝑶𝟑 −, 𝑵𝑶𝟐 − , 𝐂𝐥−, 𝐁𝐫−, 𝐈− ,𝑺𝑶𝟒 𝟐−, 𝑷𝑶𝟒 𝟑− , 𝐂𝐇𝟑 𝐂𝐎𝐎− (Note: Insoluble salts excluded)",
+        "2. Detection of -Nitrogen, Sulphur, Chlorine in organic compounds."
+      ]
+    },
+    {
+      "heading": "PROJECTS",
+      "items": [
+        "Scientific investigations involving laboratory testing and collecting information from other sources. A few suggested Projects",
+        "a) Checking the bacterial contamination in drinking water by testing sulphide ion",
+        "b) Study of the methods of purification of water",
+        "c) Testing the hardness, presence of Iron, Fluoride, Chloride, etc., depending upon the regional variation in drinking water and study of causes of presence of these ions above permissible limit (if any).",
+        "d) Investigation of the foaming capacity of different washing soaps and the effect of addition of Sodium carbonate on it",
+        "e) Study the acidity of different samples of tea leaves.",
+        "f) Determination of the rate of evaporation of different liquids",
+        "g) Study the effect of acids and bases on the tensile strength of fibers.",
+        "h) Study of acidity of fruit and vegetable juices."
+      ]
+    }
+  ],
+  "prescribedBooks": [
+    {
+      "title": "Chemistry Part – I, Class-XI, Published by NCERT.",
+      "chapters": null
+    },
+    {
+      "title": "Chemistry Part – II, Class-XI, Published by NCERT.",
+      "chapters": null
+    },
+    {
+      "title": "Manual of Microscale Chemistry laboratory kit, Published by NCERT",
+      "chapters": null
+    }
+  ]
+}

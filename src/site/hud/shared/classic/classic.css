@@ -1,0 +1,729 @@
+/*
+ * The classic card (`classic.tsx`) — round 1's Chapter Deck card, class-
+ * scoped (`.cl-*`) so every round-3 deck shares ONE copy. Paper #efe6d2
+ * with ink #1a1a22 (≈ 14:1). The learnt copy defaults to night violet
+ * #2a1d6e with cream #f6efdc text (≈ 12:1) and a gold-100 index. The deal
+ * phase is an ancestor attribute: `data-cl-phase="none|deal|swap|still"`.
+ * Motion: transforms and opacity only; one idle loop (the Next star).
+ */
+/* Defaults on the HUD wrapper, so a design overrides any of them on its
+   own root (they inherit down to the cards). */
+:where([data-slot='hud-design']) {
+  --cl-paper: #efe6d2;
+  --cl-ink: #1a1a22;
+  --cl-accent: #2156d9;
+  --cl-learnt: #2a1d6e;
+  --cl-learnt-ink: #f6efdc;
+  --cl-learnt-index: #f4e2a6;
+  --cl-line: #fff4cc;
+  --cl-line-glow: rgb(244 226 166 / 0.85);
+  --cl-gold-edge: linear-gradient(135deg, #f7e3a1, #b8892d 30%, #f3d58a 55%, #9a7224 80%, #f1d48a);
+  --cl-radius: 9px;
+  --cl-cinzel: 'Cinzel Variable', 'Cinzel', Georgia, serif;
+}
+.cl-card {
+  position: relative;
+  display: block;
+  height: 100%;
+  min-height: 172px;
+  border-radius: var(--cl-radius);
+  font-family: system-ui, sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  cursor: default;
+  transition: transform 0.2s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.cl-card:hover,
+.cl-card:focus-visible {
+  transform: translateY(-12px) scale(1.05);
+}
+.cl-card:focus-visible {
+  outline: 3px solid var(--hud-gold-100, #f4e2a6);
+  outline-offset: 4px;
+}
+.cl-flip,
+.cl-tilt {
+  position: relative;
+  display: block;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.cl-tilt {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.12s linear;
+}
+.cl-face {
+  border-radius: var(--cl-radius);
+  backface-visibility: hidden;
+}
+
+/* ── the face ───────────────────────────────────────────────────────── */
+.cl-front {
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  background: var(--cl-paper);
+  color: var(--cl-ink);
+  box-shadow:
+    inset 0 0 0 1px rgb(26 26 34 / 0.18),
+    0 12px 24px rgb(0 0 0 / 0.55);
+}
+.cl-paper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 8px 8px 7px;
+}
+.cl-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.cl-index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 24px;
+  color: var(--cl-accent);
+}
+.cl-num {
+  font-family: var(--cl-cinzel);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1;
+}
+.cl-index-suit {
+  width: 12px;
+  height: 12px;
+  margin-top: 2px;
+  fill: currentColor;
+}
+.cl-art {
+  position: relative;
+  display: grid;
+  flex-grow: 1;
+  place-items: center;
+  min-height: 40px;
+}
+.cl-art-suit {
+  width: 40px;
+  height: 40px;
+  fill: var(--cl-accent);
+  opacity: 0.9;
+}
+.cl-card[data-state='untouched'] .cl-art-suit {
+  fill: none;
+  stroke: var(--cl-accent);
+  stroke-width: 0.045;
+  opacity: 0.75;
+}
+.cl-title {
+  font-weight: 650;
+  font-size: 11.5px;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.cl-foot {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4px;
+  border-top: 1px solid rgb(26 26 34 / 0.2);
+  font-family: var(--cl-cinzel);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* ── the ink line: a second face, re-inked, cut by transforms ───────── */
+.cl-ink {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform: translateY(calc((1 - var(--cl-f, 0)) * 100%));
+  pointer-events: none;
+}
+.cl-ink-inner {
+  position: absolute;
+  inset: 0;
+  transform: translateY(calc((var(--cl-f, 0) - 1) * 100%));
+}
+.cl-paper-ink {
+  background:
+    repeating-linear-gradient(45deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 7px),
+    var(--cl-learnt);
+  color: var(--cl-learnt-ink);
+}
+.cl-paper-ink::before {
+  /* a printed hairline frame, in gold */
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgb(244 226 166 / 0.3);
+  border-radius: calc(var(--cl-radius) - 3px);
+  pointer-events: none;
+}
+.cl-paper-ink .cl-index {
+  color: var(--cl-learnt-index);
+}
+.cl-paper-ink .cl-art-suit {
+  fill: var(--cl-learnt-index);
+  stroke: none;
+  opacity: 1;
+}
+.cl-paper-ink .cl-foot {
+  border-top-color: rgb(246 239 220 / 0.3);
+}
+.cl-edge,
+.cl-edge-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.cl-edge {
+  z-index: 2;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--cl-line);
+  box-shadow: 0 0 6px var(--cl-line-glow);
+}
+.cl-edge-glow {
+  z-index: 1;
+  top: -14px;
+  height: 28px;
+  background: radial-gradient(60% 50% at 50% 50%, var(--cl-line-glow), transparent 70%);
+  opacity: 0;
+}
+.cl-card[data-state='done'] :is(.cl-edge, .cl-edge-glow) {
+  opacity: 0;
+}
+
+/* ── finished: the gold edge and the seal ───────────────────────────── */
+.cl-gild {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 4px;
+  border-radius: inherit;
+  background: var(--cl-gold-edge);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.cl-card[data-state='done'] .cl-front {
+  box-shadow:
+    inset 0 0 0 5px rgb(110 74 12 / 0.55),
+    0 12px 24px rgb(0 0 0 / 0.55),
+    0 0 16px rgb(233 198 106 / 0.28);
+}
+.cl-seal {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 4;
+  line-height: 0;
+  transform: translateZ(1px);
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+.cl-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--gx, 50%) 0%, rgb(255 255 255 / 0.5), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.cl-card:hover .cl-glare {
+  opacity: 1;
+}
+
+/* ── next: a quiet tab over the card ────────────────────────────────── */
+.cl-next {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 3px;
+  font-family: var(--cl-cinzel);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--hud-gold-100, #f4e2a6);
+  transform: translateX(-50%);
+}
+.cl-next-star {
+  width: 11px;
+  height: 11px;
+  fill: currentColor;
+}
+
+/* ── the back (round 1's: the accent, cross-hatched, a paper border) ── */
+.cl-back {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 4px solid var(--cl-paper);
+  background:
+    repeating-linear-gradient(45deg, rgb(255 255 255 / 0.14) 0 2px, transparent 2px 8px),
+    repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.14) 0 2px, transparent 2px 8px),
+    var(--cl-accent);
+  transform: rotateY(180deg);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 0.55);
+}
+.cl-back-suit {
+  width: 46px;
+  height: 46px;
+  fill: var(--cl-paper);
+}
+
+/* ── the pile ───────────────────────────────────────────────────────── */
+.cl-pile {
+  position: relative;
+  width: 92px;
+  height: 130px;
+  margin-left: 6px;
+}
+.cl-pile-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 9px;
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.6);
+}
+.cl-pile-3,
+.cl-pile-2 {
+  border: 3px solid var(--cl-paper);
+  background:
+    repeating-linear-gradient(45deg, rgb(255 255 255 / 0.14) 0 2px, transparent 2px 8px),
+    repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.14) 0 2px, transparent 2px 8px),
+    var(--cl-accent);
+}
+.cl-pile-3 {
+  transform: translate(10px, 7px) rotate(7deg);
+}
+.cl-pile-2 {
+  transform: translate(5px, 3px) rotate(3.5deg);
+}
+.cl-pile-1 {
+  display: grid;
+  place-items: center;
+  border: 1px solid rgb(26 26 34 / 0.2);
+  background: var(--cl-paper);
+  color: var(--cl-accent);
+}
+.cl-pile-rank {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-family: var(--cl-cinzel);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+}
+.cl-pile-rank-low {
+  top: auto;
+  left: auto;
+  bottom: 6px;
+  right: 8px;
+}
+.cl-pile-suit {
+  width: 44px;
+  height: 44px;
+  fill: currentColor;
+}
+
+/* ── the header (round 1's) ─────────────────────────────────────────── */
+.cl-head {
+  --cl-gold: #e8c66a;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px 30px;
+  padding: 10px 6px 0;
+  color: #f2ecdc;
+}
+.cl-kicker,
+.cl-hero-label {
+  font-family: var(--cl-cinzel);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cl-gold);
+}
+.cl-h2 {
+  margin-top: 2px;
+  font-family: var(--cl-cinzel);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  color: #f8f2e2;
+}
+.cl-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.cl-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 5px;
+  border: 1px solid rgb(232 198 106 / 0.5);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.03);
+  color: #ece5d2;
+  font-family: var(--cl-cinzel);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+.cl-tab:hover {
+  background: rgb(232 198 106 / 0.12);
+}
+.cl-tab[aria-selected='true'],
+.cl-tab[data-static] {
+  border-color: #efe6d2;
+  background: #efe6d2;
+  color: #1a1a22;
+  box-shadow: 0 0 0 3px rgb(232 198 106 / 0.35);
+  cursor: default;
+}
+.cl-tab:focus-visible {
+  outline: 2px solid var(--cl-gold);
+  outline-offset: 4px;
+}
+.cl-tab-suit {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+}
+.cl-tab-pct {
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.cl-hero {
+  display: grid;
+  justify-items: end;
+  text-align: right;
+}
+.cl-hero-num {
+  font-family: var(--cl-cinzel);
+  font-weight: 700;
+  font-size: 76px;
+  line-height: 0.95;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: #fff;
+  text-shadow: 0 0 24px rgb(232 198 106 / 0.35);
+}
+.cl-hero-num small {
+  font-size: 30px;
+}
+.cl-hero-meta {
+  font-size: 13px;
+  color: #c4bdab;
+}
+
+/* ── the legend ─────────────────────────────────────────────────────── */
+.cl-legend {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  font-size: 12px;
+  color: #c4bdab;
+}
+.cl-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.cl-legend-card {
+  position: relative;
+  width: 12px;
+  height: 17px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: linear-gradient(to top, var(--cl-learnt) 55%, var(--cl-line) 55% calc(55% + 1.5px), var(--cl-paper) calc(55% + 1.5px));
+  box-shadow: 0 0 0 1px rgb(239 230 210 / 0.6);
+}
+
+/* ── the hand: fanned rows ──────────────────────────────────────────── */
+.cl-hand {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px 10px;
+  padding: 26px 4px 44px;
+}
+.cl-slot {
+  position: relative;
+  width: 122px;
+  perspective: 900px;
+  transform: translateY(var(--lift, 0px)) rotate(var(--rot, 0deg));
+  transform-origin: 50% 130%;
+}
+.cl-hand[data-phone] {
+  gap: 24px 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.cl-hand[data-phone] .cl-slot {
+  width: calc((100% - (var(--per) - 1) * 8px) / var(--per));
+}
+.cl-slot:hover,
+.cl-slot:focus-within {
+  z-index: 5;
+}
+
+/* ── phones ─────────────────────────────────────────────────────────── */
+@media (max-width: 699px) {
+  .cl-head {
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-areas: 'pile titles' 'hero hero';
+    gap: 16px 14px;
+  }
+  .cl-head .cl-pile {
+    grid-area: pile;
+    width: 76px;
+    height: 108px;
+  }
+  .cl-titles {
+    grid-area: titles;
+    min-width: 0;
+  }
+  .cl-hero {
+    grid-area: hero;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: end;
+    justify-items: start;
+    gap: 0 12px;
+    text-align: left;
+    padding-top: 10px;
+    border-top: 1px solid rgb(232 198 106 / 0.25);
+  }
+  .cl-hero-label {
+    grid-column: 1 / -1;
+  }
+  .cl-hero-num {
+    font-size: 58px;
+  }
+  .cl-hero-meta {
+    text-align: right;
+  }
+  .cl-title {
+    font-size: 11px;
+  }
+}
+
+/* ── motion: the deal (round 1's timings) ───────────────────────────── */
+[data-cl-phase='none'] .cl-hand {
+  opacity: 0;
+}
+[data-cl-phase='deal'] .cl-slot {
+  animation: cl-deal 0.5s cubic-bezier(0.2, 0.8, 0.25, 1) calc(var(--i, 0) * 45ms) both;
+}
+[data-cl-phase='deal'] .cl-flip {
+  animation: cl-flipup 0.5s cubic-bezier(0.3, 1.25, 0.5, 1) calc(0.42s + var(--i, 0) * 45ms) both;
+}
+[data-cl-phase='swap'] .cl-slot {
+  animation: cl-swap 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) calc(min(var(--i, 0), 8) * 10ms) both;
+}
+
+/* ── motion: the moment (anticipate → impact → settle → afterglow) ──── */
+:is([data-cl-phase='deal'], [data-cl-phase='swap']) .cl-card[data-cut] .cl-ink {
+  animation: cl-cut 1s var(--cl-at, 0ms) both;
+}
+:is([data-cl-phase='deal'], [data-cl-phase='swap']) .cl-card[data-cut] .cl-ink-inner {
+  animation: cl-cut-inverse 1s var(--cl-at, 0ms) both;
+}
+:is([data-cl-phase='deal'], [data-cl-phase='swap']) .cl-card[data-cut] .cl-edge-glow {
+  animation: cl-flare 1.3s ease-out var(--cl-at, 0ms) both;
+}
+:is([data-cl-phase='deal'], [data-cl-phase='swap']) .cl-card[data-cut] .cl-front {
+  animation: cl-press 0.9s var(--cl-at, 0ms) both;
+}
+:is([data-cl-phase='deal'], [data-cl-phase='swap']) .cl-card[data-cut][data-state='done'] .cl-edge {
+  animation: cl-edge-done 1s var(--cl-at, 0ms) both;
+}
+:is([data-cl-phase='deal'], [data-cl-phase='swap']) .cl-card[data-cut][data-state='done'] .cl-edge-glow {
+  animation: cl-flare-done 1.3s ease-out var(--cl-at, 0ms) both;
+}
+:is([data-cl-phase='deal'], [data-cl-phase='swap']) .cl-card[data-cut] .cl-gild {
+  animation: cl-gild 0.5s ease-out calc(var(--cl-at, 0ms) + 0.42s) both;
+}
+
+/* the one idle loop: the Next star breathes (0.2 Hz) */
+.cl-next-star {
+  animation: cl-breathe 5s ease-in-out infinite;
+}
+
+@keyframes cl-deal {
+  from {
+    opacity: 0;
+    transform: translate(var(--dx, 0px), var(--dy, -40px)) rotate(-24deg) scale(0.7);
+  }
+  12% {
+    opacity: 1;
+  }
+}
+@keyframes cl-flipup {
+  from {
+    transform: rotateY(180deg);
+  }
+}
+@keyframes cl-swap {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--lift, 0px) + 12px)) rotate(var(--rot, 0deg));
+  }
+}
+@keyframes cl-cut {
+  0%,
+  20% {
+    transform: translateY(100%);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.2, 1);
+  }
+  46% {
+    transform: translateY(calc((1 - min(1, var(--cl-f, 0) + 0.08)) * 100%));
+    animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1);
+  }
+  64% {
+    transform: translateY(calc((1 - var(--cl-f, 0)) * 100% + 3px));
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(calc((1 - var(--cl-f, 0)) * 100%));
+  }
+}
+@keyframes cl-cut-inverse {
+  0%,
+  20% {
+    transform: translateY(-100%);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.2, 1);
+  }
+  46% {
+    transform: translateY(calc((min(1, var(--cl-f, 0) + 0.08) - 1) * 100%));
+    animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1);
+  }
+  64% {
+    transform: translateY(calc((var(--cl-f, 0) - 1) * 100% - 3px));
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(calc((var(--cl-f, 0) - 1) * 100%));
+  }
+}
+/* anticipate: the line charges at the bottom; impact: it flares at the top of its run */
+@keyframes cl-flare {
+  0% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.7;
+  }
+  36% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes cl-flare-done {
+  0% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.7;
+  }
+  36% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes cl-edge-done {
+  0%,
+  44% {
+    opacity: 1;
+  }
+  52%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes cl-press {
+  0% {
+    transform: none;
+  }
+  18% {
+    transform: translateY(2px) scale(0.965);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+  }
+  44% {
+    transform: translateY(-4px) scale(1.04);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+  }
+  70% {
+    transform: scale(0.995);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes cl-gild {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes cl-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(45deg);
+  }
+}
+
+/* ── reduced motion: end states only ────────────────────────────────── */
+[data-reduced] :is(.cl-card, .cl-card *, .cl-slot, .cl-hand),
+[data-reduced] :is(.cl-card, .cl-card *)::before,
+[data-reduced] :is(.cl-card, .cl-card *)::after {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.cl-card, .cl-card *, .cl-slot, .cl-hand),
+  :is(.cl-card, .cl-card *)::before,
+  :is(.cl-card, .cl-card *)::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

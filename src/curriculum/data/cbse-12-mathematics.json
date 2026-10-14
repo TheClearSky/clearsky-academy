@@ -1,0 +1,218 @@
+{
+  "id": "cbse-12-mathematics",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 12,
+  "subject": "mathematics",
+  "edition": "2026-27",
+  "variant": null,
+  "source": {
+    "title": "Mathematics Subject Code – 041 Classes XI-XII (2026 – 27)",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Maths_SecP2_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "5bf4105d4076189fe00b879fd6d41ffadec87a894a078a7fb912b2f219769572",
+    "localPath": "sources/math/Maths_SecP2_2026-27.pdf",
+    "extractedPath": "extracted/math/Maths_SecP2_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/math/Maths_SecP2_2026-27.txt",
+    "extraction": "pdftotext 4.00 -enc UTF-8 (-raw for extractedPath, -layout for extractedPathLayout); CESU-8 surrogate pairs re-paired to UTF-8 (scripts/math/extract.py)"
+  },
+  "units": [
+    {
+      "number": "I",
+      "title": "Relations and Functions",
+      "marks": 8,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Relations and Functions",
+          "periods": null,
+          "topics": [
+            "Types of relations: reflexive, symmetric, transitive and equivalence relations.",
+            "One to one and onto functions."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Inverse Trigonometric Functions",
+          "periods": null,
+          "topics": [
+            "Definition, range, domain, principal value branch.",
+            "Graphs of inverse trigonometric functions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "II",
+      "title": "Algebra",
+      "marks": 10,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Matrices",
+          "periods": null,
+          "topics": [
+            "Concept, notation, order, equality, types of matrices, zero and identity matrix, transpose of a matrix, symmetric and skew symmetric matrices.",
+            "Operations on matrices: Addition and multiplication and multiplication with a scalar.",
+            "Simple properties of addition, multiplication and scalar multiplication.",
+            "Non- commutativity of multiplication of matrices and existence of non-zero matrices whose product is the zero matrix (restrict to square matrices of order 2).",
+            "Invertible matrices and proof of the uniqueness of inverse, if it exists; (Here all matrices will have real entries)."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Determinants",
+          "periods": null,
+          "topics": [
+            "Determinant of a square matrix (up to 3 x 3 matrices), minors, co-factors and applications of determinants in finding the area of a triangle.",
+            "Adjoint and inverse of a square matrix.",
+            "Consistency, inconsistency and number of solutions of system of linear equations by examples, solving system of linear equations in two or three variables (having unique solution) using inverse of a matrix."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "III",
+      "title": "Calculus",
+      "marks": 35,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Continuity and Differentiability",
+          "periods": null,
+          "topics": [
+            "Continuity and differentiability, chain rule, derivative of composite functions, derivatives of inverse trigonometric functions like sin−1 𝑥, cos−1 𝑥 and tan−1 𝑥, derivative of implicit functions.",
+            "Concept of exponential and logarithmic functions.",
+            "Derivatives of logarithmic and exponential functions.",
+            "Logarithmic differentiation, derivative of functions expressed in parametric forms.",
+            "Second order derivatives."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Applications of Derivatives",
+          "periods": null,
+          "topics": [
+            "Applications of derivatives: rate of change of quantities, increasing/decreasing functions, maxima and minima (first derivative test motivated geometrically and second derivative test given as a provable tool).",
+            "Simple problems (that illustrate basic principles and understanding of the subject as well as real- life situations)."
+          ]
+        },
+        {
+          "number": "3",
+          "title": "Integrals",
+          "periods": null,
+          "topics": [
+            "Integration as inverse process of differentiation.",
+            "Integration of a variety of functions by substitution, by partial fractions and by parts, Evaluation of simple integrals of the following types and problems based on them.",
+            "Fundamental Theorem of Calculus (without proof).",
+            "Basic properties of definite integrals and evaluation of definite integrals."
+          ]
+        },
+        {
+          "number": "4",
+          "title": "Application of the Integrals",
+          "periods": null,
+          "topics": [
+            "Applications in finding the area under simple curves, especially lines, circles/ parabolas/ellipses (in standard form only)"
+          ]
+        },
+        {
+          "number": "5",
+          "title": "Differential Equations",
+          "periods": null,
+          "topics": [
+            "Definition, order and degree, general and particular solutions of a differential equation.",
+            "Solution of differential equations by method of separation of variables, solutions of homogeneous differential equations of first order and first degree.",
+            "Solutions of linear differential equation of the type:"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "IV",
+      "title": "Vectors and Three - Dimensional Geometry",
+      "marks": 14,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Vectors",
+          "periods": null,
+          "topics": [
+            "Vectors and scalars, magnitude and direction of a vector.",
+            "Direction cosines and direction ratios of a vector.",
+            "Types of vectors (equal, unit, zero, parallel and collinear vectors), position vector of a point, negative of a vector, components of a vector, addition of vectors, multiplication of a vector by a scalar, position vector of a point dividing a line segment in a given ratio.",
+            "Definition, Geometrical Interpretation, properties and application of scalar (dot) product of vectors, vector (cross) product of vectors."
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Three-dimensional Geometry",
+          "periods": null,
+          "topics": [
+            "Direction cosines and direction ratios of a line joining two points.",
+            "Cartesian equation and vector equation of a line, skew lines, shortest distance between two lines.",
+            "Angle between two lines."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "V",
+      "title": "Linear Programming",
+      "marks": 5,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Linear Programming",
+          "periods": null,
+          "topics": [
+            "Introduction, related terminology such as constraints, objective function, optimization, graphical method of solution for problems in two variables, feasible and infeasible regions (bounded or unbounded), feasible and infeasible solutions, optimal feasible solutions (up to three non-trivial constraints)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "VI",
+      "title": "Probability",
+      "marks": 8,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Probability",
+          "periods": null,
+          "topics": [
+            "Conditional probability, multiplication theorem on probability, independent events, total probability, Bayes’ theorem."
+          ]
+        }
+      ]
+    }
+  ],
+  "prescribedBooks": [
+    {
+      "title": "Mathematics Part I - Textbook for Class XII, NCERT Publication",
+      "chapters": []
+    },
+    {
+      "title": "Mathematics Part II - Textbook for Class XII, NCERT Publication",
+      "chapters": []
+    },
+    {
+      "title": "Mathematics Exemplar Problem for Class XII, Published by NCERT",
+      "chapters": []
+    },
+    {
+      "title": "Mathematics Lab Manual class XII, published by NCERT",
+      "chapters": []
+    }
+  ],
+  "practicals": [],
+  "excluded": [],
+  "notes": [
+    "Units/marks from the CLASS XII COURSE STRUCTURE (One Paper, Max. Marks: 80; Internal Assessment 20). Unit titles are as printed in that table; the body headings read 'Unit-IV: Vectors and Three-dimensional Geometry' and 'Unit-V: Linear Programming Problem'.",
+    "'topics' = the chapter paragraph split at sentence boundaries ('. ' followed by a capital letter), exactly as printed.",
+    "Display formulas not transcribed (source page 8): in Integrals, after 'Evaluation of simple integrals of the following types and problems based on them.' the source lists ∫dx/(x²±a²), ∫dx/√(x²±a²), ∫dx/√(a²−x²), ∫dx/(ax²+bx+c), ∫dx/√(ax²+bx+c), ∫(px+q)/(ax²+bx+c) dx, ∫(px+q)/√(ax²+bx+c) dx, ∫√(a²±x²) dx, ∫√(x²−a²) dx, ∫√(ax²+bx+c) dx; in Differential Equations, after 'Solutions of linear differential equation of the type:' the source prints dy/dx + py = q (p, q functions of x or constants) and dx/dy + px = q (p, q functions of y or constants).",
+    "Superscripts are flattened by text extraction: 'sin−1 𝑥' is sin⁻¹x (likewise cos⁻¹, tan⁻¹).",
+    "Question paper (from source): 3 hours, 80 marks; Remembering+Understanding 44 (55%), Applying 20 (25%), Analysing/Evaluating/Creating 16 (20%); 33% internal choice. Internal assessment 20: Periodic Tests 10, Mathematics Activities 10 ('any 10 activities shall be performed by the student from the activities given in the NCERT Laboratory Manual'; weightage 5 record + 3 year-end test + 2 viva-voce). No activity list is printed.",
+    "No class XII 'formative-only' list is printed (that list exists for class XI only)."
+  ]
+}

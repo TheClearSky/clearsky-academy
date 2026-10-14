@@ -1,0 +1,75 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+tsconfig.tsbuildinfo
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Tooling / working artifacts (not shipped)
+test-results/
+playwright-report/
+.playwright-mcp/
+.claude/
+review/
+verification/
+
+# Development context — research notes and working documents (the raw
+# syllabus PDFs and their extraction scripts live under .claude/research/).
+# The curated curriculum data under src/curriculum/ is the product and is
+# committed.
+research/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+# Recordings the app itself produces
+*.webm
+
+# Video pipeline output (docs/video-pipeline.md): renders, voice-overs,
+# finals. The YouTube upload is the published copy; the source is video.ts.
+media/
+
+# Dev-only tools — kept locally, never part of the website (Deepak,
+# 2026-10-15: "gitignore … everything that isn't what we see on the
+# website"). The build's only input is index.html; none of these are
+# imported by it. Each still runs locally with `npm run dev`.
+#   the video pipeline: the studio, the video kit, each topic's video.ts and
+#   the scaffold templates, the render/voice/topic scripts, their runbooks
+/studio.html
+/src/studio/
+/src/topics/videoKit/
+/src/topics/library/*/video.ts
+/src/topics/library/_template/
+/scripts/
+/docs/
+/src/__tests__/topic-media.test.ts
+/src/__tests__/videoKit-timeline.test.ts
+#   the YouTube channel art (renders land in media/, ignored above)
+/brand.html
+/src/brand/
+#   the stage lab and the flat card-paint sheet
+/lab.html
+/card-paint.html
+/src/lab/

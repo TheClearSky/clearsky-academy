@@ -1,0 +1,131 @@
+{
+  "id": "cbse-09-science-advanced",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 9,
+  "subject": "science",
+  "edition": "2026-27",
+  "variant": "Advanced Level (Optional)",
+  "source": {
+    "title": "Science at Advanced Level (Optional) Grade 9 2026-27",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceAd_SecP1_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "2f78065cf205139edc9423d4374848c0da999d89fb0f6798261b7c4b43ff8c3f",
+    "localPath": "sources/science/ScienceAd_SecP1_2026-27.pdf",
+    "extractedPath": "extracted/science/ScienceAd_SecP1_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/science/ScienceAd_SecP1_2026-27.layout.txt"
+  },
+  "units": [
+    {
+      "number": null,
+      "title": "Science at Advanced Level",
+      "marks": null,
+      "chapters": [
+        {
+          "number": "1",
+          "title": "Measurement – Foundation of Science",
+          "periods": null,
+          "topics": [
+            "1.1 Introduction: What is Measurement?",
+            "1.2 Different Systems of Units",
+            "1.3. Need for a Common System of Units",
+            "1.4. International System of Units (SI)",
+            "1.5 Conversion of Units between different Systems"
+          ],
+          "discipline": "physics"
+        },
+        {
+          "number": "2",
+          "title": "Understanding Motion through Experience",
+          "periods": null,
+          "topics": [
+            "2.1 What is Motion?",
+            "2.2 Frame of Reference",
+            "2.3. Scalars and Vectors",
+            "2.4 Vector Addition (Graphical Method)",
+            "2.5. Equations of Motion"
+          ],
+          "discipline": "physics"
+        },
+        {
+          "number": "3",
+          "title": "Newton’s Laws of Motion",
+          "periods": null,
+          "topics": [
+            "3.1 Limitations of Newton’s Laws in Accelerating Frames",
+            "3.2 Gravitation",
+            "3.3 Turning Forces (Moment of Force/Torque)"
+          ],
+          "discipline": "physics"
+        },
+        {
+          "number": "4",
+          "title": "The Geometry of Power – Advanced Simple Machines",
+          "periods": null,
+          "topics": [
+            "4.1 Introduction",
+            "4.2 Wheel and Axle – The Steering Mastery",
+            "4.3 Tension"
+          ],
+          "discipline": "physics"
+        },
+        {
+          "number": "5",
+          "title": "Work and Energy",
+          "periods": null,
+          "topics": [
+            "5.1 CONSERVATIVE AND NON-CONSERVATIVE FORCES",
+            "5.2 Potential Energy of a Spring"
+          ],
+          "discipline": "physics"
+        },
+        {
+          "number": "6",
+          "title": "Structure of Atom",
+          "periods": null,
+          "topics": [
+            "6.1 Discovery of Subatomic Particles",
+            "6.2. Spectrum",
+            "6.3 Line Spectrum of Hydrogen",
+            "6.4 Limitation of Rutheford Model of Atom",
+            "6.5 Bohr’s model"
+          ],
+          "discipline": "chemistry"
+        },
+        {
+          "number": "7",
+          "title": "Chemical Bonding",
+          "periods": null,
+          "topics": [
+            "7.1 Octet Rule",
+            "7.2 Metallic Bonding"
+          ],
+          "discipline": "chemistry"
+        },
+        {
+          "number": "8",
+          "title": "Mixtures and Separation of Mixtures",
+          "periods": null,
+          "topics": [
+            "8.1 Chromatography"
+          ],
+          "discipline": "chemistry"
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "title": "Microscope and Microscopy",
+      "reason": "Chapter 9 — microscopy of cells/organisms (biology-oriented); out of scope"
+    },
+    {
+      "title": "Engineering Life: Miracles in Biotechnology",
+      "reason": "Chapter 10 — Biology — out of scope (user: no biology for now)"
+    }
+  ],
+  "notes": [
+    "Optional subject for Grade 9 in 2026-27, listed on the CBSE curriculum page as 'Science at Advanced Level' next to 'Science'. The PDF is a content/reading book (85 pages), not a topic list.",
+    "Chapter titles come from the book's table of contents. topics[] = the numbered first-level section headings found in the body text (lines starting 'N.M ' or 'N.M. ' with the chapter's number N), machine-collected; the exercise headings 'Reflect and Discuss' / 'Check Your Understanding' are skipped and sub-sections (N.M.K) are not listed. Section numbering in the book has gaps (e.g. chapter 8 prints 8.1 and then 8.2.1-8.2.3 with no 8.2 heading)."
+  ]
+}

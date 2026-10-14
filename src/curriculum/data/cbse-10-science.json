@@ -1,0 +1,273 @@
+{
+  "id": "cbse-10-science",
+  "authority": "CBSE",
+  "exam": "CBSE board",
+  "class": 10,
+  "subject": "science",
+  "edition": "2026-27",
+  "variant": null,
+  "source": {
+    "title": "SCIENCE Subject Code – 086 Class X (2026-27)",
+    "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Science_SecP1_2026-27.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "1bec4a9e44452b22c9d422d8cb528b4de30598f56c243461845165771df7bc37",
+    "localPath": "sources/science/Science_SecP1_2026-27.pdf",
+    "extractedPath": "extracted/science/Science_SecP1_2026-27.raw.txt",
+    "extractedPathLayout": "extracted/science/Science_SecP1_2026-27.layout.txt"
+  },
+  "units": [
+    {
+      "number": "I",
+      "title": "Chemical Substances - Nature and Behaviour",
+      "marks": 25,
+      "theme": "Materials",
+      "chapters": [
+        {
+          "number": null,
+          "title": "Chemical Reactions and Equations",
+          "periods": null,
+          "topics": [
+            "Chemical reactions, Chemical equation, Balanced chemical equation, types of chemical reactions: combination, decomposition, displacement, double displacement, precipitation, endothermic exothermic reactions, oxidation and reduction."
+          ],
+          "discipline": "chemistry",
+          "ncertChapter": {
+            "number": "1",
+            "title": "Chemical Reactions and Equations",
+            "sourceKey": "ncert10"
+          }
+        },
+        {
+          "number": null,
+          "title": "Periodic Classification of Elements",
+          "periods": null,
+          "topics": [
+            "Döbereiner’s Triads, Newlands’ Law of Octaves, Mendeléev’s Periodic Table, Modern Periodic Table and the Modern, Metallic and Non-metallic Properties."
+          ],
+          "discipline": "chemistry",
+          "assessment": "formative only"
+        },
+        {
+          "number": null,
+          "title": "Acids, Bases and Salts",
+          "periods": null,
+          "topics": [
+            "Acids and Bases – definitions in terms of furnishing of H+ and OH– ions, identification using indicators, chemical properties, examples and uses, neutralization, concept of pH scale (Definition relating to logarithm not required), importance of pH in everyday life; preparation and uses of Sodium Hydroxide, Bleaching Powder, Baking soda, Washing soda and Plaster of Paris."
+          ],
+          "discipline": "chemistry",
+          "ncertChapter": {
+            "number": "2",
+            "title": "Acids, Bases and Salts",
+            "sourceKey": "ncert10"
+          }
+        },
+        {
+          "number": null,
+          "title": "Metals and Non-metals",
+          "periods": null,
+          "topics": [
+            "Properties of metals and non-metals; Reactivity series; Formation and properties of ionic compounds; Basic metallurgical processes; Corrosion and its prevention."
+          ],
+          "discipline": "chemistry",
+          "ncertChapter": {
+            "number": "3",
+            "title": "Metals and Non-metals",
+            "sourceKey": "ncert10"
+          }
+        },
+        {
+          "number": null,
+          "title": "Carbon and its Compounds",
+          "periods": null,
+          "topics": [
+            "Covalent bonds – formation and properties of covalent compounds, Versatile nature of carbon, Hydrocarbons – saturated and unsaturated Homologous series.",
+            "Nomenclature of alkanes, alkenes, alkyne and carbon compounds containing functional groups (halogens, alcohol, ketones, aldehydes).",
+            "Chemical properties of carbon compounds (combustion, oxidation, addition and substitution reaction).",
+            "Ethanol and Ethanoic acid (only properties and uses), soaps and detergents."
+          ],
+          "discipline": "chemistry",
+          "ncertChapter": {
+            "number": "4",
+            "title": "Carbon and its Compounds",
+            "sourceKey": "ncert10"
+          }
+        }
+      ]
+    },
+    {
+      "number": "III",
+      "title": "Natural Phenomena",
+      "marks": 12,
+      "theme": "Natural Phenomena",
+      "chapters": [
+        {
+          "number": null,
+          "title": "Natural Phenomena",
+          "periods": null,
+          "topics": [
+            "Reflection of light by curved surfaces; Images formed by spherical mirrors, centre of curvature, principal axis, principal focus, focal length, mirror formula (Derivation not required), magnification.",
+            "Refraction; Laws of refraction, refractive index.",
+            "Refraction of light by spherical lens; Image formed by spherical lenses; Lens formula (Derivationnot required); Magnification.",
+            "Power of a lens.",
+            "Functioning of a lens in human eye, defects of vision and their corrections, applications of spherical mirrors and lenses.",
+            "Refraction of light through a prism, dispersion of light, scattering of light, applications in daily life (excluding colour of the sun at sunrise and sunset)."
+          ],
+          "discipline": "physics"
+        }
+      ]
+    },
+    {
+      "number": "IV",
+      "title": "Effects of Current",
+      "marks": 13,
+      "theme": "How Things Work",
+      "chapters": [
+        {
+          "number": null,
+          "title": "Effects of Current",
+          "periods": null,
+          "topics": [
+            "Electric current, potential difference and electric current.",
+            "Ohm’s law; Resistance, Resistivity, Factors on which the resistance of a conductor depends.",
+            "Series combination of resistors, parallel combination of resistors and its applications in daily life.",
+            "Heating effect of electric current and its applications in daily life.",
+            "Electric power, Interrelation between P, V, I and R."
+          ],
+          "discipline": "physics"
+        },
+        {
+          "number": null,
+          "title": "Magnetic effects of current",
+          "periods": null,
+          "topics": [
+            "Magnetic field, field lines, field due to a current carrying conductor, field due to current carrying coil or solenoid; Force on current carrying conductor, Fleming’s Left Hand Rule, Direct current.",
+            "Alternating current: frequency of AC.",
+            "Advantage of AC over DC.",
+            "Domestic electric circuits."
+          ],
+          "discipline": "physics",
+          "formativeOnlyTopics": [
+            "Motor, Electromagnetic Induction, Electric Generator"
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "title": "World of Living",
+      "reason": "Biology — out of scope (user: no biology for now); Unit II, 25 marks"
+    },
+    {
+      "title": "Life processes",
+      "reason": "Biology — out of scope (user: no biology for now)"
+    },
+    {
+      "title": "Control and co-ordination in animals and plants",
+      "reason": "Biology — out of scope (user: no biology for now)"
+    },
+    {
+      "title": "Reproduction",
+      "reason": "Biology — out of scope (user: no biology for now)"
+    },
+    {
+      "title": "Heredity",
+      "reason": "Biology — out of scope (user: no biology for now)"
+    },
+    {
+      "title": "Evolution",
+      "reason": "Biology — out of scope (user: no biology for now) (formative assessment only)"
+    },
+    {
+      "title": "Natural Resources",
+      "reason": "Unit V, 05 marks — environment/ecology (biology), out of scope"
+    },
+    {
+      "title": "Our environment",
+      "reason": "Unit V content — environment/ecology (biology), out of scope"
+    }
+  ],
+  "notes": [
+    "Class X keeps the older theme/unit format (not the competency tables of the new class IX curriculum) and the existing NCERT Science textbook (Reprint 2026-27, 13 chapters). Course structure: I Chemical Substances-Nature and Behaviour 25; II World of Living 25; III Natural Phenomena 12; IV Effects of Current 13; V Natural Resources 05; theory 80 + internal assessment 20. The curriculum says '(Annual Examination)'; it does not mention two board examinations.",
+    "Unit I chapters are printed as 'Title: text'; Units III and IV print no chapter titles, so their text sits in a chapter whose title repeats the unit title ('Effects of Current' holds the unlabelled electricity paragraph; 'Magnetic effects of current' is the source's own label). The NCERT book covers Unit III in Ch. 9 'Light – Reflection and Refraction' and Ch. 10 'The Human Eye and the Colourful World', Unit IV in Ch. 11 'Electricity' and Ch. 12 'Magnetic Effects of Electric Current' (listed under prescribedBooks).",
+    "topics[] = sentences as printed (split after a full stop that starts a new sentence).",
+    "FORMATIVE-ONLY (source: 'included in the syllabus but will be assessed only formatively ... Relevant NCERT textual material is enclosed for reference'): 'Periodic Classification of Elements' (whole chapter, assessment='formative only'; text supplied in CBSE 'Reading Material – Science – Class X (2026-27)', file Science_SecP1IX_2026-27_RM.pdf, also downloaded), 'Motor, Electromagnetic Induction, Electric Generator' (formativeOnlyTopics), and biology's Evolution.",
+    "Note for Teachers (verbatim): '1. The topics Periodic Classification of Elements; Heredity and Evolution; and Electric Effects of Electric Current will not be assessed in the year-end examination.' and '3. ... the information in these boxes would not be assessed in the year-end examination.'",
+    "Verbatim source typos kept: '(Derivationnot required)', 'The reduces academic stress'.",
+    "Practicals: only Unit-I/III/IV experiments kept (1-5, 8-11, 13); biology experiments 6, 7, 12, 14 omitted."
+  ],
+  "supportingSources": [
+    {
+      "title": "SCIENCE TEXTBOOK FOR CLASS X",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc1ps.pdf",
+      "retrievedOn": "2026-10-12",
+      "sha256": "cf2a2afb28bd01b4518dbd7e9517b8a9b4a85c989bf3a047cd96d1a8408fdcb0",
+      "localPath": "sources/science/NCERT-jesc1ps.pdf",
+      "extractedPath": "extracted/science/NCERT-jesc1ps.raw.txt",
+      "extractedPathLayout": "extracted/science/NCERT-jesc1ps.layout.txt",
+      "sourceKey": "ncert10"
+    }
+  ],
+  "practicals": [
+    {
+      "heading": "LIST OF EXPERIMENTS",
+      "items": [
+        "1. A. Finding the pH of the following samples by using pH paper/universal indicator: Unit-I a) Dilute Hydrochloric Acid b) Dilute NaOH solution c) Dilute Ethanoic Acid solution d) Lemon juice e) Water f) Dilute Hydrogen Carbonate solution B. Studying the properties of acids and bases (HCl & NaOH) on the basis of their reaction with: Unit-I a) Litmus solution (Blue/Red) b) Zinc metal c) Solid sodium carbonate",
+        "2. Performing and observing the following reactions and classifying them into: Unit-I a) Combination reaction b) Decomposition reaction c) Displacement reaction d) Double displacement reaction",
+        "Action of water on quicklime",
+        "Action of heat on ferrous sulphate crystals",
+        "Iron nails kept in copper sulphate solution",
+        "Reaction between sodium sulphate and barium chloride solutions",
+        "3. Observing the action of Zn, Fe, Cu and Al metals on the following salt solutions: Unit-I a) ZnSO4 (aq) b) FeSO4 (aq) c) CuSO4 (aq) d) Al2 (SO4 )3 (aq) Arranging Zn, Fe, Cu and Al (metals) in the decreasing order of reactivity based on theabove result.",
+        "4. Studying the dependence of potential difference (V) across a resistor on the current (I) passing through it and determine its resistance. Also plotting a graph between V and I. Unit-IV",
+        "5. Determination of the equivalent resistance of two resistors when connected in series and parallel. Unit-IV",
+        "8. Study of the following properties of acetic acid (ethanoic acid): Unit- I a) Odour b) solubility in water c) effect on litmus d) reaction with Sodium Hydrogen Carbonate",
+        "9. Study of the comparative cleaning capacity of a sample of soap in soft and hard water. Unit- I",
+        "10. Determination of the focal length of: Unit-III a) Concave mirror b) Convex lens by obtaining the image of a distant object.",
+        "11. Tracing the path of a ray of light passing through a rectangular glass slab for different angles of incidence. Measure the angle of incidence, angle of refraction, angle of emergence andinterpret the result. Unit - III",
+        "13. Tracing the path of the rays of light through a glass prism. Unit-III"
+      ]
+    }
+  ],
+  "prescribedBooks": [
+    {
+      "title": "Science-Text book for class X- NCERT Publication",
+      "chapters": null
+    },
+    {
+      "title": "Assessment of Practical Skills in Science- Class X- CBSE Publication",
+      "chapters": null
+    },
+    {
+      "title": "Laboratory Manual-Science-Class X, NCERT Publication",
+      "chapters": null
+    },
+    {
+      "title": "Exemplar Problems Class X – NCERT Publication",
+      "chapters": null
+    },
+    {
+      "title": "Reading Material – Science – Class X (2026-27) – CBSE",
+      "chapters": null
+    },
+    {
+      "title": "SCIENCE TEXTBOOK FOR CLASS X",
+      "sourceKey": "ncert10",
+      "textbookTitle": "Reprint 2026-27",
+      "chapters": [
+        "Chapter 1 Chemical Reactions and Equations",
+        "Chapter 2 Acids, Bases and Salts",
+        "Chapter 3 Metals and Non-metals",
+        "Chapter 4 Carbon and its Compounds",
+        "Chapter 5 Life Processes",
+        "Chapter 6 Control and Coordination",
+        "Chapter 7 How do Organisms Reproduce?",
+        "Chapter 8 Heredity",
+        "Chapter 9 Light – Reflection and Refraction",
+        "Chapter 10 The Human Eye and the Colourful World",
+        "Chapter 11 Electricity",
+        "Chapter 12 Magnetic Effects of Electric Current",
+        "Chapter 13 Our Environment"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "id": "jee-advanced-mathematics",
+  "authority": "IIT (JEE Advanced)",
+  "exam": "JEE Advanced",
+  "class": null,
+  "subject": "mathematics",
+  "edition": "2026",
+  "variant": null,
+  "source": {
+    "title": "JEE (Advanced) 2026 – Information Brochure, Annexure-I: SYLLABI – MATHEMATICS",
+    "url": "https://jeeadv.ac.in/documents/IBEnglish_2026.pdf",
+    "retrievedOn": "2026-10-12",
+    "sha256": "406b727c95b76be65c7191e96b5da69099039db89cf4000313fc5a45f773961c",
+    "localPath": "sources/math/JEE_Advanced_2026_IBEnglish.pdf",
+    "extractedPath": "extracted/math/JEE_Advanced_2026_IBEnglish.p77-80.raw.txt",
+    "extractedPathLayout": "extracted/math/JEE_Advanced_2026_IBEnglish.p77-80.txt",
+    "extraction": "pdftotext 4.00 -enc UTF-8 (-raw for extractedPath, -layout for extractedPathLayout); CESU-8 surrogate pairs re-paired to UTF-8 (scripts/math/extract.py)",
+    "pages": "PDF pages 77-80 (printed pages 71-74)"
+  },
+  "units": [
+    {
+      "number": null,
+      "title": "Sets, Relations and Functions",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Sets, Relations and Functions",
+          "periods": null,
+          "topics": [
+            "Sets and their representations, different kinds of sets (empty, finite and infinite), algebra of sets, intersection, complement, difference and symmetric difference of sets and their algebraic properties, De-Morgan’s laws on union, intersection, difference (for finite number of sets) and practical problems based on them.",
+            "Cartesian product of finite sets, ordered pair, relations, domain and codomain of relations, equivalence relation.",
+            "Function as a special case of relation, functions as mappings, domain, codomain, range of functions, invertible functions, even and odd functions, into, onto and one-to-one functions, special functions (polynomial, trigonometric, exponential, logarithmic, power, absolute value, greatest integer, etc.), sum, difference, product and composition of functions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Algebra",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Algebra",
+          "periods": null,
+          "topics": [
+            "Algebra of complex numbers, addition, multiplication, conjugation, polar representation, properties of modulus and principal argument, triangle inequality, cube roots of unity, geometric interpretations.",
+            "Statement of fundamental theorem of algebra, Quadratic equations with real coefficients, relations between roots and coefficients, formation of quadratic equations with given roots, symmetric functions of roots.",
+            "Arithmetic and geometric progressions, arithmetic and geometric means, sums of finite arithmetic and geometric progressions, infinite geometric series, sum of the first n natural numbers, sums of squares and cubes of the first n natural numbers.",
+            "Logarithms and their properties, permutations and combinations, binomial theorem for a positive integral index, properties of binomial coefficients."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Matrices",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Matrices",
+          "periods": null,
+          "topics": [
+            "Matrices as a rectangular array of real numbers, equality of matrices, addition, multiplication by a scalar and product of matrices, transpose of a matrix, elementary row and column transformations, determinant of a square matrix of order up to three, adjoint of a matrix, inverse of a square matrix of order up to three, properties of these matrix operations, diagonal, symmetric and skew-symmetric matrices and their properties, solutions of simultaneous linear equations in two or three variables."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Probability and Statistics",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Probability and Statistics",
+          "periods": null,
+          "topics": [
+            "Random experiment, sample space, different types of events (impossible, simple, compound), addition and multiplication rules of probability, conditional probability, independence of events, total probability, Bayes’ Theorem, computation of probability of events using permutations and combinations.",
+            "Measure of central tendency and dispersion, mean, median, mode, mean deviation, standard deviation and variance of grouped and ungrouped data, analysis of the frequency distribution with same mean but different variance, random variable, mean and variance of the random variable."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Trigonometry",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Trigonometry",
+          "periods": null,
+          "topics": [
+            "Trigonometric functions, their periodicity and graphs, addition and subtraction formulae, formulae involving multiple and sub-multiple angles, general solution of trigonometric equations.",
+            "Inverse trigonometric functions (principal value only) and their elementary properties."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Analytical Geometry",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Analytical Geometry",
+          "periods": null,
+          "topics": [
+            "Two dimensions: Cartesian coordinates, distance between two points, section formulae, shift of origin.",
+            "Equation of a straight line in various forms, angle between two lines, distance of a point from a line; Lines through the point of intersection of two given lines, equation of the bisector of the angle between two lines, concurrency of lines; Centroid, orthocentre, incentre and circumcentre of a triangle.",
+            "Equation of a circle in various forms, equations of tangent, normal and chord.",
+            "Parametric equations of a circle, intersection of a circle with a straight line or a circle, equation of a circle through the points of intersection of two circles and those of a circle and a straight line.",
+            "Equations of a parabola, ellipse and hyperbola in standard form, their foci, directrices and eccentricity, parametric equations, equations of tangent and normal.",
+            "Locus problems.",
+            "Three dimensions: Distance between two points, direction cosines and direction ratios, equation of a straight line in space, skew lines, shortest distance between two lines, equation of a plane, distance of a point from a plane, angle between two lines, angle between two planes, angle between a line and the plane, coplanar lines."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Differential Calculus",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Differential Calculus",
+          "periods": null,
+          "topics": [
+            "Limit of a function at a real number, continuity of a function, limit and continuity of the sum, difference, product and quotient of two functions, L’Hospital rule of evaluation of limits of functions.",
+            "Continuity of composite functions, intermediate value property of continuous functions.",
+            "Derivative of a function, derivative of the sum, difference, product and quotient of two functions, chain rule, derivatives of polynomial, rational, trigonometric, inverse trigonometric, exponential and logarithmic functions.",
+            "Tangents and normals, increasing and decreasing functions, derivatives of order two, maximum and minimum values of a function, Rolle’s theorem and Lagrange’s mean value theorem, geometric interpretation of the two theorems, derivatives up to order two of implicit functions, geometric interpretation of derivatives."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Integral Calculus",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Integral Calculus",
+          "periods": null,
+          "topics": [
+            "Integration as the inverse process of differentiation, indefinite integrals of standard functions, definite integrals as the limit of sums, definite integral and their properties, fundamental theorem of integral calculus.",
+            "Integration by parts, integration by the methods of substitution and partial fractions, application of definite integrals to the determination of areas bounded by simple curves.",
+            "Formation of ordinary differential equations, solution of homogeneous differential equations of first order and first degree, separation of variables method, linear first order differential equations."
+          ]
+        }
+      ]
+    },
+    {
+      "number": null,
+      "title": "Vectors",
+      "marks": null,
+      "chapters": [
+        {
+          "number": null,
+          "title": "Vectors",
+          "periods": null,
+          "topics": [
+            "Addition of vectors, scalar multiplication, dot and cross products, scalar and vector triple products, and their geometrical interpretations."
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [],
+  "notes": [
+    "EDITION: JEE (Advanced) 2026 is the newest; as of 2026-10-12 jeeadv.ac.in shows only 2026 material (https://jeeadv.ac.in/documents/IBEnglish_2027.pdf returns 404). jeeadv.ac.in has no separate syllabus page; the syllabus is Annexure-I: SYLLABI of the Information Brochure.",
+    "The source lists topic headings only (no unit numbers, marks or sub-units); each heading is one unit with one chapter repeating its title. 'topics' = the paragraph text split at sentence boundaries ('. ' followed by a capital letter), exactly as printed. 'Analytical Geometry' paragraphs begin with 'Two dimensions:' and 'Three dimensions:' inline as printed."
+  ]
+}
