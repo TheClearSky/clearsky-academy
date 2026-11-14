@@ -8,13 +8,18 @@
  * (`.claude/research/stage/*.md` ★, `.claude/research/stage-v2/*.md`).
  */
 const STAGE_SELECTION: Record<string, string> = {
-  floor: 'checker',
+  // The footpath scene (2026-10-17, Deepak: "switch permanently to footpath"): LandingPage sets the
+  // rest (fog, props, promenade, landscape) from the visitor's landscape choice (`landingStage.ts` › stageOptions).
+  floor: 'path',
   motes: 'circles',
-  props: 'full',
+  props: 'books',
   cardEdition: 'earned',
   cardBackdrop: 'sunburst',
   cardDeal: 'scroll',
   ring: 'astrolabe',
+  // The anchor (2026-10-17): the Academy in its oak grove; the visitor can switch to blossom
+  // (`LandscapeToggle.tsx`; LandingPage starts the stage on their stored choice).
+  landscape: 'grove',
 };
 
 export { STAGE_SELECTION };

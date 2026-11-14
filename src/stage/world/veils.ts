@@ -32,6 +32,8 @@ const OPTIONS: readonly AssetOption[] = [
   { id: 'mist', label: 'Ground mist', description: 'A volumetric height fog on the floor, integrated per pixel, broken into drifting banks and wisps by a shared noise.' },
   { id: 'smooth', label: 'Smooth mist', description: 'The same analytic ground sheet without the noise: an even haze lying on the floor, no texture fetches.' },
   { id: 'none', label: 'No mist', description: 'Only the distance haze of the shared air.' },
+  // EXPERIMENT (2026-10-17, the promenade): over a lawn the full sheet reads as snow; a thinner one lets the grass and the path show.
+  { id: 'meadow', label: 'Meadow mist', description: 'The ground mist at 22 % density, its glow softer: the lawn and the path show through.' },
 ];
 
 function create(context: StageContext): AssetClass {
@@ -42,9 +44,9 @@ function create(context: StageContext): AssetClass {
   const setOption = (id: string) => {
     if (id === current) return;
     if (!OPTIONS.some((option) => option.id === id)) throw new Error(`[fog] unknown option "${id}"`);
-    air.uMistDensity.value = id === 'none' ? 0 : MIST.density;
-    air.uMistGlow.value = id === 'none' ? 0 : MIST.glow;
-    air.uMistSamples.value = id === 'mist' ? tier.mistSamples : 0;
+    air.uMistDensity.value = id === 'none' ? 0 : id === 'meadow' ? MIST.density * 0.22 : MIST.density;
+    air.uMistGlow.value = id === 'none' ? 0 : id === 'meadow' ? MIST.glow * 0.6 : MIST.glow;
+    air.uMistSamples.value = id === 'mist' || id === 'meadow' ? tier.mistSamples : 0;
     current = id;
   };
 

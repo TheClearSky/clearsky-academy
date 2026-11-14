@@ -66,23 +66,43 @@ function TopicVideo({ youtube, title }: { youtube: string | null; title: string 
   }
   // A facade: the player (and YouTube's scripts) load only on a click.
   return (
-    <div className='tm-video'>
-      {playing ? (
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0&modestbranding=1`}
-          title={title}
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          referrerPolicy='strict-origin-when-cross-origin'
-          allowFullScreen
-        />
-      ) : (
-        <button type='button' className='tm-video-facade' onClick={() => setPlaying(true)} aria-label={`Play the video: ${title}`}>
-          <img src={`https://i.ytimg.com/vi/${youtube}/maxresdefault.jpg`} alt='' loading='lazy' />
-          <span className='tm-video-play' aria-hidden='true' />
-        </button>
-      )}
-    </div>
+    <>
+      <div className='tm-video'>
+        {playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0&modestbranding=1`}
+            title={title}
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            referrerPolicy='strict-origin-when-cross-origin'
+            allowFullScreen
+          />
+        ) : (
+          <button type='button' className='tm-video-facade' onClick={() => setPlaying(true)} aria-label={`Play the video: ${title}`}>
+            <img src={`https://i.ytimg.com/vi/${youtube}/maxresdefault.jpg`} alt='' loading='lazy' />
+            <span className='tm-video-play' aria-hidden='true' />
+          </button>
+        )}
+      </div>
+      {/* The video's title opens its YouTube page in a new tab, to comment there (Deepak, video 1's ⊂ shot, 2026-11-13:
+          "you can click video ka title, isse ek naye tab mein youtube khulega and then you can comment"). */}
+      <a className='tm-video-title' href={youtubeWatchUrl(youtube)} target='_blank' rel='noopener noreferrer'>
+        <span className='tm-video-title-text'>{title}</span>
+        <span className='tm-video-title-cta'>
+          <svg viewBox='0 0 24 24' aria-hidden='true'>
+            <path d='M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z' fill='none' stroke='currentColor' strokeWidth='1.6' strokeLinejoin='round' />
+          </svg>
+          Comment on YouTube
+          <span className='sr-only'> (opens in a new tab)</span>
+          <span aria-hidden='true'>↗</span>
+        </span>
+      </a>
+    </>
   );
+}
+
+/** A video's YouTube watch page (comments live there). */
+function youtubeWatchUrl(youtube: string): string {
+  return `https://www.youtube.com/watch?v=${encodeURIComponent(youtube)}`;
 }
 
 function TopicPlayground({ slug, reduced, active }: { slug: string | undefined; reduced: boolean; active: boolean }) {

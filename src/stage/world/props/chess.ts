@@ -193,5 +193,12 @@ function createChess(context: StageContext): Chess {
   };
 }
 
-export { createChess };
+/** One piece's geometry (base at y = 0, ~0.5–0.8 tall): the video kit's crystal board reuses the silhouettes. */
+function chessPieceGeometry(piece: ChessPiece): THREE.BufferGeometry {
+  if (piece === 'rook') return rookGeometry();
+  if (piece === 'knight') return knightGeometry();
+  return latheOf(PROFILES[piece]);
+}
+
+export { chessPieceGeometry, createChess };
 export type { Chess };

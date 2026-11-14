@@ -60,6 +60,10 @@ type VideoContext = {
   height: number;
   /** Frames per second of the render (for scripts that step physics). */
   fps: number;
+  /** How many sub-pixel-jittered sub-frames a script may average into each
+   *  frame (offline anti-aliasing: `videoKit/anime/animeStage.ts`). 1 in the
+   *  interactive player; the renderer and the asset bench ask for more. */
+  subframes?: number;
 };
 
 /** A video's animation. DETERMINISTIC: `frame(t)` draws the frame at `t`

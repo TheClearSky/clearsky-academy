@@ -1,7 +1,9 @@
 import * as THREE from 'three';
 import { describe, expect, it } from 'vitest';
 import { HORIZON_FROM_TOP, lensShiftFor, stageFov } from '../stage/engine/lensShift';
-import { BOOK_EULER_ORDER, CORRIDOR_HALF_WIDTH, EYE_HEIGHT, OPEN_BOOK_FRACTION, PORTRAIT_BAND_BOTTOM, propLayout } from '../stage/world/props/propLayout';
+import { STAGE_TIERS } from '../stage/engine/quality';
+import { spellPlacement } from '../stage/world/spellTimeline';
+import { BOOK_EULER_ORDER, EYE_HEIGHT, middleBand, middleDepth, OPEN_BOOK_FRACTION, orbitPoint, propCounts, propLayout, TEXT_LINE } from '../stage/world/props/propLayout';
 import type { Placement } from '../stage/world/props/propLayout';
 
 function stageCamera(aspect: number): THREE.PerspectiveCamera {
@@ -30,27 +32,91 @@ describe('propLayout', () => {
     expect(layout.chess.map((entry) => entry.piece)).toEqual(['rook', 'knight', 'bishop', 'pawn']);
   });
 
-  it('keeps the centre corridor clear in landscape (books and candles in the side clusters)', () => {
-    for (const aspect of [16 / 9, 4 / 3, 21 / 9]) {
+  /** A carousel prop's place at time t (its orbit and its rise; no bob). */
+  const at = (placement: Placement, t: number): Placement => {
+    const point = orbitPoint(placement.orbit!, t, placement.y);
+    return { ...placement, x: point.x, y: placement.y + point.rise, z: point.z };
+  };
+  const aspects = [16 / 9, 4 / 3, 21 / 9, 1440 / 900, 390 / 844, 412 / 915, 768 / 1024];
+  const times = Array.from({ length: 29 }, (_, step) => step * 7);
+
+  it('flies every book and candle round the carousel BELOW the hero text, all the way round, at every aspect', () => {
+    for (const aspect of aspects) {
       const camera = stageCamera(aspect);
       const layout = propLayout(aspect, counts);
       for (const placement of [...layout.closedBooks, ...layout.openBooks, ...layout.candles]) {
-        const spot = onScreen(camera, placement);
-        expect(Math.abs(spot.fromLeft - 0.5)).toBeGreaterThanOrEqual(CORRIDOR_HALF_WIDTH - 1e-6);
-        expect(spot.fromLeft).toBeGreaterThan(0);
-        expect(spot.fromLeft).toBeLessThan(1);
-        expect(spot.fromTop).toBeLessThan(HORIZON_FROM_TOP);
+        expect(placement.orbit).toBeDefined();
+        for (const t of times) {
+          const spot = onScreen(camera, at(placement, t));
+          expect(spot.fromTop).toBeGreaterThanOrEqual(TEXT_LINE - 1e-6);
+          expect(at(placement, t).y).toBeGreaterThan(0.6);
+        }
       }
     }
   });
 
-  it('moves the floating props into a band across the top on a portrait screen', () => {
-    const aspect = 390 / 844;
-    const camera = stageCamera(aspect);
-    const layout = propLayout(aspect, counts);
-    for (const placement of [...layout.closedBooks, ...layout.openBooks, ...layout.candles]) {
-      expect(onScreen(camera, placement).fromTop).toBeLessThanOrEqual(PORTRAIT_BAND_BOTTOM + 1e-6);
+  it('keeps the carousel out of the lens, behind the chair and across the screen: never nearer than 8 m, spanning both halves', () => {
+    for (const aspect of aspects) {
+      const camera = stageCamera(aspect);
+      const layout = propLayout(aspect, counts);
+      const props = [...layout.closedBooks, ...layout.openBooks, ...layout.candles];
+      for (const placement of props) for (const t of times) expect(-at(placement, t).z).toBeGreaterThan(-layout.chair.z);
+      for (const placement of props) for (const t of times) expect(-at(placement, t).z).toBeGreaterThanOrEqual(8 - 1e-6);
+      const lefts = props.map((placement) => onScreen(camera, placement).fromLeft);
+      expect(lefts.some((left) => left < 0.4)).toBe(true);
+      expect(lefts.some((left) => left > 0.6)).toBe(true);
     }
+  });
+
+  it('crosses the middle only well BEHIND the magic circle (4 m past its far edge), never in front of it', () => {
+    for (const aspect of aspects) {
+      const camera = stageCamera(aspect);
+      const layout = propLayout(aspect, counts);
+      const spell = spellPlacement(aspect);
+      // Behind the circle's far edge with a buffer (4 m).
+      expect(middleDepth(aspect)).toBeGreaterThanOrEqual(spell.distance + spell.radius + 4 - 1e-6);
+      // The middle covers at least the circle's own width on screen.
+      const rim = new THREE.Vector3(spell.radius, 0, -spell.distance).project(camera);
+      expect(middleBand(aspect)).toBeGreaterThan((rim.x + 1) / 2 - 0.5);
+      let crossings = 0;
+      for (const placement of [...layout.closedBooks, ...layout.openBooks, ...layout.candles]) {
+        for (const t of times) {
+          const place = at(placement, t);
+          const spot = onScreen(camera, place);
+          if (Math.abs(spot.fromLeft - 0.5) >= middleBand(aspect)) continue;
+          crossings++;
+          expect(-place.z).toBeGreaterThanOrEqual(middleDepth(aspect) - 1e-6);
+        }
+      }
+      // They do cross (behind), not just avoid the middle.
+      expect(crossings).toBeGreaterThan(0);
+    }
+  });
+
+  it('turns the books one way and the candles the other, each ring rigidly (the spacing never closes up)', () => {
+    const layout = propLayout(16 / 9, counts);
+    const books = [...layout.openBooks, ...layout.closedBooks];
+    expect(new Set(books.map((placement) => placement.orbit!.rate)).size).toBe(1);
+    expect(new Set(layout.candles.map((placement) => placement.orbit!.rate)).size).toBe(1);
+    expect(Math.sign(books[0].orbit!.rate)).toBe(-Math.sign(layout.candles[0].orbit!.rate));
+    // Candles fly the inner ring, books the outer.
+    expect(Math.max(...layout.candles.map((placement) => placement.orbit!.reach))).toBeLessThan(Math.min(...books.map((placement) => placement.orbit!.reach)));
+    // The books are spread out: no two within 1.2 m on the floor plane, at t = 0.
+    for (const [index, a] of books.entries()) for (const b of books.slice(index + 1)) expect(Math.hypot(a.x - b.x, a.z - b.z)).toBeGreaterThan(1.2);
+  });
+
+  it('flies fewer props on smaller screens, never more than the tier allows', () => {
+    const high = STAGE_TIERS.high;
+    const desktop = propCounts(high, 1920, 1080);
+    const laptop = propCounts(high, 1440, 900);
+    const small = propCounts(STAGE_TIERS.medium, 1280, 720);
+    const phone = propCounts(STAGE_TIERS.low, 412, 915);
+    expect(desktop.books).toBeGreaterThan(laptop.books);
+    expect(laptop.books).toBeGreaterThan(small.books);
+    expect(small.books).toBeGreaterThanOrEqual(phone.books);
+    expect(phone.books + phone.candles).toBeLessThanOrEqual(6);
+    expect(desktop.books).toBeLessThanOrEqual(high.books);
+    expect(desktop.candles).toBeLessThanOrEqual(high.candles);
   });
 
   it('stands the chair and the chess pieces ON the floor, the chess far off near the horizon', () => {

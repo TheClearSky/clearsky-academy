@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { airUniforms } from '../engine/air';
+import { worldBufferSize } from '../engine/contract';
 import type { AssetClass, AssetOption, StageContext } from '../engine/contract';
 import { seededRandom } from '../engine/random';
 import {
@@ -298,7 +299,7 @@ function create(context: StageContext): AssetClass {
 
     sparkleUniforms.uAmount.value = frame.sparkles;
     sparkleUniforms.uTime.value = t;
-    viewport.value.copy(renderer.getDrawingBufferSize(drawingBuffer));
+    viewport.value.copy(worldBufferSize(context, drawingBuffer));
 
     summoned.update(frame.book, frame.candle, root.position, radius, frame.gain * Math.max(frame.floorGlow, frame.column), t);
   };

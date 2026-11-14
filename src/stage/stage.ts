@@ -13,6 +13,8 @@ import { create as createFloor } from './world/floor';
 import { create as createFog } from './world/veils';
 import { create as createMotes } from './world/motes';
 import { create as createProps } from './world/props';
+import { create as createLandscape } from './world/landscape';
+import { create as createPromenade } from './world/promenade';
 import { createSpell } from './world/spell';
 import { createCardTable } from './cards/cardTable';
 import type { CardTable } from './cards/cardTable';
@@ -127,9 +129,10 @@ function createStage(host: HTMLElement, options: StageOptions): Stage {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 3000);
   camera.position.set(0, EYE_HEIGHT, 0);
-  const context: StageContext = { scene, camera, renderer, palette: createPalette(), tier: tier.params, uniforms: { uTime: { value: 0 } } };
+  const worldBuffer = new THREE.Vector2(1, 1);
+  const context: StageContext = { scene, camera, renderer, palette: createPalette(), tier: tier.params, uniforms: { uTime: { value: 0 } }, worldBuffer };
 
-  const classes: AssetClass[] = [createSky(context), createFloor(context), createFog(context), createMotes(context), createProps(context), createSpell(context)];
+  const classes: AssetClass[] = [createSky(context), createLandscape(context), createFloor(context), createFog(context), createMotes(context), createProps(context), createPromenade(context), createSpell(context)];
   const cardTable = createCardTable(options.reducedMotion);
   const ringLayer = createRingLayer(context.palette, options.reducedMotion);
   // The UI overlay: the rings and the cards, over the world, through the
@@ -201,6 +204,11 @@ function createStage(host: HTMLElement, options: StageOptions): Stage {
   // High and medium: the hellscape landing's anime finish; phones: straight to the canvas.
   let postId = tier.params.tier === 'low' ? 'none' : 'anime';
   let post: StagePost = createPost(postId, renderer, tier.params.msaa);
+  // The world's pixel ratio (the tier's, then the runtime ladder's); the
+  // canvas's is the post's call (phones: higher, for sharp cards).
+  let worldRatio = renderer.getPixelRatio();
+  const applyPixelRatios = () => renderer.setPixelRatio(post.setWorldPixelRatio?.(worldRatio) ?? worldRatio);
+  applyPixelRatios();
 
   // ── sizing ──────────────────────────────────────────────────────────────
   let width = 1;
@@ -224,8 +232,12 @@ function createStage(host: HTMLElement, options: StageOptions): Stage {
     height = Math.max(1, canvas.clientHeight);
     renderer.setSize(width, height, false);
     post.setSize(width, height);
+    worldBuffer.set(Math.max(1, Math.floor(width * worldRatio)), Math.max(1, Math.floor(height * worldRatio)));
     camera.aspect = width / height;
-    for (const assetClass of classes) assetClass.setAspect?.(camera.aspect);
+    for (const assetClass of classes) {
+      assetClass.setAspect?.(camera.aspect);
+      assetClass.setViewport?.(width, height);
+    }
     camera.fov = stageFov(camera.aspect);
     camera.updateProjectionMatrix();
     applyLens();
@@ -236,9 +248,13 @@ function createStage(host: HTMLElement, options: StageOptions): Stage {
   const ladder = stageLadder(tier.params, window.devicePixelRatio || 1);
   const applyLevel = (level: number) => {
     const step = ladder[level];
-    renderer.setPixelRatio(step.pixelRatio);
+    worldRatio = step.pixelRatio;
+    applyPixelRatios();
     post.setBloomScale(step.bloom);
-    for (const assetClass of classes) assetClass.setMoteBudget?.(step.motes);
+    for (const assetClass of classes) {
+      assetClass.setMoteBudget?.(step.motes);
+      assetClass.setQualityLevel?.(level);
+    }
     resize();
   };
   const adaptive = createStageAdaptive(ladder.length, applyLevel, { enabled: !tier.forced && !options.reducedMotion });
@@ -376,6 +392,7 @@ function createStage(host: HTMLElement, options: StageOptions): Stage {
       post.dispose();
       postId = optionId;
       post = createPost(postId, renderer, tier.params.msaa);
+      applyPixelRatios();
       resize();
       return;
     }
@@ -388,6 +405,9 @@ function createStage(host: HTMLElement, options: StageOptions): Stage {
 
   // Compile every shader in parallel before the first frame (a compile
   // stall on the first draw blocks the page — measured in Nodestra).
+  // Into the world's own target where it has one: a target's programs differ
+  // from the canvas's (no tone mapping), and they are the ones drawn.
+  renderer.setRenderTarget(post.worldTarget?.() ?? null);
   renderer
     .compileAsync(scene, camera)
     .catch((error: unknown) => console.warn('[stage] parallel shader compile unavailable', error))

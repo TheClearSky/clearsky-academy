@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { arrivalMs, dashFor, easeAt, frontierOf, litExtent, litIntervals, pointAt, RACE_EASE, raceMs, seeded, sprinkle, stopsAlong, timeToReach, tracePath } from '../site/hud/kit/litPath';
+import { arrivalMs, dashFor, easeAt, frontierOf, litExtent, litIntervals, pointAt, RACE_EASE, raceMs, seeded, sprinkle, STEADY_RACE_EASE, steadyRaceMs, stopsAlong, timeToReach, tracePath } from '../site/hud/kit/litPath';
 
 const chapter = (done: number, total: number) => ({ done, fraction: total ? done / total : 0, complete: total > 0 && done >= total });
 
@@ -131,6 +131,17 @@ describe('eased timing', () => {
     expect(raceMs(0)).toBe(1400);
     expect(raceMs(100_000)).toBe(3200);
     expect(raceMs(3000)).toBeGreaterThan(raceMs(1500));
+  });
+
+  it('runs a narrow line at a steady speed, slower than the fixed-time race', () => {
+    // The 5-topic phone line measured on 2026-10-17: 1315 px (was 1.4 s).
+    expect(steadyRaceMs(1315)).toBeGreaterThan(4000);
+    expect(steadyRaceMs(1315)).toBeGreaterThan(raceMs(1315) * 2);
+    expect(steadyRaceMs(2600) / steadyRaceMs(1300)).toBeCloseTo(2, 2);
+    expect(steadyRaceMs(0)).toBe(1400);
+    expect(steadyRaceMs(100_000)).toBe(10000);
+    // Its easing is invertible like the race's (the pop clock depends on it).
+    for (const fraction of [0.1, 0.5, 0.9]) expect(easeAt(STEADY_RACE_EASE, timeToReach(STEADY_RACE_EASE, fraction))).toBeCloseTo(fraction, 4);
   });
 });
 
