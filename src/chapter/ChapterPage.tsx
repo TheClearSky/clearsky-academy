@@ -28,7 +28,7 @@ import type { LineOptions } from '../site/hud/shared/crystalline/logic';
 import { readLandingState, writeLandingState } from '../site/landingState';
 import { useReducedMotion } from '../site/useReducedMotion';
 import { topicEntryAt } from '../topics/registry';
-import { chapterPath, topicPath } from './chapterPath';
+import { chapterPath, markReturnToProgress, topicPath } from './chapterPath';
 import { TopicModal } from './TopicModal';
 
 /**
@@ -192,14 +192,15 @@ function ChapterView({ documentId, number, topicNumber, entries, course, done, s
   const modalTopic = modal ? topics[modal.number - 1] : undefined;
 
   // The landing remembers the class and the held card (`site/landingState.ts`); this says which subject to show.
-  const back = '/#progress';
+  // Back to the landing's progress HUD (`chapterPath.ts` › markReturnToProgress: nothing in the URL).
+  const back = '/';
   const previous = number > 1 ? entries[number - 2] : undefined;
   const next = number < entries.length ? entries[number] : undefined;
 
   return (
     <div data-slot='chapter' className='min-h-full bg-black text-primary-white'>
       <header className='flex items-center justify-between gap-3 px-4 py-3 sm:px-8'>
-        <Link to={back} className='chapter-back'>
+        <Link to={back} onClick={markReturnToProgress} className='chapter-back'>
           <svg viewBox='0 0 24 24' aria-hidden='true' className='h-4 w-4'>
             <path d='M15 5l-7 7 7 7' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
           </svg>

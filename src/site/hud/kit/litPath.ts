@@ -202,6 +202,9 @@ type Ease = readonly [number, number, number, number];
 
 /** The race's easing (Route Map's), shared by the CSS (`--lp-ease`) and the pop clock. */
 const RACE_EASE: Ease = [0.5, 0, 0.3, 1];
+/** A narrow line's: a gentle start and landing round a steady middle (its peak speed
+ *  is about 1.5× the average, RACE_EASE's over 2×). */
+const STEADY_RACE_EASE: Ease = [0.3, 0, 0.6, 1];
 const easeCss = (ease: Ease) => `cubic-bezier(${ease.join(', ')})`;
 
 const bezier = (p1: number, p2: number, u: number) => 3 * (1 - u) * (1 - u) * u * p1 + 3 * (1 - u) * u * u * p2 + u * u * u;
@@ -237,6 +240,20 @@ function timeToReach(ease: Ease, fraction: number): number {
 /** How long the entrance race takes for a path of `length` px (ms). */
 function raceMs(length: number): number {
   return Math.round(Math.max(1400, Math.min(3200, 900 + length * 0.32)));
+}
+
+/** Average speed of a narrow line's race (px/ms). */
+const STEADY_RACE_SPEED = 0.32;
+
+/**
+ * The race on a narrow line (a phone): its rows stack into a snake that runs
+ * on below the screen, so a fixed time sent the light down it like a rocket
+ * (Deepak, 2026-10-17: "the animation goes out of screen like a rocket,
+ * especially when topics are more than 4" — 1315 px in 1.4 s). It runs at
+ * a steady speed instead, to at most 10 s.
+ */
+function steadyRaceMs(length: number): number {
+  return Math.round(Math.max(1400, Math.min(10000, length / STEADY_RACE_SPEED)));
 }
 
 /** When (ms) the racing light reaches distance `along` on a path of `length`. */
@@ -292,5 +309,5 @@ function sprinkle(trace: Trace, intervals: readonly [number, number][], step: nu
   return out;
 }
 
-export { arrivalMs, dashFor, easeAt, easeCss, frontierOf, litExtent, litIntervals, litLength, pointAt, RACE_EASE, raceMs, seeded, sprinkle, stopsAlong, timeToReach, tracePath };
+export { arrivalMs, dashFor, easeAt, easeCss, frontierOf, litExtent, litIntervals, litLength, pointAt, RACE_EASE, raceMs, seeded, sprinkle, STEADY_RACE_EASE, steadyRaceMs, stopsAlong, timeToReach, tracePath };
 export type { Ease, Point, Progress, Segment, Stop, Trace };

@@ -6,7 +6,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { animeFinishColours, NIGHT_ANIME_TONES } from './animeTones';
-import type { RgbTriple } from './animeTones';
+import type { AnimeTones, RgbTriple } from './animeTones';
 import type { StageOverlay, StagePost } from './post';
 
 /**
@@ -466,11 +466,12 @@ function createFinishMaterial(halation: THREE.Texture, uiMask: THREE.Texture): T
       // orange. The hellscape's soft, large forms have no such detail.
       uFringeMin: { value: 0.5 },
       uFringeMax: { value: 0 },
-      // Lens chromatic aberration: red and blue pulled apart RADIALLY. The
-      // owner: "have 2px abberation and increase area" — 2 px, reached from
-      // about a third of the way out (not only in the corners); only the
-      // very centre, where the hero text sits, stays clean.
-      uAberration: { value: 2 },
+      // Lens chromatic aberration: red and blue pulled apart RADIALLY, full
+      // strength from about a third of the way out. OFF: the owner first asked
+      // for "2px abberation and increase area", then, after trying 0–4 px on
+      // a slider (2026-10-17): "i think it doesnt add to the scene, set to 0".
+      // The shader keeps it (px; > 0 turns it on).
+      uAberration: { value: 0 },
       // halation
       uHalo: { value: 0.28 },
       uHaloCore: { value: 0.6 },
@@ -657,21 +658,52 @@ function setVector(uniform: THREE.IUniform, colour: RgbTriple): void {
   (uniform.value as THREE.Vector3).set(colour[0], colour[1], colour[2]);
 }
 
-function createAnimePost(renderer: THREE.WebGLRenderer, samples: number): StagePost {
+/** The anime post plus what a video drives on it: its tones per shot. */
+type AnimePost = StagePost & {
+  /** Re-tone the glow stack and the finish (the landing keeps the night's). */
+  setTones(tones: AnimeTones): void;
+  /** As `render`, but the finished frame stays in a target (for averaging
+   *  sub-frames); returns its texture, valid until the next render. */
+  renderToTexture(scene: THREE.Scene, camera: THREE.Camera, time: number, overlay?: StageOverlay): THREE.Texture;
+  /** The finish's strengths (the video kit compares looks on the bench). */
+  setLook(look: AnimeLookOverrides): void;
+};
+
+type AnimeLookOverrides = {
+  vignette?: number;
+  grain?: number;
+  paper?: number;
+  halation?: number;
+  bloomStrength?: number;
+  glowGain?: number;
+};
+
+type AnimePostOptions = {
+  tones?: AnimeTones;
+  /** Seed the dither from the frame TIME (60 steps a second) instead of a
+   *  counter of rendered frames: a video's frame must not depend on how many
+   *  frames were drawn before it (`topics/contract.ts` › VideoScript). */
+  ditherFromTime?: boolean;
+  /** Extra passes on the linear world image, before the glow stack (ink lines). */
+  worldPasses?: Pass[];
+  /** Extra display-referred passes between the tone map and the finish (a grade). */
+  displayPasses?: Pass[];
+  /** A bloom to use instead of the tight UnrealBloom (e.g. an energy-conserving pyramid). */
+  bloom?: Pass;
+};
+
+function createAnimePost(renderer: THREE.WebGLRenderer, samples: number, options: AnimePostOptions = {}): AnimePost {
   const target = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples });
   const composer = new EffectComposer(renderer, target);
   const worldPass = new RenderPass(new THREE.Scene(), new THREE.Camera());
   composer.addPass(worldPass);
+  for (const pass of options.worldPasses ?? []) composer.addPass(pass);
 
   // World only: the glow stack and the halation key read the world before the UI is drawn.
   const glow = new GlowStackPass();
   glow.key.uniforms.uLow.value = ANIME_LOOK.glowLow;
   glow.key.uniforms.uHigh.value = ANIME_LOOK.glowHigh;
   glow.composite.uniforms.uGain.value = ANIME_LOOK.glowGain;
-  // Highlight core → violet → shadow hue, at hell-12's strengths (H scene/post.ts:216-220); linear.
-  (glow.composite.uniforms.c0.value as THREE.Color).set(NIGHT_ANIME_TONES.highlights).multiplyScalar(0.16);
-  (glow.composite.uniforms.c1.value as THREE.Color).set(NIGHT_ANIME_TONES.glowMiddle).multiplyScalar(0.06);
-  (glow.composite.uniforms.c2.value as THREE.Color).set(NIGHT_ANIME_TONES.shadows).multiplyScalar(0.16);
   composer.addPass(glow);
   const halation = new HalationPass();
   halation.key.uniforms.uThreshold.value = ANIME_LOOK.halationThreshold;
@@ -689,18 +721,27 @@ function createAnimePost(renderer: THREE.WebGLRenderer, samples: number): StageP
   // Tight bloom over the whole frame (H scene/post.ts:233-238).
   const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), ANIME_LOOK.bloomStrength, ANIME_LOOK.bloomRadius, ANIME_LOOK.bloomThreshold);
   bloom.compositeMaterial.uniforms.bloomFactors.value = [...ANIME_LOOK.bloomFactors];
-  composer.addPass(bloom);
+  composer.addPass(options.bloom ?? bloom);
+  if (options.bloom) bloom.enabled = false;
   const output = new OutputPass();
   composer.addPass(output);
+  for (const pass of options.displayPasses ?? []) composer.addPass(pass);
 
   const finishMaterial = createFinishMaterial(halation.texture, uiCoverage.texture);
   const finishUniforms = finishMaterial.uniforms;
-  const colours = animeFinishColours(NIGHT_ANIME_TONES);
-  setVector(finishUniforms.uSlope, colours.slope);
-  setVector(finishUniforms.uShadowTint, colours.shadowTint);
-  setVector(finishUniforms.uHiTint, colours.highlightTint);
-  setVector(finishUniforms.uVigTint, colours.vignetteTint);
-  setVector(finishUniforms.uHaloTint, colours.halationTint);
+  const setTones = (tones: AnimeTones) => {
+    // Highlight core → violet → shadow hue, at hell-12's strengths (H scene/post.ts:216-220); linear.
+    (glow.composite.uniforms.c0.value as THREE.Color).set(tones.highlights).multiplyScalar(0.16);
+    (glow.composite.uniforms.c1.value as THREE.Color).set(tones.glowMiddle).multiplyScalar(0.06);
+    (glow.composite.uniforms.c2.value as THREE.Color).set(tones.shadows).multiplyScalar(0.16);
+    const colours = animeFinishColours(tones);
+    setVector(finishUniforms.uSlope, colours.slope);
+    setVector(finishUniforms.uShadowTint, colours.shadowTint);
+    setVector(finishUniforms.uHiTint, colours.highlightTint);
+    setVector(finishUniforms.uVigTint, colours.vignetteTint);
+    setVector(finishUniforms.uHaloTint, colours.halationTint);
+  };
+  setTones(options.tones ?? NIGHT_ANIME_TONES);
   const finish = new ShaderPass(finishMaterial);
   composer.addPass(finish);
 
@@ -711,7 +752,8 @@ function createAnimePost(renderer: THREE.WebGLRenderer, samples: number): StageP
   const applyBloom = () => {
     // The ladder's "bloom off" turns every glow off: bloom, glow stack, halation.
     const glowing = bloomScale > 0;
-    bloom.enabled = glowing;
+    bloom.enabled = glowing && !options.bloom;
+    if (options.bloom) options.bloom.enabled = glowing;
     glow.enabled = glowing;
     halation.enabled = glowing;
     finishUniforms.uHalo.value = glowing ? ANIME_LOOK.halation : 0;
@@ -721,24 +763,41 @@ function createAnimePost(renderer: THREE.WebGLRenderer, samples: number): StageP
       bloom.setSize(Math.max(1, size.width * pixelRatio * bloomScale), Math.max(1, size.height * pixelRatio * bloomScale));
     }
   };
+  const draw = (scene: THREE.Scene, camera: THREE.Camera, time: number, overlay: StageOverlay | undefined, toScreen: boolean) => {
+    worldPass.scene = scene;
+    worldPass.camera = camera;
+    overlayPass.enabled = overlay !== undefined;
+    if (overlay) {
+      overlayPass.scene = overlay.scene;
+      overlayPass.camera = overlay.camera;
+    }
+    uiCoverage.overlay = overlay;
+    finishUniforms.uUiProtect.value = overlay ? 1 : 0;
+    finishUniforms.uTime.value = time;
+    frame = options.ditherFromTime ? Math.floor(Math.max(0, time) * 60) % 100000 : (frame + 1) % 100000;
+    finishUniforms.uFrame.value = frame;
+    // The paper is glued to the view sphere: the live camera (its lens-shifted inverse projection).
+    finishUniforms.uInvProj.value = camera.projectionMatrixInverse;
+    finishUniforms.uCamWorld.value = camera.matrixWorld;
+    composer.renderToScreen = toScreen;
+    composer.render();
+  };
   return {
     render(scene, camera, time, overlay) {
-      worldPass.scene = scene;
-      worldPass.camera = camera;
-      overlayPass.enabled = overlay !== undefined;
-      if (overlay) {
-        overlayPass.scene = overlay.scene;
-        overlayPass.camera = overlay.camera;
-      }
-      uiCoverage.overlay = overlay;
-      finishUniforms.uUiProtect.value = overlay ? 1 : 0;
-      finishUniforms.uTime.value = time;
-      frame = (frame + 1) % 100000;
-      finishUniforms.uFrame.value = frame;
-      // The paper is glued to the view sphere: the live camera (its lens-shifted inverse projection).
-      finishUniforms.uInvProj.value = camera.projectionMatrixInverse;
-      finishUniforms.uCamWorld.value = camera.matrixWorld;
-      composer.render();
+      draw(scene, camera, time, overlay, true);
+    },
+    renderToTexture(scene, camera, time, overlay) {
+      draw(scene, camera, time, overlay, false);
+      // The last pass swapped its output into the read buffer.
+      return composer.readBuffer.texture;
+    },
+    setLook(look) {
+      if (look.vignette !== undefined) finishUniforms.uVig.value = look.vignette;
+      if (look.grain !== undefined) finishUniforms.uGrain.value = look.grain;
+      if (look.paper !== undefined) finishUniforms.uPaper.value = look.paper;
+      if (look.halation !== undefined) finishUniforms.uHalo.value = look.halation;
+      if (look.bloomStrength !== undefined) bloom.strength = look.bloomStrength;
+      if (look.glowGain !== undefined) glow.composite.uniforms.uGain.value = look.glowGain;
     },
     setSize(width, height) {
       size = { width, height };
@@ -753,6 +812,7 @@ function createAnimePost(renderer: THREE.WebGLRenderer, samples: number): StageP
       bloomScale = scale;
       applyBloom();
     },
+    setTones,
     dispose() {
       glow.dispose();
       halation.dispose();
@@ -767,3 +827,4 @@ function createAnimePost(renderer: THREE.WebGLRenderer, samples: number): StageP
 }
 
 export { createAnimePost };
+export type { AnimeLookOverrides, AnimePost, AnimePostOptions };

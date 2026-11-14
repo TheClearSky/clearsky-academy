@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { syllabi } from '../curriculum/syllabi';
+import { clearReturnToProgress, isReturningToProgress } from '../chapter/chapterPath';
 import { StageProvider } from '../stage/react/StageProvider';
 import { WorldOnScroll } from './WorldOnScroll';
 import markUrl from './brand/clearsky-mark.svg';
@@ -8,8 +9,11 @@ import { buildCourses } from './courses';
 import { CourseDeck } from './CourseDeck';
 import { HudHost } from './hud/HudHost';
 import { readLandingState, writeLandingState } from './landingState';
+import { readLandscapeChoice } from './landscapeChoice';
+import { stageOptions } from './landingStage';
+import { GitHubLink } from './GitHubLink';
+import { LandscapeToggle } from './LandscapeToggle';
 import { STAGE_SELECTION } from './stageSelection';
-import { ThemeToggle } from './ThemeToggle';
 import { useReducedMotion } from './useReducedMotion';
 import { cn } from '../cn';
 import '../index.css';
@@ -39,6 +43,8 @@ function LandingPage() {
     document.title = 'ClearSky Academy — see the concept, then learn it';
   }, []);
   const courses = useMemo(() => buildCourses(syllabi), []);
+  // The stage starts on the visitor's landscape (no grove-then-blossom rebuild on a return visit).
+  const selection = useMemo(() => ({ ...STAGE_SELECTION, ...stageOptions(readLandscapeChoice()) }), []);
   // Where the visitor left the page this tab (`landingState.ts`): the class,
   // whether its card is held, the HUD's subject.
   const [remembered] = useState(readLandingState);
@@ -47,10 +53,15 @@ function LandingPage() {
   const reducedMotion = useReducedMotion();
   const start = () => document.getElementById('decks')?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
 
-  // Back from a chapter page (`#progress`): straight to the HUD.
+  // Back from a chapter page: straight to the HUD (a one-shot flag, nothing in the URL — `chapterPath.ts`).
+  // An old link or history entry may still carry `#progress`: drop it quietly, without jumping.
   useEffect(() => {
-    if (window.location.hash !== '#progress') return undefined;
-    const frame = requestAnimationFrame(() => scrollToProgress('auto'));
+    if (window.location.hash === '#progress') window.history.replaceState(window.history.state, '', window.location.pathname + window.location.search);
+    if (!isReturningToProgress()) return undefined;
+    const frame = requestAnimationFrame(() => {
+      scrollToProgress('auto');
+      clearReturnToProgress();
+    });
     return () => cancelAnimationFrame(frame);
   }, []);
 
@@ -84,7 +95,7 @@ function LandingPage() {
   };
 
   return (
-    <StageProvider selection={STAGE_SELECTION}>
+    <StageProvider selection={selection}>
       <WorldOnScroll deckId='decks' />
       <div data-slot='landing' className='relative min-h-full text-primary-white'>
         <header className='flex items-center justify-between px-4 py-3 sm:px-8'>
@@ -94,7 +105,10 @@ function LandingPage() {
               ClearSky <span className='font-normal text-primary-white/75'>Academy</span>
             </span>
           </Link>
-          <ThemeToggle />
+          <div className='flex items-center gap-2'>
+            <LandscapeToggle />
+            <GitHubLink />
+          </div>
         </header>
 
         <section data-slot='landing-hero' className='flex min-h-[calc(100svh-80px)] flex-col items-center px-4 pt-[6svh] text-center'>
@@ -147,7 +161,7 @@ function LandingPage() {
         </section>
 
         <footer className='px-4 pb-10 text-center text-[12px] text-primary-white/50'>
-          Syllabus from the official CBSE 2026-27 curriculum, NTA JEE Main 2026 and JEE Advanced 2026.
+          Covers everything you need for CBSE 2026-27, JEE Main 2026 and JEE Advanced 2026, and often goes wider.
         </footer>
       </div>
     </StageProvider>

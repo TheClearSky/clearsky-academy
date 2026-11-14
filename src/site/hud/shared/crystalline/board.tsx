@@ -3,7 +3,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { HudChapter as Chapter } from '../../contract';
 import { CrystalShape } from '../../kit/parts';
 import type { Moment } from '../../kit/progressMoments';
-import { arrivalMs, dashFor, litIntervals, pointAt, raceMs } from '../../kit/litPath';
+import { arrivalMs, dashFor, litIntervals, pointAt, RACE_EASE, raceMs, STEADY_RACE_EASE, steadyRaceMs } from '../../kit/litPath';
 import type { Burst } from '../../kit/LitPathLayers';
 import { LitPath } from '../../kit/LitPathLayers';
 import { halfOrbit, orbitGems } from './logic';
@@ -179,15 +179,29 @@ const CrystalBoard = memo(function CrystalBoard({ line, chapters, frontier, mome
   );
   const intervals = useMemo(() => litIntervals(line.stops, chapters), [line, chapters]);
   const lit = dashFor(intervals, line.trace.length);
-  const race = raceMs(line.trace.length);
-  const pops = line.stops.map((stop) => (entrance ? arrivalMs(stop.at, line.trace.length, race) : 0));
+  // A narrow line snakes on below the screen: there the light runs at a steady speed.
+  const race = line.compact ? steadyRaceMs(line.trace.length) : raceMs(line.trace.length);
+  const ease = line.compact ? STEADY_RACE_EASE : RACE_EASE;
+  const pops = line.stops.map((stop) => (entrance ? arrivalMs(stop.at, line.trace.length, race, ease) : 0));
   const inLit = (along: number) => intervals.some(([a, b]) => along >= a && along <= b);
 
   // The train: the crystal on the frontier's stretch, as far in as it is learnt (at least 40 %).
   const stop = frontier >= 0 ? line.stops[frontier] : line.stops[line.stops.length - 1];
   const trainAlong = frontier >= 0 ? stop.start + (stop.end - stop.start) * Math.max(0.4, chapters[frontier].fraction) : stop.at;
   const train = pointAt(line.trace, trainAlong);
-  const back = pointAt(line.trace, Math.max(0, trainAlong - (line.compact ? 40 : 56)));
+  const backAlong = Math.max(0, trainAlong - (line.compact ? 40 : 56));
+  const back = pointAt(line.trace, backAlong);
+  // The crystal stands square to the track — upright on a level run, leaning
+  // into a 45° one — and its tail follows the rail round the bend (on a
+  // phone's tighter pitch the train often sits on a diagonal, where an
+  // upright crystal and a straight tail read wrong: Deepak, 2026-10-17,
+  // "crystal direction is off"). Headings fold into ±90°: never upside down.
+  const lean = ((((train.angle + 90) % 180) + 180) % 180) - 90;
+  const tailSteps = Math.max(1, Math.ceil((trainAlong - backAlong) / 4));
+  const tailD = Array.from({ length: tailSteps + 1 }, (_, step) => {
+    const point = pointAt(line.trace, backAlong + ((trainAlong - backAlong) * step) / tailSteps);
+    return `${step === 0 ? 'M' : 'L'}${point.x.toFixed(1)} ${point.y.toFixed(1)}`;
+  }).join('');
   const trainAt = entrance ? race + 150 : 80;
 
   // Moments: a comet into each newly advanced station (the first two), then the station lights.
@@ -222,6 +236,7 @@ const CrystalBoard = memo(function CrystalBoard({ line, chapters, frontier, mome
         entrance={entrance}
         reduced={reduced}
         race={race}
+        ease={ease}
         bursts={bursts}
         className='crl-lit'
         under={
@@ -271,9 +286,9 @@ const CrystalBoard = memo(function CrystalBoard({ line, chapters, frontier, mome
           />
         ))}
         <g className='crl-train' style={{ '--crl-t': `${trainAt}ms` } as CSSProperties}>
-          <path d={`M${back.x.toFixed(1)} ${back.y.toFixed(1)}L${train.x.toFixed(1)} ${train.y.toFixed(1)}`} stroke={`url(#${tail})`} className='crl-tail' />
+          <path d={tailD} stroke={`url(#${tail})`} className='crl-tail' />
           <circle cx={train.x} cy={train.y} r={line.compact ? 9 : 12} className='crl-train-glow' />
-          <g transform={`translate(${train.x.toFixed(1)} ${(train.y - (line.compact ? 1 : 2)).toFixed(1)}) scale(${line.compact ? 1 : 1.3})`}>
+          <g transform={`translate(${train.x.toFixed(1)} ${train.y.toFixed(1)}) rotate(${lean.toFixed(1)}) translate(0 ${line.compact ? -1 : -2}) scale(${line.compact ? 1 : 1.3})`}>
             <g className='crl-crystal'>
               <CrystalShape />
             </g>

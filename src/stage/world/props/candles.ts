@@ -4,6 +4,7 @@ import { NOISE_GLSL } from '../../engine/glsl';
 import { LIGHTING_GLSL, lightingUniforms, WORLD_VERTEX_GLSL } from '../../engine/lighting';
 import { seededRandom } from '../../engine/random';
 import type { StageContext } from '../../engine/contract';
+import { orbitPoint } from './propLayout';
 import type { Placement } from './propLayout';
 
 /**
@@ -369,7 +370,8 @@ function createCandles(context: StageContext, capacity: number): Candles {
     update(t) {
       placements.forEach((placement, index) => {
         const phase = placement.seed * 6.2831853;
-        scratch.position.set(placement.x, placement.y + Math.sin(t * 0.45 + phase) * 0.12, placement.z);
+        const base = placement.orbit ? orbitPoint(placement.orbit, t, placement.y) : { x: placement.x, z: placement.z, rise: 0 };
+        scratch.position.set(base.x, placement.y + base.rise + Math.sin(t * 0.45 + phase) * 0.12, base.z);
         scratch.rotation.set(0, placement.yaw, placement.roll + Math.sin(t * 0.33 + phase) * 0.03);
         scratch.scale.setScalar(placement.scale);
         scratch.updateMatrix();

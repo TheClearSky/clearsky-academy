@@ -4,7 +4,7 @@ import { createBooks } from './books';
 import { createCandles } from './candles';
 import { createChair } from './chair';
 import { createChess } from './chess';
-import { propLayout } from './propLayout';
+import { propCounts, propLayout } from './propLayout';
 
 /**
  * Props class: the background objects — an enchanted-library mood without
@@ -19,8 +19,9 @@ import { propLayout } from './propLayout';
  *  - `books` — only the floating books and candles (no grounded props);
  *  - `none`  — the bare reference scene.
  *
- * Counts come from the quality tier; the layout re-runs when the canvas
- * flips between portrait and landscape (`propLayout.ts`).
+ * Counts come from the quality tier and the screen's size class; the layout
+ * re-runs when the canvas flips between portrait and landscape or changes
+ * size class (`propLayout.ts`) — never on every resize step.
  */
 
 const OPTIONS: readonly AssetOption[] = [
@@ -41,9 +42,12 @@ function create(context: StageContext): AssetClass {
 
   let aspect = 16 / 9;
   let portrait: boolean | null = null;
+  let counts = { books: tier.books, candles: tier.candles };
+  let sized = false;
+  let layoutPortrait: boolean | null = null;
   let current = '';
   const relayout = () => {
-    const layout = propLayout(aspect, { books: tier.books, candles: tier.candles });
+    const layout = propLayout(aspect, counts);
     books.place(layout.closedBooks, layout.openBooks);
     candles.place(layout.candles);
     chair.place(layout.chair);
@@ -70,10 +74,20 @@ function create(context: StageContext): AssetClass {
     setAspect(next) {
       aspect = next;
       const nextPortrait = next < 1;
-      // Re-lay out only when the screen flips orientation: a resize within
-      // one orientation keeps every prop where it is (no jumping).
+      // Re-lay out only when the screen flips orientation (or, below, its
+      // size class): a resize within one keeps every prop where it is.
       if (nextPortrait === portrait) return;
       portrait = nextPortrait;
+      // The stage follows with the size at once; re-lay out once, there.
+      if (!sized) relayout();
+    },
+    setViewport(width, height) {
+      const next = propCounts({ books: tier.books, candles: tier.candles }, width, height);
+      const flipped = sized && portrait !== null && layoutPortrait !== portrait;
+      if (sized && !flipped && next.books === counts.books && next.candles === counts.candles) return;
+      sized = true;
+      counts = next;
+      layoutPortrait = portrait;
       relayout();
     },
     update(t) {

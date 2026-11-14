@@ -1,0 +1,487 @@
+/*
+ * "Play with it" for video 1 (M13.X1) in the topic modal's own dress (`chapter/topic-modal.css`): Cinzel capitals for
+ * labels, Cormorant for words, STIX Two for maths, gilt hairlines on night glass, the crystal focus ring the modal uses.
+ * No browser-default controls: every button, tab and badge is drawn here. Colours are the HUD tokens' values and, for the
+ * set letters only, the film's owner colours (MATH-04). Classes are `np-`.
+ */
+.np {
+  --np-ink: #eceaff;
+  --np-soft: #c9c6ee;
+  --np-gold: #f4e2a6;
+  --np-gold-dim: #e9d3a8;
+  --np-crystal: #6fe3ff;
+  --np-rim: rgb(233 211 168 / 0.3);
+  --np-glass: linear-gradient(180deg, rgb(20 15 70 / 0.55), rgb(8 6 34 / 0.65));
+  color: var(--np-ink);
+  font: 600 17px/1.45 'Cormorant Garamond', Georgia, serif;
+}
+.np-math {
+  font-family: 'STIX Two Text', 'STIX Two Math', Georgia, serif;
+  font-weight: 500;
+  font-size: 0.92em;
+}
+/* the set letters in their owner colours (venn.ts › SETS text) */
+.np-set-n { color: #f4e2a6; }
+.np-set-w { color: #ffffff; }
+.np-set-z { color: #9feaff; }
+.np-set-q { color: #d9c2ff; }
+.np-set-i { color: #ffb3cb; }
+.np-set-r { color: #eef1fb; }
+
+/* ── the tab strip: ten numbered stations, scrollable on a phone ── */
+.np-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px 18px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.np-tabs {
+  display: flex;
+  gap: 6px;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow-x: auto;
+  padding: 4px 4px 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #b8913f transparent;
+  scroll-snap-type: x proximity;
+}
+.np-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+.np-tabs::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d9a93c, #9a7224);
+}
+.np-tab {
+  position: relative;
+  flex: none;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  min-width: 54px;
+  padding: 9px 10px 8px;
+  border: 1px solid rgb(233 211 168 / 0.22);
+  border-radius: 12px;
+  background: rgb(8 6 34 / 0.55);
+  color: var(--np-soft);
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    color 0.2s;
+}
+.np-tab-n {
+  font: 700 15px/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.08em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.np-tab:hover {
+  border-color: rgb(244 226 166 / 0.55);
+  color: var(--np-gold);
+}
+.np-tab[aria-selected='true'] {
+  border-color: rgb(244 226 166 / 0.8);
+  background: linear-gradient(180deg, rgb(244 226 166 / 0.12), rgb(8 6 34 / 0.6));
+  color: #fff6da;
+  box-shadow: inset 0 -2px 0 #d9a93c;
+}
+.np-tab:focus-visible {
+  outline: 2px solid var(--np-crystal);
+  outline-offset: 2px;
+}
+/* solved: a small gilt star in the corner; tried: a thin hollow ring */
+.np-tab-mark {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  width: 9px;
+  height: 9px;
+}
+.np-tab[data-mark='solved'] .np-tab-mark::before {
+  content: '✦';
+  position: absolute;
+  inset: -5px -2px auto auto;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--np-gold);
+}
+.np-tab[data-mark='tried'] .np-tab-mark {
+  border: 1px solid rgb(201 198 238 / 0.75);
+  border-radius: 50%;
+}
+.np-tally {
+  margin: 0;
+  flex: none;
+  font: 600 12px/1.4 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--np-soft);
+}
+.np-tally-n {
+  color: var(--np-gold);
+}
+
+/* ── the difficulty: diamond pips (the modal's mark), filled 1, 2 or 3; the badge differs by weight, not hue ── */
+.np-pips {
+  display: inline-flex;
+  gap: 3px;
+}
+.np-pip {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  border: 1px solid rgb(244 226 166 / 0.6);
+}
+.np-pip[data-on] {
+  background: var(--np-gold-dim);
+  border-color: var(--np-gold-dim);
+}
+.np-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 13px 6px 11px;
+  border: 1px solid rgb(244 226 166 / 0.45);
+  border-radius: 999px;
+  background: rgb(8 6 34 / 0.6);
+  font: 700 12px/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--np-gold-dim);
+}
+.np-badge[data-level='medium'] {
+  border-color: rgb(244 226 166 / 0.7);
+  color: var(--np-gold);
+}
+.np-badge[data-level='hard'] {
+  border-color: #f4e2a6;
+  color: #fff6da;
+  box-shadow:
+    inset 0 0 0 2px #070522,
+    inset 0 0 0 3px rgb(244 226 166 / 0.55);
+}
+
+/* ── the puzzle ── */
+.np-panel {
+  padding: 18px clamp(12px, 2.4vw, 24px) 20px;
+  border: 1px solid var(--np-rim);
+  border-radius: 16px;
+  background: var(--np-glass);
+}
+.np-head-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+.np-kicker {
+  font: 600 12px/1.5 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--np-crystal);
+}
+.np-prompt {
+  margin: 12px 0 4px;
+  font: 600 clamp(21px, 2.3vw, 27px)/1.25 'Cormorant Garamond', Georgia, serif;
+  color: #fff6da;
+  text-wrap: balance;
+}
+.np-how {
+  margin: 0 0 14px;
+  font: 600 16.5px/1.45 'Cormorant Garamond', Georgia, serif;
+  color: var(--np-soft);
+}
+
+/* ── the stage: the film's night in the modal's frame (the playground kit's double keyline) ── */
+.np-canvas {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  background: radial-gradient(ellipse 85% 75% at 50% 42%, #0f0b3c 0%, #08062a 58%, #03020f 100%);
+  box-shadow:
+    inset 0 0 0 1px rgb(150 128 255 / 0.3),
+    inset 0 0 0 4px #03020f,
+    inset 0 0 0 5px rgb(233 211 168 / 0.22);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.np-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.np-layer {
+  position: absolute;
+  inset: 0;
+}
+.np-hit {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.np-hit:focus-visible {
+  outline: 2px solid var(--np-crystal);
+  outline-offset: 2px;
+}
+.np-hit-token {
+  cursor: grab;
+  touch-action: none;
+}
+.np-hit-token:active {
+  cursor: grabbing;
+}
+.np-hit-region,
+.np-hit-option {
+  cursor: pointer;
+}
+.np-hit-region:not([data-held]) {
+  cursor: default;
+}
+.np-hit-option:hover {
+  background: rgb(244 226 166 / 0.05);
+}
+.np-hit-slider {
+  border-radius: 50%;
+  cursor: ew-resize;
+  touch-action: none;
+}
+.np-band {
+  position: absolute;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+/* ── buttons: the modal's pills (Submit = "Mark as learnt"'s gilt; Reset = the quiet nav pill) ── */
+.np-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 20px 10px 16px;
+  border-radius: 999px;
+  font: 700 12.5px/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.np-btn:focus-visible {
+  outline: 2px solid var(--np-crystal);
+  outline-offset: 3px;
+}
+.np-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.np-btn-gilt {
+  border: 1px solid rgb(244 226 166 / 0.7);
+  background: rgb(244 226 166 / 0.06);
+  color: var(--np-gold);
+}
+.np-btn-gilt:hover:not(:disabled) {
+  background: linear-gradient(180deg, #f4e2a6, #d9a93c);
+  border-color: #fff6da;
+  color: #1c1405;
+  box-shadow: 0 0 22px rgb(217 169 60 / 0.4);
+}
+.np-btn-quiet {
+  border: 1px solid rgb(233 211 168 / 0.28);
+  background: none;
+  color: var(--np-gold-dim);
+}
+.np-btn-quiet:hover:not(:disabled) {
+  border-color: rgb(244 226 166 / 0.65);
+  background: rgb(244 226 166 / 0.06);
+}
+.np-btn-small {
+  min-height: 36px;
+  padding: 7px 14px;
+  font-size: 11.5px;
+}
+.np-btn-mark {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  transform: rotate(45deg);
+  border: 1.5px solid currentColor;
+}
+.np-btn-mark-reset {
+  transform: none;
+  border-radius: 50%;
+  border-right-color: transparent;
+}
+
+.np-actions {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.np-nudge {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* the verdict: "Correct" in the gilt of "Learnt", "Not quite" in the quiet outline (no red / green) */
+.np-verdict {
+  justify-self: center;
+  margin: 0;
+  min-height: 1px;
+}
+.np-verdict[data-verdict] {
+  padding: 9px 18px;
+  border-radius: 999px;
+  font: 700 12.5px/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  animation: np-verdict-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.np-verdict[data-verdict='correct'] {
+  border: 1px solid #fff6da;
+  background: linear-gradient(180deg, #f4e2a6, #d9a93c);
+  color: #1c1405;
+}
+.np-verdict[data-verdict='wrong'] {
+  border: 1px solid rgb(251 243 220 / 0.55);
+  color: #fbf3dc;
+}
+.np-verdict[data-verdict] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+/* the tick / cross beside the verdict: the pill's own ink, drawn on as the pill arrives */
+.np-verdict-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.np-verdict-mark path {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: np-verdict-draw 0.45s 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes np-verdict-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .np-verdict-mark path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes np-verdict-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .np-verdict[data-verdict] {
+    animation: none;
+  }
+}
+
+/* ── the solution in words ── */
+.np-solution {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgb(233 211 168 / 0.18);
+}
+.np-steps {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.np-step {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: baseline;
+  gap: 10px;
+  font: 600 17px/1.45 'Cormorant Garamond', Georgia, serif;
+  color: var(--np-soft);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.np-step[data-shown] {
+  opacity: 1;
+}
+.np-step[data-now] {
+  color: #fff6da;
+}
+.np-step-n {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgb(244 226 166 / 0.5);
+  border-radius: 50%;
+  font: 700 11px/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  color: var(--np-gold);
+}
+.np-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+.np-stepper-n {
+  font: 600 12px/1 'Cinzel Variable', 'Cinzel', Georgia, serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--np-soft);
+}
+.np-again {
+  margin: 12px 0 0;
+  font: italic 600 16px/1.4 'Cormorant Garamond', Georgia, serif;
+  color: var(--np-soft);
+}
+
+@media (max-width: 560px) {
+  .np-panel {
+    padding: 14px 10px 16px;
+  }
+  .np-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+  .np-verdict {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .np-actions > .np-btn {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .np-step,
+  .np-tab {
+    transition: none;
+  }
+}

@@ -237,4 +237,4 @@ function CountUp({ value, run, reducedMotion, duration = 1000, format = (shown) 
   );
 }
 
-export { CountUp, Crystal, CrystalShape, SEAL_GLYPHS, Squeeze, TitleCard, WaxSeal };
+export { CountUp, Crystal, CrystalShape, SEAL_GLYPHS, SEAL_PATH, Squeeze, TitleCard, WaxSeal };

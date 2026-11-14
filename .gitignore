@@ -35,7 +35,7 @@ playwright-report/
 review/
 verification/
 
-# Development context — research notes and working documents (the raw
+# Development context â€” research notes and working documents (the raw
 # syllabus PDFs and their extraction scripts live under .claude/research/).
 # The curated curriculum data under src/curriculum/ is the product and is
 # committed.
@@ -51,20 +51,30 @@ __pycache__/
 # finals. The YouTube upload is the published copy; the source is video.ts.
 media/
 
-# Dev-only tools — kept locally, never part of the website (Deepak,
-# 2026-10-15: "gitignore … everything that isn't what we see on the
+# Dev-only tools â€” kept locally, never part of the website (Deepak,
+# 2026-10-15: "gitignore â€¦ everything that isn't what we see on the
 # website"). The build's only input is index.html; none of these are
 # imported by it. Each still runs locally with `npm run dev`.
 #   the video pipeline: the studio, the video kit, each topic's video.ts and
 #   the scaffold templates, the render/voice/topic scripts, their runbooks
 /studio.html
 /src/studio/
-/src/topics/videoKit/
+/src/topics/videoKit/**
+#     ...except the two pieces of the film's kit the website's video-1
+#     playground draws with (the number colours and the Venn rings)
+!/src/topics/videoKit/**/
+!/src/topics/videoKit/anime/fx/colours.ts
+!/src/topics/videoKit/anime/explain/venn.ts
 /src/topics/library/*/video.ts
+/src/topics/library/*/video2d.ts
+#   the asset bench (one video asset per page, for the pick boards)
+/bench.html
+/src/bench/
 /src/topics/library/_template/
 /scripts/
 /docs/
 /src/__tests__/topic-media.test.ts
+/src/__tests__/studio-voice*.test.ts
 /src/__tests__/videoKit-timeline.test.ts
 #   the YouTube channel art (renders land in media/, ignored above)
 /brand.html
@@ -73,3 +83,68 @@ media/
 /lab.html
 /card-paint.html
 /src/lab/
+
+# Video 1's production tools (2026-11-14, the same rule: only what the
+# website shows is committed; each still runs locally with `npm run dev`).
+#   the dev pages: the animatic, the picker, the storyboard and its voice
+#   editor, the subtitle lab, the asset labs
+/animatic.html
+/picker.html
+/sb-editor.html
+/storyboard.html
+/subtitle-lab.html
+/*-lab.html
+/src/animatic/
+/src/picker/
+/src/sbEditor/
+/src/storyboard/
+/src/subtitles/
+/src/sourceHash.d.ts
+#   the film's people (GLB heads, hair, clothes)
+/public/people/
+#   a topic's folder ships its manifest and its playground; everything else
+#   in it is the video (shots, cuts, wires, voice data, frame assets)
+/src/topics/library/*/*
+!/src/topics/library/*/topic.json
+!/src/topics/library/*/Playground.tsx
+!/src/topics/library/*/play/
+!/src/topics/library/types-of-numbers/rootFlatTools.ts
+!/src/topics/library/types-of-numbers/rootGeometry.ts
+#   their tests (they import the tools above or the video kit)
+/src/__tests__/accentCut.test.ts
+/src/__tests__/accentFx.test.ts
+/src/__tests__/accents.test.ts
+/src/__tests__/animatic-cut.test.ts
+/src/__tests__/bevelBox.test.ts
+/src/__tests__/builderMachine.test.ts
+/src/__tests__/cine-pass.test.ts
+/src/__tests__/cityCache.test.ts
+/src/__tests__/cityCivicPicked.test.ts
+/src/__tests__/cityFarRows.test.ts
+/src/__tests__/cityLife.test.ts
+/src/__tests__/cityNight.test.ts
+/src/__tests__/cityR5Night.test.ts
+/src/__tests__/coplanarFaces.test.ts
+/src/__tests__/explainWire.test.ts
+/src/__tests__/finaleDreamy.test.ts
+/src/__tests__/flickerFixes.test.ts
+/src/__tests__/flight.test.ts
+/src/__tests__/flowers.test.ts
+/src/__tests__/glints.test.ts
+/src/__tests__/holds.test.ts
+/src/__tests__/introCrownBlockout.test.ts
+/src/__tests__/objectBeatsV3.test.ts
+/src/__tests__/optionsCut.test.ts
+/src/__tests__/peopleHandover.test.ts
+/src/__tests__/peopleHandoverV2.test.ts
+/src/__tests__/picker.test.ts
+/src/__tests__/riverDistance.test.ts
+/src/__tests__/seatedLean.test.ts
+/src/__tests__/sectionsRetime.test.ts
+/src/__tests__/shotGates.test.ts
+/src/__tests__/splitBeats.test.ts
+/src/__tests__/storyboard.test.ts
+/src/__tests__/tableHeroes.test.ts
+/src/__tests__/txWire.test.ts
+/src/__tests__/venn.test.ts
+/src/__tests__/vennAccentWire.test.ts

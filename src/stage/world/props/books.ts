@@ -4,7 +4,7 @@ import { NOISE_GLSL } from '../../engine/glsl';
 import { LIGHTING_GLSL, lightingUniforms, WORLD_VERTEX_GLSL } from '../../engine/lighting';
 import { seededRandom } from '../../engine/random';
 import type { StageContext } from '../../engine/contract';
-import { BOOK_EULER_ORDER } from './propLayout';
+import { BOOK_EULER_ORDER, orbitPoint } from './propLayout';
 import type { Placement } from './propLayout';
 
 /**
@@ -469,23 +469,22 @@ function openingAngle(flight: BookFlight, t: number): number {
   return flight.ajar * (0.5 + 0.5 * Math.sin(t * 0.4 + flight.beatPhase));
 }
 
-/** The book's matrix at time t: placement plus a seeded flight (bob, drift, bank) and tumble. */
+/** The book's matrix at time t: its place on the carousel plus a seeded flight (bob, drift, bank) and tumble. */
 function bookMatrix(flight: BookFlight, t: number, target: THREE.Matrix4): THREE.Matrix4 {
   const { placement } = flight;
   const phase = placement.seed * 6.2831853;
+  const base = placement.orbit ? orbitPoint(placement.orbit, t, placement.y) : { x: placement.x, z: placement.z, rise: 0 };
+  // An open book keeps turning its spread to the viewer as it circles.
+  const turn = placement.orbit && flight.open ? Math.atan2(base.z, -base.x) - Math.atan2(placement.z, -placement.x) : 0;
   const driftX = 0.2 * Math.sin(t * 0.23 + phase);
   const driftVelocity = 0.2 * 0.23 * Math.cos(t * 0.23 + phase);
   const lift = flight.open ? -0.05 * Math.sin(t * flight.beatRate + flight.beatPhase - 0.6) : 0;
-  position.set(
-    placement.x + driftX,
-    placement.y + Math.sin(t * 0.5 + phase) * 0.17 + lift,
-    placement.z + 0.35 * Math.sin(t * 0.17 + phase * 1.3),
-  );
+  position.set(base.x + driftX, placement.y + base.rise + Math.sin(t * 0.5 + phase) * 0.17 + lift, base.z + 0.35 * Math.sin(t * 0.17 + phase * 1.3));
   // Bank into the drift (≈ ±0.4 rad), plus a slow sway of heading and lean.
   const bank = -driftVelocity * 9;
   euler.set(
     placement.pitch + bank + Math.sin(t * 0.37 + phase) * 0.08,
-    placement.yaw + Math.sin(t * 0.11 + phase * 2) * 0.25,
+    placement.yaw + turn + Math.sin(t * 0.11 + phase * 2) * 0.25,
     placement.roll + Math.sin(t * 0.29 + phase * 1.7) * 0.1,
     BOOK_EULER_ORDER,
   );

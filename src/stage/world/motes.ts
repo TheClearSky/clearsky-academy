@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { AIR_GLSL, airUniforms } from '../engine/air';
+import { worldBufferSize } from '../engine/contract';
 import type { AssetClass, AssetOption, StageContext } from '../engine/contract';
 import { moteLayout } from './moteLayout';
 
@@ -146,7 +147,7 @@ function create(context: StageContext): AssetClass {
     current: () => current,
     setOption,
     update() {
-      viewport.value.copy(context.renderer.getDrawingBufferSize(drawingBuffer));
+      viewport.value.copy(worldBufferSize(context, drawingBuffer));
     },
     setMoteBudget(next) {
       geometry.instanceCount = Math.max(0, Math.min(count, Math.round(next)));

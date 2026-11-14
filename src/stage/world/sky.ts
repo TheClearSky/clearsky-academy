@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import { AIR_GLSL, airUniforms } from '../engine/air';
 import { NOISE_GLSL } from '../engine/glsl';
+import { seededRandom } from '../engine/random';
+import { worldBufferSize } from '../engine/contract';
 import type { AssetClass, AssetOption, StageContext } from '../engine/contract';
 
 /**
@@ -26,7 +28,12 @@ import type { AssetClass, AssetOption, StageContext } from '../engine/contract';
  *    evaluations per pixel): the clouds drift.
  *  - `baked` — the same nebula rendered ONCE into a 2048×512 texture over
  *    (azimuth, elevation); the dome then costs one texture fetch per pixel.
- *    Stars stay live (cheap). The low tier's sky.
+ *    The low tier's sky. Its stars are NOT the procedural grid: on a phone
+ *    GPU the grid broke each star into square and L-shaped outlines along
+ *    its cell's edges (Deepak's phone, 2026-10-17; desktop GPUs draw it
+ *    clean). They are the same two layers as instanced round dots instead —
+ *    the motes' technique, which that phone draws clean — with the grid's
+ *    sizes, twinkle and cloud dimming.
  *
  * The dome is a unit sphere drawn without the camera's translation and at
  * the far plane, so it is always around the eye and behind everything.
@@ -88,10 +95,12 @@ float starLayer(vec2 p, float cells, float density, float sizePx, float seed) {
   return disc * twinkle * (0.25 + 1.6 * magnitude);
 }
 vec3 finishSky(vec3 colour, float density, vec2 azimuthElevation) {
+#ifndef NO_GRID_STARS
   vec2 p = azimuthElevation * vec2(1.5, 1.9);
   float stars = starLayer(p, 40.0, 0.045, 1.6, 0.0) + starLayer(p, 110.0, 0.03, 0.4, 17.0) * 0.5;
   stars *= 1.0 - 0.6 * smoothstep(0.6, 0.9, density);
   colour += uStar * stars;
+#endif
   float elevation = azimuthElevation.y;
   // The hellscape's "torn" dome: lip 0.2, swallow 0.5.
   colour = mix(colour, uAirHaze, exp(-max(elevation, 0.0) * 14.0) * 0.2);
@@ -134,7 +143,9 @@ void main() {
 }
 
 function bakedFragment(): string {
-  return `${SKY_UNIFORMS_GLSL}${NOISE_GLSL}${STARS_GLSL}${DIRECTION_GLSL}
+  return `${SKY_UNIFORMS_GLSL}${NOISE_GLSL}
+#define NO_GRID_STARS
+${STARS_GLSL}${DIRECTION_GLSL}
 uniform sampler2D uBaked;
 uniform vec2 uElevationRange;
 varying vec3 vDirection;
@@ -144,6 +155,83 @@ void main() {
   vec4 sky = texture2D(uBaked, clamp(uv, vec2(0.0, 0.0), vec2(1.0, 1.0)));
   gl_FragColor = vec4(finishSky(sky.rgb, sky.a, azimuthElevation), 1.0);
 }`;
+}
+
+/** The baked sky's stars: the grid's two layers as instanced round dots (see the header). */
+const STAR_DOT_VERTEX = /* glsl */ `
+attribute vec4 aStar; // azimuth, elevation, disc radius (px), brightness
+attribute vec2 aTwinkle; // rate, phase
+uniform float uTime;
+uniform vec2 uViewport;
+uniform float uRadiusScale;
+uniform sampler2D uBaked;
+uniform vec2 uElevationRange;
+varying vec2 vPx;
+varying float vRadius;
+varying float vLight;
+void main() {
+  float azimuth = aStar.x;
+  float elevation = aStar.y;
+  vec3 direction = vec3(sin(azimuth) * cos(elevation), sin(elevation), -cos(azimuth) * cos(elevation));
+  // As the dome: the camera's rotation only, at the far plane.
+  vec4 clip = projectionMatrix * vec4(mat3(viewMatrix) * direction, 1.0);
+  float radius = max(0.5, aStar.z * uRadiusScale);
+  float extent = radius + 1.5;
+  clip.xy += position.xy * extent / (uViewport * 0.5) * clip.w;
+  gl_Position = clip.xyww;
+  vPx = position.xy * extent;
+  vRadius = radius;
+  // The grid's dimming inside bright cloud, then finishSky's haze lip and horizon swallow.
+  float density = texture2D(uBaked, vec2(azimuth / 6.2831853 + 0.5, (elevation - uElevationRange.x) / (uElevationRange.y - uElevationRange.x))).a;
+  float twinkle = 0.6 + 0.4 * sin(uTime * aTwinkle.x + aTwinkle.y);
+  float horizon = (1.0 - exp(-max(elevation, 0.0) * 14.0) * 0.2) * (1.0 - (1.0 - smoothstep(0.0, 0.07, elevation)) * 0.5) * step(0.0, elevation);
+  vLight = aStar.w * twinkle * (1.0 - 0.6 * smoothstep(0.6, 0.9, density)) * horizon;
+}
+`;
+
+const STAR_DOT_FRAGMENT = /* glsl */ `
+uniform vec3 uStar;
+varying vec2 vPx;
+varying float vRadius;
+varying float vLight;
+void main() {
+  float disc = 1.0 - smoothstep(vRadius, vRadius + 1.0, length(vPx));
+  if (disc <= 0.0) discard;
+  // Premultiplied over with alpha 0: purely additive, as the grid's stars add to the sky.
+  gl_FragColor = vec4(uStar * disc * vLight, 0.0);
+}
+`;
+
+/** The sky the dots are scattered over (rad): the camera's reach (yaw ±0.6
+ *  plus a landscape screen's half width), horizon to near the zenith. */
+const STAR_AZIMUTH = 2.0;
+const STAR_ELEVATION = 1.45;
+
+/**
+ * The grid's layers as lists of stars at the grid's densities (a cell is
+ * 1/(1.5·cells) × 1/(1.9·cells) rad, lit with the layer's probability), each
+ * with a magnitude m = u⁴, a disc of 0.5 + size·m px and a brightness of
+ * 0.25 + 1.6·m, the fine layer at half.
+ */
+function starDots(): { stars: Float32Array; twinkles: Float32Array; count: number } {
+  const random = seededRandom(23);
+  const layers = [
+    { cells: 40, density: 0.045, size: 1.6, gain: 1 },
+    { cells: 110, density: 0.03, size: 0.4, gain: 0.5 },
+  ];
+  const stars: number[] = [];
+  const twinkles: number[] = [];
+  for (const layer of layers) {
+    const perSquareRadian = layer.cells * 1.5 * layer.cells * 1.9 * layer.density;
+    const count = Math.round(perSquareRadian * STAR_AZIMUTH * 2 * STAR_ELEVATION);
+    for (let index = 0; index < count; index++) {
+      const magnitude = Math.pow(random(), 4);
+      const h = random();
+      stars.push((random() * 2 - 1) * STAR_AZIMUTH, random() * STAR_ELEVATION, 0.5 + layer.size * magnitude, (0.25 + 1.6 * magnitude) * layer.gain);
+      twinkles.push(0.7 + 2.5 * h, h * 90);
+    }
+  }
+  return { stars: new Float32Array(stars), twinkles: new Float32Array(twinkles), count: stars.length / 4 };
 }
 
 /** The bake pass: a full-screen quad whose uv is (azimuth, elevation). */
@@ -176,6 +264,43 @@ function create(context: StageContext): AssetClass {
   let material: THREE.ShaderMaterial | null = null;
   let baked: THREE.WebGLRenderTarget | null = null;
   let current = '';
+
+  // The baked sky's stars (hidden on the live sky, whose grid draws them).
+  const dots = starDots();
+  const dotQuad = new THREE.PlaneGeometry(2, 2);
+  const dotGeometry = new THREE.InstancedBufferGeometry();
+  dotGeometry.index = dotQuad.index;
+  dotGeometry.setAttribute('position', dotQuad.getAttribute('position'));
+  dotGeometry.setAttribute('aStar', new THREE.InstancedBufferAttribute(dots.stars, 4));
+  dotGeometry.setAttribute('aTwinkle', new THREE.InstancedBufferAttribute(dots.twinkles, 2));
+  dotGeometry.instanceCount = dots.count;
+  const dotViewport = { value: new THREE.Vector2(1, 1) };
+  const dotUniforms = {
+    uTime: uniforms.uTime,
+    uStar: shared.uStar,
+    uViewport: dotViewport,
+    uRadiusScale: { value: 1 },
+    uBaked: { value: null as THREE.Texture | null },
+    uElevationRange: { value: new THREE.Vector2(BAKE_ELEVATION_MIN, BAKE_ELEVATION_MAX) },
+  };
+  // In the OPAQUE list right after the dome (three draws the transparent
+  // list after every opaque object), so the props cover them.
+  const dotMaterial = new THREE.ShaderMaterial({
+    uniforms: dotUniforms,
+    vertexShader: STAR_DOT_VERTEX,
+    fragmentShader: STAR_DOT_FRAGMENT,
+    depthTest: false,
+    depthWrite: false,
+    blending: THREE.CustomBlending,
+    blendSrc: THREE.OneFactor,
+    blendDst: THREE.OneMinusSrcAlphaFactor,
+  });
+  const starMesh = new THREE.Mesh(dotGeometry, dotMaterial);
+  starMesh.frustumCulled = false;
+  starMesh.renderOrder = -9;
+  starMesh.visible = false;
+  context.scene.add(starMesh);
+  const drawingBuffer = new THREE.Vector2();
 
   const bake = (target: THREE.WebGLRenderTarget) => {
     const bakeMaterial = new THREE.ShaderMaterial({
@@ -210,6 +335,7 @@ function create(context: StageContext): AssetClass {
         vertexShader: DOME_VERTEX,
         fragmentShader: bakedFragment(),
       });
+      dotUniforms.uBaked.value = baked.texture;
     } else {
       material = new THREE.ShaderMaterial({ uniforms: shared, vertexShader: DOME_VERTEX, fragmentShader: liveFragment() });
     }
@@ -217,6 +343,7 @@ function create(context: StageContext): AssetClass {
     material.depthWrite = false;
     material.depthTest = false;
     dome.material = material;
+    starMesh.visible = id === 'baked';
     current = id;
   };
 
@@ -228,12 +355,24 @@ function create(context: StageContext): AssetClass {
     options: OPTIONS,
     current: () => current,
     setOption,
+    update() {
+      if (!starMesh.visible) return;
+      dotViewport.value.copy(worldBufferSize(context, drawingBuffer));
+      // The grid sizes its stars in the world's pixels, drawn at 1.5 per CSS
+      // px on desktop; a phone's world pixels are coarser (0.75 per CSS px),
+      // so the dots are scaled to keep the desktop's size on screen.
+      const worldRatio = dotViewport.value.x / Math.max(1, renderer.domElement.clientWidth);
+      dotUniforms.uRadiusScale.value = Math.min(1, worldRatio / 1.5);
+    },
     restore() {
       if (baked) bake(baked);
     },
     dispose() {
-      context.scene.remove(dome);
+      context.scene.remove(dome, starMesh);
       geometry.dispose();
+      dotQuad.dispose();
+      dotGeometry.dispose();
+      dotMaterial.dispose();
       material?.dispose();
       baked?.dispose();
     },

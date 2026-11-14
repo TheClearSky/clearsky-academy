@@ -46,7 +46,7 @@
 
 }
 
-/* The light theme (`theme.ts`: System / Light / Dark, `<html data-theme>`).
+/* The light theme (`theme.ts`: fixed to light since 2026-10-17, `<html data-theme>`).
  * It re-maps the palette for page SURFACES — anything marked
  * `data-surface='paper'` (none at the moment; the curriculum page that was
  * one is gone) — by redefining the same

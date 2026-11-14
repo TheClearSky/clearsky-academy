@@ -25,8 +25,13 @@ import type { AssetOption } from './contract';
  *    gradient sky, which bands in 8 bits. A soft elliptical vignette darkens
  *    the WORLD only: it runs before the UI overlay, so cards near the edges
  *    keep their white (review: −28 % at the edges in v1).
- *  - `none` — straight to the canvas with tone mapping: no bloom, no
- *    vignette, no extra targets. The cheapest; phones' fallback.
+ *  - `none` — no bloom, no vignette. The cheapest; phones' fallback. The
+ *    world is drawn at the tier's low pixel ratio but the cards and rings
+ *    at the screen's own (Deepak, on a phone: "the cards of class look
+ *    blurry"): the world goes into one HDR target at its ratio, is scaled
+ *    up onto the canvas with the tone mapping, and the UI is drawn over it
+ *    at the canvas's ratio. Without float render targets it falls back to
+ *    one ratio for both, straight to the canvas.
  */
 
 const POST_OPTIONS: readonly AssetOption[] = [
@@ -47,6 +52,14 @@ type StagePost = {
   setSize(width: number, height: number): void;
   /** Bloom resolution scale from the runtime ladder (0 = off). */
   setBloomScale(scale: number): void;
+  /**
+   * The world's pixel ratio from the runtime ladder; returns the ratio the
+   * CANVAS should have (the post's own sizes follow on the next `setSize`).
+   * Posts that draw the UI at the world's ratio leave it out.
+   */
+  setWorldPixelRatio?(ratio: number): number;
+  /** The target the world is drawn into (shaders compile for it), if not the canvas. */
+  worldTarget?(): THREE.WebGLRenderTarget | null;
   dispose(): void;
 };
 
@@ -140,11 +153,29 @@ function createCleanPost(renderer: THREE.WebGLRenderer, samples: number): StageP
   };
 }
 
+/** The sharpest the UI is drawn on a phone (its screen's ratio, at most this). */
+const UI_PIXEL_RATIO_CAP = 2;
+
 function createPlainPost(renderer: THREE.WebGLRenderer): StagePost {
+  const extensions = renderer.extensions;
+  const canSplit = extensions.has('EXT_color_buffer_float') || extensions.has('EXT_color_buffer_half_float');
+  const uiRatio = Math.min(window.devicePixelRatio || 1, UI_PIXEL_RATIO_CAP);
+  const target = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType });
+  const output = new OutputPass();
+  output.renderToScreen = true;
+  let worldRatio = uiRatio;
+  const split = () => canSplit && worldRatio < uiRatio - 1e-3;
   return {
     render(scene, camera, _time, overlay) {
-      renderer.setRenderTarget(null);
-      renderer.render(scene, camera);
+      if (split()) {
+        renderer.setRenderTarget(target);
+        renderer.render(scene, camera);
+        // Scaled up (linear filtering) and tone mapped onto the canvas.
+        output.render(renderer, null as unknown as THREE.WebGLRenderTarget, target, 0, false);
+      } else {
+        renderer.setRenderTarget(null);
+        renderer.render(scene, camera);
+      }
       if (overlay) {
         const autoClear = renderer.autoClear;
         renderer.autoClear = false;
@@ -153,9 +184,19 @@ function createPlainPost(renderer: THREE.WebGLRenderer): StagePost {
         renderer.autoClear = autoClear;
       }
     },
-    setSize() {},
+    setSize(width, height) {
+      target.setSize(Math.max(1, Math.floor(width * worldRatio)), Math.max(1, Math.floor(height * worldRatio)));
+    },
     setBloomScale() {},
-    dispose() {},
+    setWorldPixelRatio(ratio) {
+      worldRatio = ratio;
+      return split() ? uiRatio : ratio;
+    },
+    worldTarget: () => (split() ? target : null),
+    dispose() {
+      target.dispose();
+      output.dispose();
+    },
   };
 }
 
