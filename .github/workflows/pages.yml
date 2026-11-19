@@ -48,11 +48,13 @@ jobs:
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
 
-      # GitHub Pages has no rewrites: every route but / (a chapter page, a
-      # topic's modal) falls through to 404.html — the same page, so the
-      # router takes over (it renders fine, but with a 404 status).
+      # GitHub Pages has no rewrites. `npm run build` writes a real page for
+      # every known route (src/site/seo/prerender.ts: each answers 200) and
+      # 404.html for unknown ones — the same app, so the router takes over
+      # (it renders fine, but with a 404 status). Without that step, every
+      # route but / falls through to a copy of index.html as 404.html.
       - name: SPA routes
-        run: cp dist/index.html dist/404.html
+        run: test -f dist/404.html || cp dist/index.html dist/404.html
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'

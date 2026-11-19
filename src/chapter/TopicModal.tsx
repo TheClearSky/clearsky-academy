@@ -6,6 +6,7 @@ import { SourceText } from '../curriculum/SourceText';
 import type { HudChapter } from '../site/hud/contract';
 import { pad2 } from '../site/hud/kit/format';
 import { CrystalShape } from '../site/hud/kit/parts';
+import { STORAGE_NAMESPACE } from '../storageNamespace';
 import type { TopicEntry } from '../topics/contract';
 import { playgroundLoader } from '../topics/registry';
 import { cardFlights, seedOf, sheetClips } from './topicMotion';
@@ -49,9 +50,34 @@ type TopicModalProps = {
   onGo(topicNumber: number): void;
 };
 
-function TopicVideo({ youtube, title }: { youtube: string | null; title: string }) {
+/** The captions switch (Deepak, 2026-11-17: "keep both, and have a checkbox on site that swaps the video"): a topic
+ *  whose video was also uploaded without burned captions offers both. Remembered per browser (a convenience only:
+ *  without storage it simply starts on the animated captions). */
+const CAPTIONS_KEY = `${STORAGE_NAMESPACE}:captions`;
+
+function readAnimatedCaptions(): boolean {
+  try {
+    return localStorage.getItem(CAPTIONS_KEY) !== 'plain';
+  } catch {
+    return true;
+  }
+}
+
+function TopicVideo({ youtube: burned, youtubePlain, title }: { youtube: string | null; youtubePlain: string | null; title: string }) {
+  const [animated, setAnimated] = useState(readAnimatedCaptions);
+  const youtube = youtubePlain && !animated ? youtubePlain : burned;
+  // The plain upload carries normal YouTube captions: start them on, in Roman Hinglish (as the animated ones read).
+  const captionParams = youtube === youtubePlain && youtubePlain ? '&cc_load_policy=1&cc_lang_pref=hi-Latn' : '';
   const [playing, setPlaying] = useState(false);
   useEffect(() => setPlaying(false), [youtube]);
+  const chooseCaptions = (next: boolean) => {
+    setAnimated(next);
+    try {
+      localStorage.setItem(CAPTIONS_KEY, next ? 'animated' : 'plain');
+    } catch {
+      /* no storage: the choice lasts for this visit */
+    }
+  };
   if (!youtube) {
     return (
       <div className='tm-video tm-video-empty'>
@@ -70,7 +96,7 @@ function TopicVideo({ youtube, title }: { youtube: string | null; title: string 
       <div className='tm-video'>
         {playing ? (
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0&modestbranding=1`}
+            src={`https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0&modestbranding=1${captionParams}`}
             title={title}
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             referrerPolicy='strict-origin-when-cross-origin'
@@ -83,6 +109,13 @@ function TopicVideo({ youtube, title }: { youtube: string | null; title: string 
           </button>
         )}
       </div>
+      {youtubePlain && burned ? (
+        <label className='tm-video-captions'>
+          <input type='checkbox' checked={animated} onChange={(event) => chooseCaptions(event.target.checked)} />
+          <span>Animated captions</span>
+          <span className='tm-video-captions-hint'>{animated ? 'drawn into the video' : 'off: normal YouTube captions you can turn off or change'}</span>
+        </label>
+      ) : null}
       {/* The video's title opens its YouTube page in a new tab, to comment there (Deepak, video 1's ⊂ shot, 2026-11-13:
           "you can click video ka title, isse ek naye tab mein youtube khulega and then you can comment"). */}
       <a className='tm-video-title' href={youtubeWatchUrl(youtube)} target='_blank' rel='noopener noreferrer'>
@@ -304,7 +337,7 @@ function TopicModal({ topic, total, chapterLine, entry, frontier, sample, reduce
           </header>
 
           <section className='tm-section tm-in' aria-label='Video'>
-            <TopicVideo key={entry?.slug ?? 'none'} youtube={entry?.youtube ?? null} title={title} />
+            <TopicVideo key={entry?.slug ?? 'none'} youtube={entry?.youtube ?? null} youtubePlain={entry?.youtubePlain ?? null} title={title} />
           </section>
 
           <section className='tm-section tm-in' aria-labelledby={`${titleId}-play`}>
