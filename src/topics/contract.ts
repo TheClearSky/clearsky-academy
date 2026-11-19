@@ -35,6 +35,11 @@ type TopicManifest = {
   title: string;
   /** The YouTube video id once published, else null. */
   youtube: string | null;
+  /** The SAME video uploaded without captions in the picture (normal YouTube captions instead), when there is one
+   *  (Deepak, 2026-11-17: "keep both, and have a checkbox on site that swaps the video"). `youtube` stays the default
+   *  (the animated burned captions); the topic window shows a captions switch only when this is set.
+   *  `npm run topic -- link <slug> <url | id> --plain` fills it. */
+  youtubePlain?: string | null;
 };
 
 type TopicEntry = TopicManifest & { slug: string };
